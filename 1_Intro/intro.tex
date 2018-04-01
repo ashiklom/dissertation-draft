@@ -1,0 +1,70 @@
+\chapter{Introduction}
+\label{chapter:Introduction}
+\thispagestyle{myheadings}
+
+\section{A few remarks before you start}
+\label{sec:history}
+
+Please read the short pointers below and on the subsequent pages; this will help
+you avoid frustrations when submitting the final dissertation to the library.
+
+Your thesis should have 1.5in left and top margins, and 1in right and bottom
+margins. Getting this right is tricky since it may depend on your particular
+Latex installation. Most likely you will need to adjust some of the dimensions
+set up at the beginning of "bu\_ece\_thesis.sty" in this folder. Basically,
+every installation should have the base margin of 1in at the left and top, but
+this is not always the case. For example, the TexStudio/MiKTeX installation this
+document was set up on, has the default top margin of 0.3125in and so an
+additional margin of 0.6875in was added via $\backslash${topmargin}. In order to
+adjust these dimensions, you may want to follow these steps:
+
+\begin{itemize}
+	\item compile the document into PDF,
+	\item open the document in Acroread, set it to full-page viewing and
+		magnification to 100\%
+	\item navigate to a "full" page with the text extending from the very
+		top to the very bottom and full-width left to right,
+	\item measure the margins and adjust accordingly,
+	\item if you are planning to print a hardcopy, you need to make sure
+		to select "Page scaling" to "None" in Acrobat.
+\end{itemize}
+
+Another issue that BU librarians may complain and you are likely to encounter
+are long URLs or other unbreakable text. In case of long URL addresses, you
+should use the URL package; please see suitable documentation on-line.
+
+However, if you encounter a long unbreakable word (e.g., foreign) the URL
+package does not help. Have a look at the example extending into the page
+margin:
+
+\bigskip
+
+{\it Consider the following Java-JDT plugin name in German: "`Plugin-Entwicklungsumgebung"'.}
+
+\bigskip
+
+Clearly, this is a problem, and BU librarians will complain. One way of fixing
+this issue is to enclose the offending paragraph in {\tt
+	$\backslash$begin\{sloppypar\}} and {\tt $\backslash$end\{sloppypar\}},
+resulting in the following outcome:
+
+\bigskip
+
+\begin{sloppypar}
+	{\it Consider the following Java-JDT plugin name in German:
+		"`Plugin-Entwicklungsumgebung"'.}
+\end{sloppypar}
+
+\bigskip
+
+Indeed, although the paragraph spacing becomes sloppy, at least you can hand in
+the thesis!
+
+
+LaTeX has a steep learning curve. You can use the original book by Lamport to
+learn more \cite{lamport1985:latex}, but there are many on-line resources with
+excellent instructions and examples. Just Google a LaTeX topic you would like to
+explore.
+
+As far as editing and compilation of LaTeX sources, if you have not found one
+yet, TexStudio seems to be quite popular.
