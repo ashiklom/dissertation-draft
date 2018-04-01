@@ -1,3 +1,4 @@
 #!/bin/bash
 
-latexmk -pdf -c $@ dissertation.tex
+latexmk -pdf -g dissertation.tex
+latexmk -c
