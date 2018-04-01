@@ -1,3 +1,13 @@
-thesis.pdf
-thesis.ps
+dissertation.pdf
+dissertation.ps
+
 *.aux
+*.dvi
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.toc
+*.bbl
+*.blg
