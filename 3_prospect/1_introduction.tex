@@ -1,0 +1,55 @@
+\section{Introduction}
+
+A key objective of present-day ecosystem ecology is to develop a predictive understanding of how terrestrial ecosystems will respond to rapid and widespread enviromental changes defining the Anthropocene. 
+Plant functional traits serve as bellwethers of many aspects of plant ecophysiology, and understanding how traits respond to biotic and abiotic forcings has become a top priority in terrestrial ecology.
+As I discussed in Chapter 1, global trait databases are useful for evaluating theories about plant ecological strategies and can be used to constrain parameters of dynamic vegetation models.
+
+However, there are fundamental limits on the sorts of ecological questions that can be answered using static trait databases.
+For one, such databases are spatially and phylogenetically incomplete, often in domains most critical to the global climate system such as boreal and tropical forests \cite{jetz2016_diversity}.
+More importantly, because these databases generally do not contain observations collected on the same individuals through time, they are limited in their ability to inform us about direct dynamic responses of plant function to environmental changes.
+These changes are perhaps most pronounced in the deciduous plants, whose leaves within a single season undergo a full life cycle accompanied by dramatic changes in pigment concentrations (CITE), morphology (CITE), and vital rates (CITE).
+Similar changes often occur in evergreen plants.
+For instance, DEMOGRAPHY OF AMAZON LEAVES (CITE WU, SALESKA, OTHERS).
+SOMETHING ABOUT CONIFER NEEDLES?
+Besides these demographic changes, plant traits also react to abiotic stresses.
+For instance, WATER, NUTRIENTS, CO2.
+
+Understanding the contributions of these many different drivers of plant trait variability necessarily requires large sample sizes over a wide range of conditions.
+Meanwhile, observing responses directly requires measurements through time.
+Traditional methods for assessing traits are ill-suited to this task because they are generally labor intensive and often require destructive sampling.
+As I discussed in Chapter 2, spectral measurements of plant tissues are capable of providing a fast and non-destructive assessment of plant traits.
+Leaf reflectance spectra have been widely used to study plant functional traits \cite{cavenderbares_2017_harnessing}.
+(EXAMPLES --- PULL FROM THE LIST BELOW)
+Furthermore, by clarifying the relationships between plant optical properties and traits, studies using leaf spectra are essential to the remote mapping and monitoring of traits \cite{schneider2017_mapping,schimel2013_observing,schimel2015_observing,jetz2016_diversity}.
+
+In this study, we focus on six foliar ``optical'' traits related to plant ecophysiology and spectral properties.
+The effective number of leaf mesophyll layers (or one more than the effective number of intracellular air spaces)...(CITE).
+Total leaf chlorophyll content (the sum of chlorophyll $a$ and $b$) is relevant to photosynthesis and APAR (CITE: Croft, others).
+Total leaf carotenoid content (introduced in PROSPECT 5) is related to the xanthophyll cycle, a key mechanism for preventing plant photooxidiative stress (CITE).
+Total leaf anthocyanin content (introduced in PROSPECT D) has a similar role in boosting plant stress tolerance, and does something related to fall phenology (CITE).
+Leaf water content is related to leaf water stress (CITE).
+Leaf dry matter content is related to...(CITE).
+
+Collectively, these traits can be used to simulate leaf reflectance and transmittance using the PROSPECT leaf radiative transfer model \cite{jacquemoud1990_prospect,feret2008_prospect,feret2017_prospectd}.
+PROSPECT has been used extensively for the simulation of leaf and (combined with canopy models) canopy reflectance (CITE).
+PROSPECT has also been used to estimate leaf spectral characteristics through spectral inversion (CITE).
+Compared to alternative approaches for estimating leaf properties from spectra, including spectral indices (CITE) and partial least squares regression (PLSR) \cite{barnes_2017_beyond} (CITE: Serbin), PROSPECT inversion offers the following advantages.
+First, RTM inversion can be applied to virtually any instrument, because the spectra simulated by RTMs can then be downsampled to any spectral resolution based on the spectral response curve of the corresponding instrument.
+Combined with Bayesian algorithms, this allows RTM inversion to account for the additional uncertainties associated with collecting spectra using instruments of various resolutions (Chapter 2).
+Second, the ability of RTMs to forward-simulate vegetation-light interactions makes them valuable to other applications, such as modeling leaf absorbance for photosynthesis and for improving representations of energy balance in terrestrial biosphere models (CITE, Fisher 2017?).
+Another compelling argument for the use RTM inversion over empirical approaches is that RTMs are designed to be generic across all species and conditions, whereas empirical approaches must be calibrated to the available data.
+However, only one coefficient in the PROSPECT model---that of leaf water content---is based on the absorption spectrum of the corresponding leaf property,the remaining coefficients for pigments are empirically calibrated.
+This empirical calibration poses challenges for the application of PROSPECT inversion, particularly for species dissimilar from those used in its calibration (such as arid shrubs, e.g. CITE); however, a comprehensive validation of PROSPECT over a wide range of species and measurement conditions has not previously been attempted to our knowledge.
+
+This study addresses three questions.
+First, how well can leaf optical traits be estimated from PROSPECT inversion over a wide range of species and experimental designs?
+Second, how do leaf optical traits vary across a variety of environmental conditions and species?
+  Through natural and experimental physiological disturbances, including insect and pathogen damage, drought stress, and fertilization treatments
+  Through phenological changes
+Third, how are leaf optical traits related to other leaf traits not directly estimable from PROSPECT inversion?
+To address these questions, I compiled a database of leaf spectra and, where available, trait measurements collected in both experimental settings and in the field for a wide range of projects.
+For each spectral observation, I applied a modified version of the Bayesian spectral inversion approach in Chapter 2 to estimate the leaf optical traits.
+To validate the PROSPECT inversion, I compared the spectral inversion estimates to direct measurements of the same traits, where such measurements were available.
+Where spectra and traits were collected from the same species but under a variety of conditions (e.g., experimental treatment, disturbance), I investigated how leaf optical traits varied across these conditions.
+I then selected the control groups from these settings, combined them with trait data sampled randomly in the field, and partitioned their variability based on ecologically-meaningful contrasts.
+Finally, I investigated the correlations between optical traits and other traits sampled directly.

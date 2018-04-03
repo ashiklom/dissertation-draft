@@ -1,0 +1,19 @@
+# Discussion
+
+- Analysis of needle decline complementary to efforts to study of hemlock decline using IS [@hanavan_2015_hemlock]
+
+- Leaf traits with respect to canopy height
+  - [@gara_2018_impact] -- N, Chl, C, water, and LMA higher in canopy leaves than shaded leaves (TODO: mass or area?)
+
+- Re-calibration of PROSPECT to include more stuff
+  - [@wang_2015_applicability] -- new version of PROSPECT with better protein (calibrated on LOPEX only).
+  - [@wang_2018_mapping] -- leaf nitrogen via protein content
+
+- Synthesis of spectral datasets from a wide range of sources useful for re-calibration of PROSPECT [e.g. @wang_2015_applicability].
+  Initiatives like ECOSIS to make data available massively help such endeavors.
+
+# Conclusions
+
+# Acknowledgements
+
+# References

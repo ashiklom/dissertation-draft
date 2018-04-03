@@ -1,0 +1,32 @@
+# Results
+
+- Intra-specific effects:
+  - Leaf age -- Wu Brazil
+  - Needle age -- NASA FFT
+  - Canopy position -- NASA FFT, Wu Brazil
+  - Phenology -- Barnes, Yang
+  
+```{r setupresults, echo = FALSE, message = FALSE, warning = FALSE, cache = FALSE}
+knitr::read_chunk(here::here("manuscript", "setup.R"))
+knitr::read_chunk(here::here("manuscript", "validation.R"))
+knitr::read_chunk(here::here("manuscript", "treatments.R"))
+if (FALSE) {
+  withr::with_dir(
+    here::here("manuscript"),
+    bookdown::render_book("00_main.Rmd")
+  )
+}
+```
+
+```{r setup, echo = FALSE, message = FALSE, warning = FALSE}
+```
+
+(ref:validation) Comparison of spectral estimates and measured values for chlorophyll, carotenoid, water, and dry matter contents.
+
+```{r validation, w = 25, h = 25, fig.cap = "(ref:validation)"}
+```
+
+(ref:treatments) Effects of treatments on optical traits estimated from spectra.
+
+```{r treatments, w = 10, h = 10, fig.cap = "(ref:treatments)"}
+```
