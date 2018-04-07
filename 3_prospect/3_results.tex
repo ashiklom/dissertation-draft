@@ -3,33 +3,38 @@
 \subsection{Estimating traits via PROSPECT inversion}
 
 \begin{figure}
-  \includegraphics{{figures/prospect_pairs.N}.pdf}
-  \caption{Inter-version comparison of estimates of number of leaf mesophyll layers.}
-  \label{fig:prospect_pairs_N}
+  \includegraphics[width=\textwidth]{{figures/prospect_pairs.N}.pdf}
+  \caption{\
+    Inter-version comparison of estimates of number of leaf mesophyll layers.
+  }\label{fig:prospect_pairs_N}
 \end{figure}
 
 \begin{figure}
-  \includegraphics{{figures/prospect_pairs.Cab}.pdf}
-  \caption{Inter-version comparison of estimates of number of total leaf chlorophyll content.}
-  \label{fig:prospect_pairs_Cab}
+  \includegraphics[width=\textwidth]{{figures/prospect_pairs.Cab}.pdf}
+  \caption{\
+    Inter-version comparison of estimates of number of total leaf chlorophyll content.
+  }\label{fig:prospect_pairs_Cab}
 \end{figure}
 
 \begin{figure}
-  \includegraphics{{figures/prospect_pairs.Car}.pdf}
-  \caption{Inter-version comparison of estimates of number of total leaf carotenoid content.}
-  \label{fig:prospect_pairs_Car}
+  \includegraphics[width=\textwidth]{{figures/prospect_pairs.Car}.pdf}
+  \caption{\
+    Inter-version comparison of estimates of number of total leaf carotenoid content.
+  }\label{fig:prospect_pairs_Car}
 \end{figure}
 
 \begin{figure}
-  \includegraphics{{figures/prospect_pairs.Cw}.pdf}
-  \caption{Inter-version comparison of estimates of number of total leaf water content.}
-  \label{fig:prospect_pairs_Cw}
+  \includegraphics[width=\textwidth]{{figures/prospect_pairs.Cw}.pdf}
+  \caption{\
+    Inter-version comparison of estimates of number of total leaf water content.
+  }\label{fig:prospect_pairs_Cw}
 \end{figure}
 
 \begin{figure}
-  \includegraphics{{figures/prospect_pairs.Cm}.pdf}
-  \caption{Inter-version comparison of estimates of number of total leaf dry matter content.}
-  \label{fig:prospect_pairs_Cm}
+  \includegraphics[width=\textwidth]{{figures/prospect_pairs.Cm}.pdf}
+  \caption{
+    Inter-version comparison of estimates of number of total leaf dry matter content.
+  }\label{fig:prospect_pairs_Cm}
 \end{figure}
 
 %TODO: Find a more concise way to represent these results
@@ -39,9 +44,10 @@ In general, traits that influence leaf reflectance over a broader range (number 
 The most significant differences were in estimates of carotenoid concentrations between PROSPECT 5/5B and D (Figure~\ref{fig:prospect_pairs_Car}).
 
 \begin{figure}
-  \includegraphics{{figures/project_validation_summary}.pdf}
-  \caption{Validation of PROSPECT against observed trait values, by project and PROSPECT version}
-  \label{fig:project_validation_summary}
+  \includegraphics[width=\textwidth]{{figures/project_validation_summary}.pdf}
+  \caption{\
+    Validation of PROSPECT against observed trait values, by project and PROSPECT version
+  }\label{fig:project_validation_summary}
 \end{figure}
 
 Across most projects and traits, the four different PROSPECT versions performed similarly in terms of their ability to retrieve traits (Figure~\ref{fig:project_validation_summary}).
@@ -53,17 +59,84 @@ A more detailed validation for PROSPECT-D is shown in Figure~\ref{fig:prospect_D
 %TODO: More here?
 
 \begin{figure}
-  \includegraphics{{figures/prospect_D_validation}.pdf}
+  \includegraphics[width=\textwidth]{{figures/prospect_D_validation}.pdf}
   \caption{\
-  Validation of PROSPECT-D against observed trait values.
-  Grey lines indicate 95\% confidence intervals around trait estimates.
-  Solid, colored lines are least-squares regressions fit to the data by project.
-  The solid black line is a regression fit to all of the data all at once.
-  The dashed black line is a 1 to 1 fit.
-}
-  \label{fig:prospect_D_validation}
+    Validation of PROSPECT-D against observed trait values.
+    Grey lines indicate 95\% confidence intervals around trait estimates.
+    Solid, colored lines are least-squares regressions fit to the data by project.
+    The solid black line is a regression fit to all of the data all at once.
+    The dashed black line is a 1 to 1 fit.
+  }\label{fig:prospect_D_validation}
 \end{figure}
 
-\subsection{Intraspecific variability in leaf traits}
+\subsection{Drivers of variability in leaf optical traits}
 
+\begin{figure}
+  \includegraphics[width=\textwidth]{{figures/within_vs_across}.pdf}
+  \caption{\
+    Fraction of variance in each optical trait explained by species identity,
+    based on analysis of variance on least-squares linear regression.
+  }\label{fig:within_vs_across}
+\end{figure}
 
+\begin{figure}
+  \includegraphics[width=\textwidth]{{figures/across_species_anova}.pdf}
+  \caption{\
+    Fraction of across-species variance in each optical trait (i.e.~species means) explained by species attributes,
+    based on analysis of variance on least-squares linear regression.
+    A star (*) indicates attribute effects significant at the 90\% confidence interval.
+  }\label{fig:across_species_anova}
+\end{figure}
+
+Across all optical traits, roughly half of variability was explained by species identity (Figure~\ref{fig:within_vs_across}).
+The variance across species means was largely ideosyncratic to species, with only up to 25\% of variance explainable by species attributes (Figure~\ref{fig:across_species_anova}).
+The most important explanatory attribute was leaf phenology (deciduous vs.~evergreen), with occassional significant effects for leaf type (broad vs.~needle), growth form (woody vs.~herbaceous), and mycorrhizal association (arbuscular or non-arbuscular). 
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{{figures/treatment_summary}.pdf}
+  \caption{\
+    Fixed effects of different sources of intraspecific variability on traits estimated from PROSPECT inversion.
+    Each value is the perecnt fixed effect on the corresponding trait as estimated from a linear fixed-effects model.
+    Color brightness indicates degree of statistical significance (90 or 95\% confidence level), and color hues indicate effect direction (positive or negative).
+  }\label{fig:treatment_summary}
+\end{figure}
+
+Leaf optical traits responded significantly to a range of natural and experimental stressors (Figure~\ref{fig:treatment_summary}).
+Intraspecific variability in optical traits was weakly but, in some cases, significantly related to climate, with the strongest effects being declines in leaf number of mesophyll layers and dry matter content with increasing temperature.
+Based on leaf reflectance measurements of \textit{Populus deltoides} (eastern cottonwood) at the University of Arizona by Barnes et al.~(2017), \nocite{barnes_2017_beyond}
+seasonal variations in leaf and air temperature had statistically significant but relatively small impacts on pigment concentrations.
+Warming and drought experiments on \textit{Asclepias syriaca} (common milkweed) had strong and statistically significant effects on almost all optical traits, with both treatments leading to significant decreases in leaf water content and effective number of mesophyll layers and increases in pigments and dry matter content concentrations.
+In two independent studies, optical traits also responded significantly to chemical (ozone, winter fleck) and biotic (insects, viruses) stressors---all of these stressors significantly reduced concentrations of pigments, and typically also reduced water and dry matter contents, with ozone damage having the most significant effect.
+On the other hand, treatment of \textit{Glycine max} (soybean) with aphids resulted in a small but significant increase in pigment concentrations, with the strongest effect observed at medium-level treatment.
+Finally, across the projects and species for which data were available for both sunlit and shaded leaves, shaded leaves had higher chlorophyll and anthocyanin concentrations and lower number of mesophyll layers and water and dry matter contents.
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{{figures/trait_phenology}.pdf}
+  \caption{\
+    Optical trait estimates through a season for Quercus rubra (red oak) at Martha's Vineyard, MA by Yang et al.~(2016).
+    Colors indicate sunlit vs.~shaded leaves.
+    Line is a LOESS best fit with shaded standard error.
+  }\label{fig:trait_phenology}
+  \nocite{yang_2016_seasonal}
+\end{figure}
+
+Where such measurements were available, leaf optical traits exhibited a strong phenological signal (Figure~\ref{fig:trait_phenology}).
+All optical traits showed a peak in late July / early August, followed by a decline into the fall.
+However, the effective number of leaf mesophyll layers, and to a lesser extent, leaf dry matter content in sunlit leaves increased in the late fall. 
+With the exception of anthocyanin content, traits for sunlit leaves were higher and experienced a greater seasonal variability than shaded leaves.
+
+\subsection{Correlations of optical traits with other traits}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{{figures/trait_correlations_all}.pdf}
+  \caption{\
+    Correlations of optical trait estimates with direct trait measurements, by all observations.
+  }\label{fig:trait_correlations_all}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=\textwidth]{{figures/trait_correlations_species}.pdf}
+  \caption{\
+    Correlations of optical trait estimates with direct trait measurements, by species means.
+  }\label{fig:trait_correlations_species}
+\end{figure}
