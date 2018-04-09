@@ -32,7 +32,7 @@
 
 \begin{figure}
   \includegraphics[width=\textwidth]{{figures/prospect_pairs.Cm}.pdf}
-  \caption{
+  \caption{\
     Inter-version comparison of estimates of number of total leaf dry matter content.
   }\label{fig:prospect_pairs_Cm}
 \end{figure}
@@ -40,8 +40,11 @@
 %TODO: Find a more concise way to represent these results
 
 The extent of agreement on trait estimates between different versions of PROSPECT was strongly trait-dependent.
-In general, traits that influence leaf reflectance over a broader range (number of mesophyll layers---Figure~\ref{fig:prospect_pairs_N}---,water content---Figure~\ref{fig:prospect_pairs_Cw}---,and dry matter content---Figure~\ref{fig:prospect_pairs_Cm}) agreed better than parameters that affected reflectance over specific, narrow spectral regions (concentrations of chlorophyll---Figure~\ref{fig:prospect_pairs_Cab}---and carotenoids---Figure~\ref{fig:prospect_pairs_Car}).
-The most significant differences were in estimates of carotenoid concentrations between PROSPECT 5/5B and D (Figure~\ref{fig:prospect_pairs_Car}).
+The most consistent inversion estimates were for leaf water content (Figure~\ref{fig:prospect_pairs_Cw}), which has a deep, wide-ranging, physically-based absorption coefficient that has not changed over the recent history of PROSPECT development~\cite{feret2008_prospect,feret2017_prospectd}.
+Retrievals of the effective number of leaf mesophyll layers (Figure~\ref{fig:prospect_pairs_N}) and leaf dry matter content (Figure~\ref{fig:prospect_pairs_Cm}) were slightly less but still highly consistent across versions, despite changes in the refractive index and absorption features of the remaining PROSPECT parameters.
+The ability of more recent versions of PROSPECT to differentiate between different types of pigments resulted in significant differences in pigment estimates between PROSPECT versions.
+For chlorophyll content, the general trend is that the addition of additional pigments into the model (carotenoids in version 4, senescent brown pigments in 5, and anthocyanins in D) tends to reduce chlorophyll estimates, with the largest change happening between versions 4 and 5 (Figure~\ref{fig:prospect_pairs_Cab}).
+The most significant across-version differences were in estimates of carotenoid concentrations, particularly between PROSPECT 5/5B and D, where the addition of anthocyanins led to significant reductions in estimates of carotenoid concentrations at the top of their range (Figure~\ref{fig:prospect_pairs_Car}).
 
 \begin{figure}
   \includegraphics[width=\textwidth]{{figures/project_validation_summary}.pdf}
@@ -52,6 +55,7 @@ The most significant differences were in estimates of carotenoid concentrations 
 
 Across most projects and traits, the four different PROSPECT versions performed similarly in terms of their ability to retrieve traits (Figure~\ref{fig:project_validation_summary}).
 For all versions of PROSPECT, leaf water content was consistently the most accurate trait retrieved, while retrievals of other traits were highly project-specific.
+For several projects spanning a large range of species (Cali.\ Eco.\ Traits, NASA FFT, and NASA HyspIRI), moving from chlorophyll as the only pigment (PROSPECT 4) to chlorophyll and carotenoids (PROSPECT 5/5B) drastically reduced inversion accuracy of dry matter contents, but this accuracy was restored by the further addition of anthocyanins and modification of the refractive index in PROSPECT D (Figure~\ref{fig:project_validation_summary})
 Inversion accuracy also varied significantly by project, which can largely be explained by differences in the species sampled across different projects (Supplementary Figures~\ref{fig:error_speciesbyproj_Cab}-\ref{fig:error_speciesbyproj_Cm}).
 Because PROSPECT-D also retrieves anthocyanin content and generally performed as well or better than other versions, it was the version selected for subsequent analyses.
 A more detailed validation for PROSPECT-D is shown in Figure~\ref{fig:prospect_D_validation}.
@@ -134,9 +138,20 @@ With the exception of anthocyanin content, traits for sunlit leaves were higher 
   }\label{fig:trait_correlations_all}
 \end{figure}
 
-\begin{figure}
-  \includegraphics[width=\textwidth]{{figures/trait_correlations_species}.pdf}
-  \caption{\
-    Correlations of optical trait estimates with direct trait measurements, by species means.
-  }\label{fig:trait_correlations_species}
-\end{figure}
+Optical traits estimated by PROSPECT were generally mutually positively correlated with each other.
+The strongest pairwise correlations were of dry matter content with the effective number of leaf mesophyll layers, and of chlorophyll and carotenoid contents.
+
+With the exception of leaf water content, all optical traits were strongly positively correlated with direct area-based measurements of pigments, and less strongly correlated with a number of area-based traits.
+Leaf chlorophyll content exhibited moderate positive correlations with nitrogen, protein, and oxygen concentrations.
+Leaf carotenoid and anthocyanin contents exhibited weak positive correlations with lignin, fiber, protein, hydrogen, and oxygen concentrations.
+Leaf water content was strongly positively correlated with lignin, fiber, protein, and hydrogen concentrations, though surprisingly not oxygen concentration.
+Finally, leaf dry matter content was positively correlated with all area-based traits available, with the weakest correlation for nitrogen and the strongest correlations for oxygen, hydrogen, and protein.
+All optical traits had negligible correlations with Vcmax, but very strong positive correlations with Jmax.
+Chlorophyll, carotenoids, and dry matter were positively correlated with leaf water potential.
+Pigments were weakly positively correlated, and remaining traits weakly negatively correlated, with leaf $\Delta N_{15}$ concentration.
+Patterns of species means were generally similar to patterns observed within species (Figure~\ref{fig:trait_correlations_species}).
+
+% TODO: Mass traits?
+
+%On a mass basis, leaf number of mesophyll layers and dry matter contents were negatively correlated with direct pigment measurements and protein contents and weakly positively correlated with cellulose, hydrogen, fat, and non-structural carbohydrates.
+%Pigments exhibited strong

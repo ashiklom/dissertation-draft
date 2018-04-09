@@ -1,14 +1,61 @@
 \section{Discussion}
 
-\subsection{Modeling leaf optical properties}
+Establishing general, species- and site-independent relationships between leaf functional traits and optical properties is challenging.
+Across all projects and species, overall $R^2$ for all traits was, at best, around 50\% (for leaf water and chlorophyll content), and, for some trait-project combinations, effectively 0 (Figure~\ref{fig:project_validation_summary}).
+Inversion accuracy was also strongly project- and species-dependent (Figures~\ref{fig:project_validation_summary} and~\ref{fig:error_speciesbyproj_Cab}-\ref{fig:error_speciesbyproj_Cm}), suggesting that trait estimation via a physically-based radiative transfer model largely suffers from much of the same lack of generality as empirical approaches such as vegetation indices and partial least-squares regression.
+Given these major issues with inversion accuracy and generality, the ecological conclusions of this study (and other studies based on physically-based RTM inversion) should be treated with caution.
 
-Significant in results between PROSPECT versions for the same traits.
-All PROSPECT versions use the same absorption coefficients for leaf water and dry matter contents, which explains why agreement for them was generally good.
-However, there are differences in the refractive index between versions 4, 5/5B, and D, which may contribute to differences in inversion estimates of water and dry matter.
+By comparing trait retrievals using different versions of PROSPECT over a wide range of species and traits, this analysis provides some context for ongoing and future PROSPECT development.
+Across most datasets and for most traits, additions of different pigments by different PROSPECT versions had relatively little effect on inversion accuracy.
+However, there were a few notable exceptions.
+Significantly increased accuracy of chlorophyll retrievals in the phenological dataset of Yang et al.~(2016) \nocite{yang_2016_seasonal} in PROSPECT versions 5 and D (Figures~\ref{fig:prospect_D_validation},~\ref{fig:project_validation_summary}, and~\ref{fig:validation_cab}) points to the importance of modeling non-photosynthetic pigments in leaves sampled during early or late parts of the growing season.
+Meanwhile, the significant changes in the estimation of leaf dry matter content across PROSPECT versions (Figures~\ref{fig:project_validation_summary} and~\ref{fig:validation_cm}) point to the importance of accurately modeling leaf reflectance in the deep blue visible wavelengths (around 400 nm) (Figure~\ref{fig:prospect_coefficients}).
 
-Significant changes in pigment coefficients across different generations of PROSPECT lead to significant changes in pigment estimates.
-In particular, PROSPECT D's separation of carotenoids and anthocyanins led to significant disagreement in estimates of carotenoids.
+One conclusion of Chapter 2 was that the use of physically-based absorption coefficients, such as that for leaf water content, is important for accurate trait retrievals using physically-based radiative transfer models.
+Results from the wider range of species and projects in this chapter challenge this notion.
+Retrievals of leaf water content and total chlorophyll concentration had comparable overall $R^2$ values (Figure~\ref{fig:project_validation_summary}).
+However, leaf water content retrievals exhibited clear and significant project-specific biases, especially at high values (Figure~\ref{fig:prospect_D_validation})
+Meanwhile, chlorophyll content retrieval was more consistently accurate across its entire range, even for needleleaved species (in the Di Vittorio dataset) (Figure~\ref{fig:prospect_D_validation}) that poorly fit the parallel-plane assumptions of the PROSPECT model~\cite{allen_1969_interaction,jacquemoud1990_prospect} and, more importantly, despite the fact that the chlorophyll absorption coefficients for PROSPECT are calibrated only against the ANGERS dataset~\cite{feret2008_prospect,feret2017_prospectd}.
+Project-specific calibration has been shown to further improve the results of PROSPECT inversion~\cite{li_2013_retrieval}, which suggests that re-calibration of PROSPECT absorption coefficients against a wider range of species and environmental conditions (such as those used here) could lead to significant improvements in PROSPECT performance.
+Efforts to curate and make publicly available spectral observations, such as the ECOSIS project (ecosis.org), would significantly aid such efforts.
 
-PROSPEC
+Moreover, although there are issues with the absolute values of trait retrievals,
+optical traits retrieved via PROSPECT inversion were useful for distinguishing the intraspecific effects of biotic and abiotic stressors on leaf structure and biochemistry (Figure~\ref{fig:treatment_summary}).
+The increase in leaf dry matter content with decreasing temperature and increasing precipitation both agree with the meta-analysis of leaf mass per area by Poorter et al.~(2009). \nocite{poorter_2009_causes}
+The absence of significant trends in pigment and water contents with respect to site temperature are likely because these traits adapt more rapidly to environmental conditions, which is supported by their relatively higher fraction of intra-specific variability (Figure~\ref{fig:within_vs_across}).
+This idea is further supported by the fact that pigment concentrations, but not leaf structure or dry matter content, responded significantly to within-season temperature fluctuations in the Barnes et al.~(2017) \nocite{barnes_2017_beyond} dataset and to aphid pressure in the soybean aphid dataset (Figure~\ref{fig:treatment_summary}).
+This positive response of chlorophyll concentration to aphid pressure is surprising.
+Alves et al.~(2015) \nocite{alves_2015_soybean} found significant effects of aphid infestation on soybean near-infrared reflectance and NDVI but no effect of on chlorophyll content.
+Meanwhile, Luo et al.~(2012) \nocite{luo_2012_evaluation} found that wheat aphid infestation increased wheat leaf reflectance across the visible and near-infrared range, consistent with reduced pigment concentrations.
+This result is unlikely to be caused by inaccurate PROSPECT estimates of pigment concentrations because inversion accuracy of both chlorophyll and carotenoids for this dataset was among the highest in this study (Figures~\ref{fig:project_validation_summary} and~\ref{fig:prospect_D_validation}).
 
-Comparing different PROSPECT versions, 
+That being said, persistent changes to the leaf growing environment, including biotic and abiotic disturbances, had larger effects on optical traits.
+One such persistent effect is the difference between sunlit and shaded leaves.
+My result that chlorophyll content is significantly higher in shade leaves compared to sun leaves agrees with established theory that allocation of resources to light absorption relative to other photosynthetic functions (e.g.\ carbon fixation and electron transport) increases with decreasing irradiance~\cite{hikosaka_1995_model}.
+Similarly, the result that leaf dry matter content and number of leaf mesophyll layers (effectively, leaf thickness) is lower agrees with established understanding of the relationship between leaf mass per area and irradiance~\cite{poorter_2009_causes}.
+However, the lack of a significant effect of sun vs.\ shade on carotenoid content and the higher concentration of anthocyanins in shade leaves are surprising, given our current understanding of the photoprotective role of these pigments~\cite{young_1991_photoprotective,steyn_2002_anthocyanins}.
+One explanation for these trends may the relative coarseness with which these two highly dynamic pigment systems are treated by PROSPECT\@;
+for instance, it is possible that carotenoid pigments in low-light stages of the xanthophyll cycle may exhibit absorption features more similar to what PROSPECT currently calls anthocyanins (REF). % TODO: This is flimsy and needs to be investigated further
+This idea is supported by the weak but negative correlations between PROSPECT anthocyanin estimates and mass-based measurements of xanthophyll pigments lutein and neoxanthin (Figure~\ref{fig:trait_correlations_all}).
+
+Another persistent effect was studied via the milkweed stress experiment, whereby milkweed plants were grown under elevated temperature and/or periodic drought stress (Figure~\ref{fig:treatment_summary}).
+Consistent with expectations, warming and drought stress both reduced leaf water content (REF?), and decreased and increased (respectively) leaf dry matter content~\ref{poorter_2009_causes}.
+Similarly, the higher concentrations of carotenoid pigments under drought stress and anthocyanin pigments under elevated temperature could reasonably be explained as photoprotective adaptations~\cite{young_1991_photoprotective,steyn_2002_anthocyanins}.
+However, the significantly higher chlorophyll content under both warming and drought stress is surprising, since drought stress typically acts to reduce chlorophyll concentrations in plants (CITE).
+
+Finally, the effects of several different host-specific pathogens and chemical disturbances had significant negative impacts on all plant functional traits (Figure~\ref{fig:treatment_summary}).
+The negative effects of winter fleck, sucking and scale insects, and especially ozone damage on pine needles reported here match the earlier results of Di Vittorio for this dataset (REF) as well as the broader literature consensus on the damaging effects of ozone on plant physiology~\cite{lindroth_2010_impacts}.
+The same can be said for the adverse effects of Potato Virus Y~\cite{scholthof_2011_top10}.
+The demonstrated ability of this study to not only detect but to analyze the physiological impact of pathogens reinforces the value of leaf spectroscopy in agronomic settings.
+
+% TODO: Phenology
+
+Analyses of variance in optical traits pose trouble for studies that group plants into distinct categories with fixed functional traits.
+For one, the extend of intra-specific variability in optical traits is substantial---from 30\% for leaf structure and dry matter content to nearly 50\% for pigment concentrations (Figure~\ref{fig:within_vs_across}).
+This echoes the results of other studies that have found similar degrees of intraspecific variability in various plant traits (CITE).
+Moreover, the interspecific variability is poorly explained by a wide range of species attributes (notably, a wider range of attributes than is typically used to define plant functional types for dynamic vegetation models, CITE)---even collectively, these traits are able to explain at most around 30\% of interspecific variability.
+However, there are several sources of potential optimism.
+First of all, as the earlier analysis of intraspecific variability shows (Figures~\ref{fig:treatment_summary} and~\ref{fig:trait_phenology}), this variability is not random; many traits respond predictably and consistently to changing environmental conditions.
+A key objective of trait ecology should therefore be to identify the general responses of traits to environmental conditions, and consequently to incorporate these response functions into vegetation models.
+Second, even where trait variability is relatively idiosyncratic, traits do not vary independently, neither at the individual (Figure~\ref{fig:trait_correlations_all}) nor at the species levels (Figure~\ref{fig:trait_correlations_species}) (see also Chapter 1).
+The strong correlations of optical traits with valuable traits not directly observable from spectra, such as Jmax, are a highly promising result for the ability of remote sensing observations to provide information on a wide variety of traits across huge spatial and temporal extents.

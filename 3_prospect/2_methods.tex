@@ -2,9 +2,12 @@
 
 \subsection{Data}
 
-Data from this project were assembled from XXX projects on leaf spectra and related foliar traits (Table~\ref{tab:projectinfo}).
+Data from this project were assembled from 22 projects on leaf spectra and related foliar traits (Table~\ref{tab:projectinfo}).
 Most of these datasets are obtained directly from the ECOSIS spectral library (https://ecosis.org/).
-Collectively, these data are comprised of XX observations from XX species, and span a wide geographic (Figure~\ref{fig:datamap}) and climatic range (Figure~\ref{fig:dataclimate}).
+Collectively, these data are comprised of nearly 12,000 observations from 346 species, and span a wide geographic (Figure~\ref{fig:datamap}) and climatic range (Figure~\ref{fig:dataclimate}).
+
+%TODO: Maybe a summary of experimental treatments?
+% Milkweed stress
 
 \begin{table}
     \caption{Project information}
@@ -24,6 +27,14 @@ Collectively, these data are comprised of XX observations from XX species, and s
 
 \subsection{Trait estimation via PROSPECT inversion}
 
+\begin{figure}
+  \includegraphics[width=\textwidth]{{figures/sigspec2-1}.pdf}
+  \caption{\
+    (Top) Example reflectance spectra of \textit{Acer rubrum} leaves.
+    (Bottom) Normalized absorption coefficients for traits estimated by PROSPECT.
+  }\label{fig:prospect_coefficients}
+\end{figure}
+
 The PROSPECT leaf radiative transfer model~\cite{jacquemoud1990_prospect,jacquemoud_2009_prosail,feret2008_prospect,feret2017_prospectd} simulates leaf reflectance and transmittance for 400 to 2500 nm wavelengths at 1 nm increments as a function of leaf morphological and biochemical characteristics.
 In this chapter, I compared the performance of four different versions of PROSPECT, each of which uses a different combination of leaf traits:
 PROSPECT 4 uses
@@ -36,20 +47,21 @@ PROSPECT 5B adds an additional parameter for
 total ``senescent brown pigment'' content (arbitrary units)~\cite{jacquemoud_2009_prosail}.
 Finally, PROSPECT D adds an additional parameter for
 total anthocynanin content per area ($\mu g~cm^{-2}$)~\cite{feret2017_prospectd}.
+The absorption coefficients for PROSPECT-D aligned with example leaf reflectance spectra are shown in Figure~\ref{fig:prospect_coefficients}.
 
-To estimate traits from leaf spectra, I generally followed the Bayesian RTM inversion approach of~\cite{shiklomanov2016_rse}, except that I replaced the Metropolis-Hastings algorithm with a more efficient Differential Evolution algorithm with ``snooker'' update as implemented in the ``BayesianTools'' R package~\cite{bayesiantools}.
-Forward simulations and Bayesian inversion of PROSPECT are implemented in the R package ``PEcAnRTM''~\cite{shiklomanov2016_rse}, which is open source and freely available at https://github.com/pecanproject/pecan/modules/rtm.
+To estimate traits from leaf spectra, I generally followed the Bayesian RTM inversion approach of~\cite{shiklomanov2016_rse}, except that I replaced the Metropolis-Hastings algorithm with a more efficient Differential Evolution algorithm with ``snooker'' update as implemented in the \texttt{BayesianTools} R package~\cite{bayesiantools}.
+Forward simulations and Bayesian inversion of PROSPECT are implemented in the R package \texttt{PEcAnRTM}~\cite{shiklomanov2016_rse}, which is open source and freely available at https://github.com/pecanproject/pecan/modules/rtm.
 Where leaf spectra extended beyond the 400 to 2500 nm wavelength range of the PROSPECT model, I used only the observations from 400 to 2500 nm.
 Where leaf spectra were sampled at a spectral resolution coarser than 1 nm or did not include all wavelengths simulated by PROSPECT, I subset the PROSPECT output in the likelihood function to match the observations.
-Where leaf spectra were sampled at a finer spectral resolution than 1 nm, or where wavelengths did not align at 1 nm intervals, I used cubic spline interpolation (default method in the R function `spline`) to align the spectra with PROSPECT output.
+Where leaf spectra were sampled at a finer spectral resolution than 1 nm, or where wavelengths did not align at 1 nm intervals, I used cubic spline interpolation (default method in the base R function \texttt{spline}) to align the spectra with PROSPECT output.
 Where leaf spectra were provided as ``pseudo-absorbance'' ($1 - \log_{10}(R)$), I added the corresponding transformation to the PROSPECT output in the likelihood calculation. 
 
 \subsection{Analysis}
 
 To compare PROSPECT versions, I plotted traits estimated by more than one version of PROSPECT as pairwise scatter plots, fit a least-squares linear regression to each and compared the result to a 1-to-1 line, and calculated the pairwise correlation coefficient (Figures~\ref{fig:prospect_pairs_N}-\ref{fig:prospect_pairs_Cm}).
 To validate PROSPECT inversions, I compared trait estimates from PROSPECT inversion with direct measurements of the corresponding traits, where these traits were available.
-To explore project-specific biases in the inversion, I fit least-squares linear regressions to investigate the ability of trait estimates from spectra to predict the measured traits, and I report the slopes, intercepts, and $R^2$ values of those regressions (Table XXX). %TODO: Update this. Not quite what I did.
-To identify species-specific errors, I also calculated the mean absolute error (MAE) between the measured trait and inversion estimate for each species-project combination (Figure XXX). %TODO: Fill this in.
+To explore project-specific biases in the inversion, I fit least-squares linear regressions to investigate the ability of trait estimates from spectra to predict the measured traits, and I report the slopes, intercepts, and $R^2$ values of those regressions (Figure~\ref{fig:project_validation_summary}, Supplementary Tables~\ref{tab:r2_byproject_Cab}-\ref{tab:r2_byproject_Cm}).
+To identify species-specific errors, I also performed this analysis for each project-species combination with at least 5 observations (Figures~\ref{fig:error_speciesbyproj_Cab}-\ref{fig:error_speciesbyproj_Cm}).
 
 To investigate the effects of experimental treatments and environmental conditions, I fit a linear fixed effects model for each optical trait and each treatment, with an additional fixed effect for species if multiple species were present in that treatment.
 To investigate the role of intraspecific variability in climate, I subset the data to species that were present at at least 10 different sites and fit a fixed-effects model to each optical trait as a function of species, annual mean temperature, and annual precipitation.
@@ -57,7 +69,8 @@ I then present the direction of each GLM coefficient and whether the coefficient
 
 One study in this dataset---Yang et al.~(2016) \nocite{yang_2016_seasonal}---explicitly looked at the seasonal trajectories of leaf reflectance, allowing me the chance to look at the phenology of leaf optical traits (Figure~\ref{fig:trait_phenology}).
 
-%TODO: fill in the rest of the analyses
+To investigate the correlations between optical traits and other traits measured directly, I calculated the pairwise non-missing correlations (R function \texttt{cor} with option \texttt{use = pairwise.complete.obs}) and plotted the resulting correlation coefficients using the \texttt{corrplot} package.
+I performed this analysis for both individual observations and species means, where a trait was observed for at least 3 species.
 
 I performed all analyses using R version 3.4.4~\cite{rstats}.
 The data and code for performing these analyses are open source and freely available at https://github.com/ashiklom/rspecan.
