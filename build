@@ -1,4 +1,0 @@
-#!/bin/bash
-
-latexmk -pdf -g dissertation.tex
-latexmk -c
