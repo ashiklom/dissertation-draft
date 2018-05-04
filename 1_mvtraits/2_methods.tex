@@ -6,11 +6,11 @@ Foliar trait data for this analysis comes from the TRY global traits database (K
 We focused our research on seven foliar traits:
 Leaf longevity (months),
 specific leaf area (SLA, m$^2$ kg$^{-1}$),
-leaf nitrogen content ($N_{mass}$, mg N g$^{-1}$ or $N_{area}$, g m$^{-2}$),
-leaf phosphorus content ($P_{mass}$, mg P g$^{-1}$ or $P_{area}$, g m$^{-2}$),
-leaf dark respiration at 25°C ($R_{d,mass}$, µmol g$^{-1}$ s$^{-1}$, or $R_{d,area}$, µmol m$^{-2}$ s$^{-1}$),
-maximum Rubisco carboxylation rate at 25°C ($V_{c,\max,mass}$, µmol g$^{-1}$ s$^{-1}$, or $V_{c,\max,area}$, µmol m$^{-2}$ s$^{-1}$),
-and maximum electron transport rate at 25°C ($J_{\max,mass}$, µmol g$^{-1}$ s$^{-1}$, or $J_{\max,area}$, µmol m$^{-2}$ s$^{-1}$).
+leaf nitrogen content ($N_{\mass}$, mg N g$^{-1}$ or $N_{\area}$, g m$^{-2}$),
+leaf phosphorus content ($P_{\mass}$, mg P g$^{-1}$ or $P_{\area}$, g m$^{-2}$),
+leaf dark respiration at 25°C ($R_{d,\mass}$, µmol g$^{-1}$ s$^{-1}$, or $R_{d,\area}$, µmol m$^{-2}$ s$^{-1}$),
+maximum Rubisco carboxylation rate at 25°C ($V_{c,\max,\mass}$, µmol g$^{-1}$ s$^{-1}$, or $V_{c,\max,\area}$, µmol m$^{-2}$ s$^{-1}$),
+and maximum electron transport rate at 25°C ($J_{\max,\mass}$, µmol g$^{-1}$ s$^{-1}$, or $J_{\max,\area}$, µmol m$^{-2}$ s$^{-1}$).
 For $V_{c,\max}$, we only used values already reported in TRY as being at 25°C.
 For $R_{d}$, we normalized the values to 25°C based on reported leaf temperature values following the same methods as Atkin et al.~(2015). \nocite{atkin_global_2015}
 For $J_{\max}$, we normalized the values to 25°C based on reported leaf temperature values using the temperature response function described in Kattge \& Knorr (2007, Equation 1 therein). \nocite{kattge_2007_temperature}
@@ -126,10 +126,10 @@ We implemented this sampling algorithm in an open source, publicly available R~\
 
 To assess the impact of multivariate and hierarchical constraint on trait estimates,
 we compared the mean and 95\% confidence intervals of trait estimates for each PFT from each model (Fig.\ 2).
-For reference, we also added the default parameter values of CLM 4.5~\cite[Table 8.1 in ]{clm45_note} for SLA, $N_{mass}$, $N_{area}$, $V_{c,\max,mass}$, and $V_{c,\max,area}$ to Fig.\ 2.
-To convert CLM's reported C:N ratio to $N_{mass}$, we assumed a uniform leaf C fraction of 0.46.
-We then divided this calculated $N_{mass}$ by the reported SLA to obtain $N_{area}$.
-We calculated $V_{c,\max,mass}$ by multiplying the reported $V_{c,\max,area}$ by the reported SLA\@.
+For reference, we also added the default parameter values of CLM 4.5~\cite[Table 8.1 in ]{clm45_note} for SLA, $N_{\mass}$, $N_{\area}$, $V_{c,\max,\mass}$, and $V_{c,\max,\area}$ to Fig.\ 2.
+To convert CLM's reported C:N ratio to $N_{\mass}$, we assumed a uniform leaf C fraction of 0.46.
+We then divided this calculated $N_{\mass}$ by the reported SLA to obtain $N_{\area}$.
+We calculated $V_{c,\max,\mass}$ by multiplying the reported $V_{c,\max,\area}$ by the reported SLA\@.
 
 To test the hypothesis that the multivariate and hierarchical models offer more value in terms of uncertainty constraint at smaller sample sizes, we calculated the relative uncertainty ($\alpha$) as a function of the mean ($\mu$) and upper ($q_{0.975}$) and lower ($q_{0.025}$) confidence limits of trait estimates.
 
