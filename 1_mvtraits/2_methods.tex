@@ -2,7 +2,7 @@
 
 \subsection{Trait data}
 
-Foliar trait data for this analysis comes from the TRY global traits database (Kattge et al.~2011; Tab.~\ref{tab:trydata}). \nocite{kattge_try_2011}
+Foliar trait data for this analysis comes from the TRY global traits database (Kattge et al.~2011). \nocite{kattge_try_2011}
 We focused our research on seven foliar traits:
 Leaf longevity (months),
 specific leaf area (SLA, m$^2$ kg$^{-1}$),
@@ -25,7 +25,35 @@ Following past studies~\cite{wright_worldwide_2004,wright_assessing_2005,onoda_2
 
 \subsection{Plant functional types}
 
-We assigned each species to a unique plant functional type (PFT) following the scheme in the Community Land Model~\cite[CLM4.5, ]{clm45_note}; TODO Table~\ref{tab:pfts}, Fig.\ 1.
+\begin{longtable}[]{@{}ccc@{}}
+\caption{\label{tab:pfts}Names, labels, and species counts for plant
+functional types (PFTs) used in this analysis.}\tabularnewline
+\toprule
+Label & PFT & Number of species\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Label & PFT & Number of species\tabularnewline
+\midrule
+\endhead
+BlETr & Broadleaf Evergreen Tropical & 1229\tabularnewline
+BlETe & Broadleaf Evergreen Temperate & 363\tabularnewline
+BlDTr & Broadleaf Deciduous Tropical & 286\tabularnewline
+BlDTe & Broadleaf Deciduous Temperate & 345\tabularnewline
+BlDBo & Broadleaf Deciduous Boreal & 62\tabularnewline
+NlETe & Needleleaf Evergreen Temperate & 130\tabularnewline
+NlEBo & Needleleaf Evergreen Boreal & 30\tabularnewline
+NlD & Needleleaf Deciduous & 19\tabularnewline
+ShE & Shrub Evergreen & 1120\tabularnewline
+ShDTe & Shrub Deciduous Temperate & 330\tabularnewline
+ShDBo & Shrub Deciduous Boreal & 94\tabularnewline
+C3GAr & C3 Grass Arctic & 157\tabularnewline
+C3GTe & C3 Grass Temperate & 624\tabularnewline
+C4G & C4 Grass & 255\tabularnewline
+\bottomrule
+\end{longtable}
+
+We assigned each species to a unique plant functional type (PFT) following the scheme in the Community Land Model~\cite[CLM4.5, ]{clm45_note}; Table~\ref{tab:pfts}, Fig.~\ref{fig:mvtraits-fig1}. %TODO: Table
 We obtained categorical data on growth form, leaf type, phenology, and photosynthetic pathway from the TRY database.
 Where species attributes disagreed between datasets (e.g., categorized as a shrub in one dataset but a tree in another), we assigned the attribute that was observed most frequently between the datasets (e.g., if five datasets say ``shrub'' but only one says ``tree'', we would classify it as a shrub).
 Where species lacked data on certain attributes, we assigned those attributes based on higher order phylogeny where appropriate (e.g., *Poaceae* family are usually grasses, *Larix spp.* are deciduous needleleaved trees) or otherwise omitted the species from our analyses.
@@ -33,6 +61,14 @@ For biome specification, we collected all latitude and longitude data for each s
 matched these data to 30 second ($\sim1$ km$^{2}$) mean annual temperature ($AMT$, averaged 1970--2000) data from WorldClim-2~\cite{worldclim},
 calculated the mean AMT for all sites at which that species was observed,
 and then binned these species based on the following cutoffs: boreal/arctic ($AMT \leq 5^\circ C$), temperate ($AMT \leq 20^\circ C$), and tropical ($AMT > 20^\circ C$).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{1_mvtraits/figures/sample_size.pdf}
+  \caption{%
+    Sample sizes for each trait-PFT pair. $y$ axis is scaled logarithmically.
+  }\label{fig:mvtraits-fig1}
+\end{figure}
 
 
 \subsection{Multivariate analysis}
@@ -102,7 +138,7 @@ This gives rise to the following expression for the posterior:
 \[\mathbf{SS} = \mathbf{x^*}^{T} \mathbf{x^*}\]
 \[\mathbf{S^*} = {(\mathbf{S}_0 + \mathbf{SS})}^{-1}\]
 
-where $n$ is the number of rows and $m$ is the number of columns in data matrix $x$. For further details on this derivation, see~\cite{gelman_bayesian}. %TODO Fix this ref.
+where $n$ is the number of rows and $m$ is the number of columns in data matrix $x$~\cite[full derivation in ]{gelman_bayesian}. %TODO Fix this ref.
 
 The fundamentally multivariate nature of the sampling procedure described above makes it incapable of accommodating partially missing observations.
 Therefore, our algorithm also included imputation of partially missing data, which proceeded as follows:
@@ -125,8 +161,8 @@ We implemented this sampling algorithm in an open source, publicly available R~\
 \subsubsection{Analysis of results}
 
 To assess the impact of multivariate and hierarchical constraint on trait estimates,
-we compared the mean and 95\% confidence intervals of trait estimates for each PFT from each model (Fig.\ 2).
-For reference, we also added the default parameter values of CLM 4.5~\cite[Table 8.1 in ]{clm45_note} for SLA, $N_{\mass}$, $N_{\area}$, $V_{c,\max,\mass}$, and $V_{c,\max,\area}$ to Fig.\ 2.
+we compared the mean and 95\% confidence intervals of trait estimates for each PFT from each model (Fig.~\ref{fig:mvtraits-fig2}).
+For reference, we also added the default parameter values of CLM 4.5~\cite[Table 8.1 in ]{clm45_note} for SLA, $N_{\mass}$, $N_{\area}$, $V_{c,\max,\mass}$, and $V_{c,\max,\area}$ to Fig.~\ref{fig:mvtraits-fig2}.
 To convert CLM's reported C:N ratio to $N_{\mass}$, we assumed a uniform leaf C fraction of 0.46.
 We then divided this calculated $N_{\mass}$ by the reported SLA to obtain $N_{\area}$.
 We calculated $V_{c,\max,\mass}$ by multiplying the reported $V_{c,\max,\area}$ by the reported SLA\@.
@@ -135,7 +171,7 @@ To test the hypothesis that the multivariate and hierarchical models offer more 
 
 \[ \alpha = \frac{q_{0.975} - q_{0.025}}{\mu} \]
 
-We then fit a generalized linear model relating relative uncertainty to sample size ($n$) for each of the model types (univariate, multivariate, and hierarchical; Fig. 3).
+We then fit a generalized linear model relating relative uncertainty to sample size ($n$) for each of the model types (univariate, multivariate, and hierarchical; Fig.~\ref{fig:mvtraits-fig3}).
 
 \[ \log{\alpha} = b_0 + b_1 \log{n} \]
 
@@ -146,13 +182,13 @@ and
 lower slope ($b_1$) coefficients, indicating a reduced sensitivity of uncertainty ($\alpha$) to sample size ($n$).
 
 To assess the consistency of within- and across-PFT trait trade-offs, we looked at covariance estimates for each trait pair and, where these values were significantly different from zero ($p < 0.05$),
-we calculated the eigenvalues from the pairwise variance-covariance matrix for that trait pair and plotted the corresponding dominant eigenvectors centered on the mean estimates (Fig.\ 4).
+we calculated the eigenvalues from the pairwise variance-covariance matrix for that trait pair and plotted the corresponding dominant eigenvectors centered on the mean estimates (Fig.~\ref{fig:mvtraits-fig4}).
 This figure provides a visual representation of relative positions of PFTs in trait space and both the direction and extent of within-PFT trait covariance, and is directly analogous to conceptual figures describing hierarchical trait variability across environmental gradients as presented in, for instance,~\cite{cornwell_community_2009} and~\cite{albert_intraspecific_2010}.
 Due to the small number of points used to estimate across-PFT covariance in the hierarchical model, none of the across-PFT covariances estimated in the hierarchical model were significantly different from zero ($p < 0.05$).
 For this reason, we compared within-PFT covariances as estimated by the hierarchical model with the covariances estimated by fitting a multivariate model to all of the data.
 
 Besides the consistency in the direction of trait covariance globally and between different PFTs, we also investigated the strength and predictive power of these covariances, which is represented by correlation coefficients (i.e.\ the pairwise covariance normalized to the variances of the component variables).
-To do this, we plotted the mean and 95\% confidence interval of the pairwise trait correlation coefficients for the global estimate from the pooled multivariate model and PFT-level estimates from the hierarchical model (Fig.\ 5).
+To do this, we plotted the mean and 95\% confidence interval of the pairwise trait correlation coefficients for the global estimate from the pooled multivariate model and PFT-level estimates from the hierarchical model (Fig.~\ref{fig:mvtraits-fig5}).
 
 The R code and ancillary data for running these analyses is publicly available online via the Open Science Framework (OSF) at \texttt{https://osf.io/w8y73/}.
 The TRY data used for this analysis can be requested at \texttt{http://try-db.org}.
