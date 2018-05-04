@@ -11,3 +11,6 @@ dissertation.ps
 *.toc
 *.bbl
 *.blg
+
+# Backup files
+*.bak
