@@ -13,17 +13,19 @@ Transmissivity $k\lambda$ is based on the linear combination of empirically cali
     The ranges for N and Cab are calculated from the LOPEX and ANGERS databases, respectively.
     Units for Cw and Cm are adjusted for readability (original units are $g cm^{−2}$).
   }\label{tab:pecanrtm-parameters}
-  \begin{tabular}{cccc}
-    \toprule
-    Parameter & Description & Unit & Range \\
-    \midrule
-    N & Structural parameter; effective number of mesophyll layers & Unitless & 1.09 to 3.00 \\
-    Cab & Total chlorophyll (a and b) density & μg cm−2 & 0.78 to 106.72 \\
-    Car & Total carotenoid density & μg cm−2 & 0 to 25.3 \\
-    Cw & Equivalent water thickness & g m−2 & 43 to 439 \\
-    Cm & Leaf dry matter content per unit area & g m−2 & 17 to 152 \\
-    \bottomrule
-  \end{tabular}
+  \resizebox{\textwidth}{!}{%
+    \begin{tabular}{cccc}
+      \toprule
+      Parameter & Description & Unit & Range \\
+      \midrule
+      N & Structural parameter; effective number of mesophyll layers & Unitless & 1.09 to 3.00 \\
+      Cab & Total chlorophyll (a and b) density & μg cm−2 & 0.78 to 106.72 \\
+      Car & Total carotenoid density & μg cm−2 & 0 to 25.3 \\
+      Cw & Equivalent water thickness & g m−2 & 43 to 439 \\
+      Cm & Leaf dry matter content per unit area & g m−2 & 17 to 152 \\
+      \bottomrule
+    \end{tabular}
+  }
 \end{table}
 
 The objective of RTM spectral inversion is to estimate the physical RTM parameters from the observed spectral information.
@@ -131,22 +133,24 @@ For each, we compared the mean inversion estimate to the measured value via the 
     Spectral, spatial, and temporal characteristics of remote sensing platforms and instruments considered in the sensor simulation experiment.
     Note that AVIRIS spatial resolution is dependent on aircraft altitude and instrument field of view.
   }\label{tab:pecanrtm-sensors}
-  \begin{tabular}{cccccc}
-    \toprule
-    Sensor & Number of Bands & Spectral range (nm) & Bandwidth (nm) & Spatial resolution (m) & Revisit time (days) \\
-    \midrule
-    AVIRIS NG & 416 & 380 to 2510 & 5 & 0.3 to 4.0 & On-demand \\
-    AVIRIS Classic & 216 & 400 to 2500 & 10 & <10 to 20* & On-demand \\
-    CHRIS-Proba & 62 & 410 to 1050 & 1.5 to 12 & 36 & 7 to 8 \\
-    Hyperion & 225 & 350 to 2500 & 10 & 30 & 16 \\
-    Landsat 5 (TM) & 6 & 450 to 2350 & 60 to 270 & 30 & 16 \\
-    Landsat 7 (ETM+) & 6 & 440 to 2350 & 60 to 280 & 30 & 16 \\
-    Landsat 8 (OLI) & 8 & 435 to 2295 & 20 to 185 & 30 & 16 \\
-    MODIS & 7 & 459 to 2155 & 20 to 50 & 250 to 500 & 1 to 2 \\
-    VIIRS & 10 & 402 to 2275 & 15 to 60 & 750 & 1 to 2 \\
-    AVHRR & 3 & 580 to 1640 & 100 to 275 & 1090 & 1 \\
-    \bottomrule
-  \end{tabular}
+  \resizebox{\textwidth}{!}{%
+    \begin{tabular}{cccccc}
+      \toprule
+      Sensor & Number of Bands & Spectral range (nm) & Bandwidth (nm) & Spatial resolution (m) & Revisit time (days) \\
+      \midrule
+      AVIRIS NG & 416 & 380 to 2510 & 5 & 0.3 to 4.0 & On-demand \\
+      AVIRIS Classic & 216 & 400 to 2500 & 10 & $<10$ to 20 & On-demand \\
+      CHRIS-Proba & 62 & 410 to 1050 & 1.5 to 12 & 36 & 7 to 8 \\
+      Hyperion & 225 & 350 to 2500 & 10 & 30 & 16 \\
+      Landsat 5 (TM) & 6 & 450 to 2350 & 60 to 270 & 30 & 16 \\
+      Landsat 7 (ETM+) & 6 & 440 to 2350 & 60 to 280 & 30 & 16 \\
+      Landsat 8 (OLI) & 8 & 435 to 2295 & 20 to 185 & 30 & 16 \\
+      MODIS & 7 & 459 to 2155 & 20 to 50 & 250 to 500 & 1 to 2 \\
+      VIIRS & 10 & 402 to 2275 & 15 to 60 & 750 & 1 to 2 \\
+      AVHRR & 3 & 580 to 1640 & 100 to 275 & 1090 & 1 \\
+      \bottomrule
+    \end{tabular}
+  }
 \end{table}
 
 Recent work has shown that PLSR estimates of foliar nitrogen content are less sensitive to spectral resolution than to other factors such as spatial resolution and sensor fidelity~\cite{lepine_2016_examining}.
