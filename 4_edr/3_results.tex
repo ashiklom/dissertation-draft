@@ -1,0 +1,75 @@
+\section{Results}
+
+\subsection{Model calibration}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figures/spec_validation.pdf}
+  \caption{\
+    (\textit{Top}) Relative bias of the posterior mean spectra at each site, aggregated across the visible (VIS, 400--750 nm) and near-infrared (NIR, 750--1300 nm) spectral range
+    as a function of site mean diameter at breast height and stand density.
+    (\textit{Bottom}) Prior and posterior predictive intervals and AVIRIS observations for four sites representative of different kinds of error.
+  }\label{fig:bias}
+\end{figure}
+
+In general, after calibration across a large number of structurally and functionally diverse sites, EDR was able to reproduce observed AVIRIS canopy reflectance reasonably well.
+However, performance was strongly site specific.
+At many sites, but most prominently those composed of small trees (DBH < 20, e.g.\ site NC21), EDR frequently overestimated canopy reflectance.
+That being said, least-squares linear regressions of relative spectral bias as a function of site mean DBH or stand density were not statistically significant ($p > 0.1$).
+EDR was generally more likely to overestimate canopy reflectance for conifer trees than broadleaved trees.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figures/lai_sites.pdf}
+  \caption{\
+    Predictions of leaf area index by EDR, compared to observed LAI values
+  }\label{fig:lai_validation}
+% * <dietze@bu.edu> 2018-05-02T21:55:58.972Z:
+% 
+% I think it would be good to make this figure wider so that the 1:1 line is flatter and we can see what's going on around that line better.
+% 
+% It's interesting that there's ~7 evergreen-dominated plots where we really f***-up the LAI, but we don't seem to do horrible on the rest (but maybe it just seems that way because of scale). 
+% 
+% ^.
+\end{figure}
+
+EDR predictions of LAI also agreed reasonably well with observations for most sites.
+EDR tended to overestimate LAI for conifer-dominated stands and slightly underestimate it for deciduous stands.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figures/spec_lai.pdf}
+  \caption{\
+    Relationship between errors in EDR predictions of leaf area index and spectra.
+  }\label{fig:spec_lai}
+\end{figure}
+
+There was a significant negative relationship between EDR LAI errors and spectral errors in the visible range;
+in other words, EDR tended to overestimate either LAI or canopy reflectance.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figures/pda_summary.pdf}
+  \caption{\
+    Summary statistics for model calibration parameter prior and posterior distributions.
+  }\label{fig:pda_posteriors}
+\end{figure}
+
+Marginal posterior distributions on parameters with highly informative priors (PROSPECT parameters, SLA, and leaf allometries) generally had higher uncertainty than prior distributions.
+% * <dietze@bu.edu> 2018-05-02T22:14:08.326Z:
+% 
+% This paragraph on the parameter fits should come before the diagnostics on the predictions
+% 
+% ^.
+However, the orientation factor and especially the clumping factor were somewhat more constrained relative to their priors.
+Analyis of joint posterior distributions reveals very tight covariance between many parameters and across PFTs, which explains the much tighter spectral confidence intervals relative to the prior (see Supplementary Information).
+
+\subsection{Forward simulation}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figures/landsat_ts.pdf}
+  \caption{\
+    Comparison of EDR-simulated (black, blue ribbon) and observed (red) time series of Landsat NDVI and tasseled cap brightness (TCB), greenness (TCG), and wetness (W) for each site.
+  }
+\end{figure}

@@ -38,28 +38,30 @@ Specifically for conifer species, we also observed underestimates in transmittan
     Reflectance (Refl.) and transmittance (Tran.) spectral validation error statistics aggregated across the visible (400--800 nm) and infrared (801--2500 nm) regions.
     Values from other studies are included for comparison.
   }\label{tab:pecanrtm-specerr}
-  \begin{tabular}{clcccccc}
-    \toprule
-    & & \multicolumn{3}{c}{Visible} & \multicolumn{3}{c}{Infrared}\\
-    & & RMSE & BIAS & SEPC & RMSE & BIAS & SEPC \\
-    \midrule
-    \multirow{7}{*}{Refl.} & FFT All & 0.0083 & 0.0018 & 0.0071 & 0.0098 & -0.0020 & 0.0061 \\
-                           & --- Broadleaf & 0.0063 & 0.0023 & 0.0042 & 0.0064 & -0.0009 & 0.0034 \\
-                           & --- Conifer & 0.0101 & 0.0011 & 0.0090 & 0.0127 & -0.0035 & 0.0064 \\
-                           & Feret et al.~(2008): CALMIT & 0.032 & 0.010 & 0.028 & --- & --- & --- \\
-                           & --- ANGERS & 0.019 & 0.001 & 0.019 & 0.016 & 0.003 & 0.014 \\
-                           & --- HAWAII & 0.021 & -0.008 & 0.020 & 0.036 & -0.031 \\
-                           & Di Vittorio (2009) & 0.0255 & 0.005 & --- & --- & --- & --- \\
-    \hline
-    \multirow{7}{*}{Trans.} & FFT All & 0.0404 & -0.0133 & 0.0336 & 0.0551 & 0.0040 & 0.0537 \\
-                            & --- Broadleaf & 0.0248 & 0.0012 & 0.0167 & 0.0450 & 0.0266 & 0.0336 \\
-                            & --- Conifer & 0.0553 & -0.0346 & 0.0389 & 0.0661 & -0.0293 & 0.0566 \\
-                            & Feret et al.~(2008): CALMIT & 0.029 & -0.005 & 0.025 & --- & --- & --- \\
-                            & --- ANGERS & 0.018 & -0.005 & 0.017 & 0.016 & 0.001 & 0.015 \\
-                            & --- HAWAII & 0.022 & 0.003 & 0.020 & 0.020 & -0.003 & 0.017 \\
-                            & Di Vittorio (2009) & 0.0422 & 0.0294 & --- & --- & --- & --- \\
-    \bottomrule
-  \end{tabular}
+  \resizebox{\textwidth}{!}{%
+    \begin{tabular}{clcccccc}
+      \toprule
+      & & \multicolumn{3}{c}{Visible} & \multicolumn{3}{c}{Infrared}\\
+      & & RMSE & BIAS & SEPC & RMSE & BIAS & SEPC \\
+      \midrule
+      \multirow{7}{*}{Refl.} & FFT All & 0.0083 & 0.0018 & 0.0071 & 0.0098 & -0.0020 & 0.0061 \\
+                             & --- Broadleaf & 0.0063 & 0.0023 & 0.0042 & 0.0064 & -0.0009 & 0.0034 \\
+                             & --- Conifer & 0.0101 & 0.0011 & 0.0090 & 0.0127 & -0.0035 & 0.0064 \\
+                             & Feret et al.~(2008): CALMIT & 0.032 & 0.010 & 0.028 & --- & --- & --- \\
+                             & --- ANGERS & 0.019 & 0.001 & 0.019 & 0.016 & 0.003 & 0.014 \\
+                             & --- HAWAII & 0.021 & -0.008 & 0.020 & 0.036 & -0.031 \\
+                             & Di Vittorio (2009) & 0.0255 & 0.005 & --- & --- & --- & --- \\
+      \hline
+      \multirow{7}{*}{Trans.} & FFT All & 0.0404 & -0.0133 & 0.0336 & 0.0551 & 0.0040 & 0.0537 \\
+                              & --- Broadleaf & 0.0248 & 0.0012 & 0.0167 & 0.0450 & 0.0266 & 0.0336 \\
+                              & --- Conifer & 0.0553 & -0.0346 & 0.0389 & 0.0661 & -0.0293 & 0.0566 \\
+                              & Feret et al.~(2008): CALMIT & 0.029 & -0.005 & 0.025 & --- & --- & --- \\
+                              & --- ANGERS & 0.018 & -0.005 & 0.017 & 0.016 & 0.001 & 0.015 \\
+                              & --- HAWAII & 0.022 & 0.003 & 0.020 & 0.020 & -0.003 & 0.017 \\
+                              & Di Vittorio (2009) & 0.0422 & 0.0294 & --- & --- & --- & --- \\
+      \bottomrule
+    \end{tabular}
+  }
 \end{table}
 
 \begin{table}
@@ -68,18 +70,18 @@ Specifically for conifer species, we also observed underestimates in transmittan
     Error statistics for the comparison of inversion estimates of PROSPECT parameters Cw and Cm and measured values of equivalent water thickness (EWT) and leaf dry mass per unit area (LMA), respectively.
     Values from other inversion studies are included for comparison.
   }\label{tab:pecanrtm-paramerr}
-  \begin{tabular}{clccccc}
+  \begin{tabular}{p{2cm}lccccc}
     \toprule
     & & RMSE & BIAS & SEPC & CV & RMS\%E \\
     \midrule
-    \multirow{7}{*}{Cw / EWT \\ (g m$^{-2}$)}
+    \multirow{7}{*}{\vtop{\hbox{Cw / EWT }\hbox{(g m$^{-2}$)}}}
     & FFT Broadleaf & 17 & 5 & 16 & 18.8 & 21.64 \\
     & --- Conifer & 187 & 90 & 164 & 52.3 & 67.29 \\
     & Feret et al.~(2008): LOPEX & 17 & -3 & 17 & 15.2 & --- \\
     & --- ANGERS & 20 & -1 & 20 & 17.1 & --- \\
     & Feret et al.~(2011): \#3 & 27 & --- & --- & --- & --- \\
     & Li \& Wang (2011) & 12 & 5 & --- & 20.10 & --- \\
-    \multirow{7}{*}{Cm / LMA \\ (g m$^{-2}$)}
+    \multirow{7}{*}{\vtop{\hbox{Cm / LMA}\hbox{(g m$^{-2}$)}}}
     & FFT Broadleaf & 20 & -18 & 9 & 24.5 & 43.75 \\
     & --- Conifer & 121 & 35 & 116 & 61.6 & 65.51 \\
     & Feret et al.~(2008): LOPEX & 34 & 21 & 27 & 51.0 & --- \\
@@ -127,10 +129,12 @@ Notably, a few estimates for mid-successional conifer species displayed signific
   \caption{%
     Uncertainty and relative bias in parameter estimates from inversion of simulated spectra filtered through relative spectral response curves of different sensors.
   }\label{tab:pecanrtm-sensorerror}
+  \resizebox{\textwidth}{!}{%
   \begin{tabular}{ccccccccccc}
     \toprule
     & \multicolumn{5}{c}{Uncertainty ($\pi$)} & \multicolumn{5}{c}{Relative bias ($\alpha$)} \\
     Sensor & N & Cab & Car & Cw & Cm & N & Cab & Car & Cw & Cm \\
+    \midrule
     ASD Field Spec & 0.20 & 0.54 & 2.91 & 0.26 & 1.33 & -0.001 & 0.05 & 0.08 & 0.01 & -0.05 \\
     AVIRIS NG & 0.87 & 2.36 & 12.78 & 1.12 & 5.81 & -0.004 & 0.05 & -0.03 & 0.004 & -0.03 \\
     AVIRIS Classic & 1.62 & 4.61 & 26.06 & 2.13 & 11.02 & -0.04 & 0.06 & -0.44 & -0.01 & -0.08 \\
@@ -142,7 +146,9 @@ Notably, a few estimates for mid-successional conifer species displayed signific
     MODIS & 10.29 & 15.99 & 220.5 & 16.65 & 86.00 & -1.20 & 0.07 & -29.14 & -1.88 & 5.43 \\
     VIIRS & 2.49 & 13.24 & 174.4 & 4.75 & 18.23 & -0.09 & 1.57 & -18.06 & -0.09 & 0.004 \\
     AVHRR & 25.47 & 114.2 & 263.3 & 74.58 & 179.1 & -0.26 & -7.47 & -39.04 & -8.04 & 77.21 \\
+    \bottomrule
   \end{tabular}
+  }
 \end{table}
 
 \begin{figure}

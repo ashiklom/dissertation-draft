@@ -1,0 +1,11 @@
+main.pdf
+
+*.bbl
+*.aux
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+
+prelim.tex
+

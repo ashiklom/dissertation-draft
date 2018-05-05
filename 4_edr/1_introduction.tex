@@ -1,0 +1,70 @@
+\section{Introduction}
+% * <fer.istem@gmail.com> 2018-05-02T18:26:57.871Z:
+% 
+% I liked the flow of introduction
+% 
+% ^.
+
+My previous chapters have shown that models have much to gain, both in terms of direct parameter constraint from trait observations and from new process representations that emerge from trait ecology more broadly.
+However, there are limits on the extent to which traits alone can improve models.
+For one, even after examining a broad range of inter- and intraspecific factors, large fractions of variability in plant function remain unexplained.
+Moreover, vegetation models are simplified abstractions of reality, with many processes omitted or represented by simplistic empirical equations with little-to-no physical basis and therefore no directly measurable trait that can serve as a parameter constraint.
+% * <fer.istem@gmail.com> 2018-05-02T18:02:57.407Z:
+% 
+% > Moreover, vegetation models are simplified abstractions of reality, with many processes omitted or represented by simplistic empirical equations with little-to-no physical basis and therefore no directly measurable trait that can serve as a parameter constraint.
+% although I tend to agree, this reads as a very strong statement, almost invalidating you previous chapters? maybe tone it down a little
+% 
+% ^.
+In these cases, models can only be calibrated via their emergent predictions of state variables, that is through data assimilation.
+
+Many previous efforts have used various data streams calibrate or constrain dynamic vegetation model parameters and states.
+Among these data streams, remote sensing is particularly promising due to its consistent measurement methodology and largely uninterrupted global coverage.
+Data products derived from remote sensing observations have been effectively used to constrain, among others,
+phenology~\cite{Knorr_2010_carbon,Viskari_2015_modeldata},
+absorbed photosynthetically-active radiation~\cite{Peylin_2016_stepwise,Schurmann_2016_constraining},
+and primary productivity~\cite{MacBean_2018_strong}.
+
+However, there are issues with using derived remote sensing products to calibrate ecosystem models.
+Relationships of surface reflectance variables, such as vegetation indices, with characteristics of vegetation structure and function estimated by models are complex.
+For example, the assumption of a simple linear relationship between the normalized difference vegetation index and absorbed photosynthetically-active radiation (e.g.\ Peylin et al.~2016) \nocite{Peylin_2016_stepwise} has long been shown to be sensitive to variability in soil and leaf optical properties~\cite{Myneni_1994_relationship}, and is known to vary across spatial scales and sensor configurations~\cite{Fensholt_2004_evaluation}.
+A related issue is that subtle but significant differences in the ways vegetation variables are defined, by both models and data products, can significantly affect the interpretation of remotely sensed data~\cite{Carlson_1997_relation}.
+Furthermore, uncertainties derived remote sensing data products are the sum of both direct measurement uncertainties (which include both uncertainties in measured surface reflectance and other key measurement characteristics such as location and footprint) and uncertainties in the models used to convert surface reflectance into vegetation characteristics, to the extent that reasonable confidence in the absolute values of individual pixels requires averaging across groups of adjacent pixels~\cite{Wenze_Yang_2006_modis,Wang_2004_evaluation}.
+% * <dietze@bu.edu> 2018-05-02T21:41:58.156Z:
+% 
+% This sentence is confusing
+% 
+% ^.
+Although these issues could be partially alleviated by robust, pixel-level uncertainty estimates for remote sensing data products, such estimates are generally not widely available for most data products.
+Collectively, these issues, combined with differences in sensor configuration and design, result in large differences in estimates of surface characteristics across different remote sensing instruments that lead directly to different estimates of carbon storage and flux~\cite{Liu_2018_satellite}.
+
+One way to overcome the limitations of derived remote sensing data products while still leveraging the capabilities of remote sensing is to work directly with the observed surface reflectance.
+In the context of dynamic vegetation modeling, this can be accomplished by coupling these models with leaf and canopy radiative transfer models that simulate surface reflectance as a function of known surface characteristics~\cite{quaife_2008_assimilating}.
+% * <dietze@bu.edu> 2018-05-02T21:44:01.177Z:
+% 
+% I think the comparison between using derived products vs direct assimilation of reflectance would really benifit from a conceptual figure
+% 
+% ^.
+Such an approach takes advantage of the fact that surface reflectance contains valuable information about vegetation structure and function without relying on the independent retrieval of these characteristics from reflectance data alone, which is often an ill-posed problem~\cite{combal_2003_retrieval,lewis_2007_spectral}.
+Moreover, besides enabling assimilation of remotely sensed data, training models to accurately simulate surface reflectance is essential to properly quantifying and testing hypotheses related to vegetation-climate interactions and feedbacks.
+For instance, the net climate effect of ongoing changes in Arctic vegetation composition depends on the balance of opposing shortwave (lower albedo) and longwave (increased transpiration) radiative feedbacks~\cite{Swann_2010_changes}, so forecasting this effect requires accurate models of canopy energy transfer.
+% * <dietze@bu.edu> 2018-05-02T21:45:34.865Z:
+% 
+% don't follow the (increased transpiration) part -- that's the LE flux and here you're talking about the LW flux, which is a completely different term in the energy budget
+% 
+% ^.
+More fundamentally, light availability is a key control of photosynthesis and therefore has
+immediate, direct consequences for individual plant function~\cite{hikosaka_1995_model,robakowski_2004_growth,Niinemets_2016_within,Keenan_2016_global}
+as well as longer-term, indirect consequences for competition and ecological succession~\cite{Niinemets_2006_tolerance,Kitajima_2013_leaf,Falster_2017_multitrait}.
+Indeed, an analysis by Viskari et al.\ (in review) \nocite{Viskari_inreview_ED} demonstrated that the Ecosystem Demography (ED2) model's predictions of ecosystem energy budget, productivity, and composition are highly sensitive to the parameterization of the model's representation of canopy radiative transfer.
+% * <dietze@bu.edu> 2018-05-02T21:47:32.944Z:
+% 
+% before moving onto Toni's paper, you might also say a few words about the Fisher 2017 paper, which had a section on RTMs in dynamics vegetation models.
+% 
+% Also (and potentially related), I'd note that you're near the end of the Intro and I don't see any hypotheses yet.  You talk about calibrating models using remote sensing, but not what processes you're trying to calibrate / learn about and the open questions about those processes.
+% 
+% ^.
+
+Building on the work of Viskari et al., the objective of this chapter is to develop and demonstrate the calibration and validation of the ED2 model using remotely sensed surface reflectance.
+First, I link the canopy radiative transfer model in ED2 with the PROSPECT leaf radiative transfer model to allow ED to predict full-range, hyperspectral surface reflectance at each time step.
+Second, I calibrate this coupled leaf-canopy radiative transfer model at a number of sites in the US Midwest and Northeast where coincident plot vegetation survey data and observations of the NASA Airborne Visible/InfraRed Imaging Spectrometer (AVIRIS) are available.
+Finally, I evaluate the ability of ED2 to predict the dynamics of stable, mid-successional forest at a 5-10 year time scale, as well as the regrowth a forest following a clear cut across several decades, by running ED ensembles and comparing their predictions of surface reflectance to Landsat time series of surface reflectance.
