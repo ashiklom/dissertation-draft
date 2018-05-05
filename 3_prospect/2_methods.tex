@@ -4,6 +4,11 @@
 
 Data from this project were assembled from 22 projects on leaf spectra and related foliar traits (Table~\ref{tab:projectinfo}).
 Most of these datasets are obtained directly from the ECOSIS spectral library (https://ecosis.org/).
+% * <dietze@bu.edu> 2018-04-11T12:48:09.434Z:
+% 
+% feels like it needs a short explanation of where the rest of the spectra came from.
+% 
+% ^.
 Collectively, these data are comprised of nearly 12,000 observations from 346 species, and span a wide geographic (Figure~\ref{fig:datamap}) and climatic range (Figure~\ref{fig:dataclimate}).
 
 %TODO: Maybe a summary of experimental treatments?
@@ -12,18 +17,28 @@ Collectively, these data are comprised of nearly 12,000 observations from 346 sp
 \begin{table}
     \caption{Project information}
     \centering
-    \input{figures/project_table.tex}\label{tab:projectinfo}
+    \input{3_prospect/figures/project_table.tex}\label{tab:projectinfo}
 \end{table}
 
 \begin{figure}
     \includegraphics[width=\textwidth]{{figures/data_map}.pdf}
     \caption{Map of data locations}\label{fig:datamap}
 \end{figure}
+% * <dietze@bu.edu> 2018-04-11T12:49:32.972Z:
+% 
+% Caption is too short. Locations are getting lost among national boarders -- they need to pop out more. Legend is getting clipped and "short_name" is unnessisary
+% 
+% ^.
 
 \begin{figure}
     \includegraphics[width=\textwidth]{{figures/data_climate}.pdf}
     \caption{Data locations in climate space}\label{fig:dataclimate}
 \end{figure}
+% * <dietze@bu.edu> 2018-04-11T12:54:27.768Z:
+% 
+% Points too small. Precip units are wrong (y-axis is in cm)
+% 
+% ^.
 
 \subsection{Trait estimation via PROSPECT inversion}
 
@@ -34,6 +49,11 @@ Collectively, these data are comprised of nearly 12,000 observations from 346 sp
     (Bottom) Normalized absorption coefficients for traits estimated by PROSPECT.
   }\label{fig:prospect_coefficients}
 \end{figure}
+% * <dietze@bu.edu> 2018-04-11T12:58:55.715Z:
+% 
+% Minor point, but would it be easier to visually see the relationship between the overall specta and the traits if the prospect coefficients were graphed in terms of reflectance instead of absorption?
+% 
+% ^.
 
 The PROSPECT leaf radiative transfer model~\cite{jacquemoud1990_prospect,jacquemoud_2009_prosail,feret2008_prospect,feret2017_prospectd} simulates leaf reflectance and transmittance for 400 to 2500 nm wavelengths at 1 nm increments as a function of leaf morphological and biochemical characteristics.
 In this chapter, I compared the performance of four different versions of PROSPECT, each of which uses a different combination of leaf traits:
@@ -59,6 +79,12 @@ Where leaf spectra were provided as ``pseudo-absorbance'' ($1 - \log_{10}(R)$), 
 \subsection{Analysis}
 
 To compare PROSPECT versions, I plotted traits estimated by more than one version of PROSPECT as pairwise scatter plots, fit a least-squares linear regression to each and compared the result to a 1-to-1 line, and calculated the pairwise correlation coefficient (Figures~\ref{fig:prospect_pairs_N}-\ref{fig:prospect_pairs_Cm}).
+% * <dietze@bu.edu> 2018-04-11T13:01:34.687Z:
+% 
+% > more than one version of PROSPECT as pairwise scatter plots
+% This specific bit is confusing, and the overall sentence is a run-on.
+% 
+% ^.
 To validate PROSPECT inversions, I compared trait estimates from PROSPECT inversion with direct measurements of the corresponding traits, where these traits were available.
 To explore project-specific biases in the inversion, I fit least-squares linear regressions to investigate the ability of trait estimates from spectra to predict the measured traits, and I report the slopes, intercepts, and $R^2$ values of those regressions (Figure~\ref{fig:project_validation_summary}, Supplementary Tables~\ref{tab:r2_byproject_Cab}-\ref{tab:r2_byproject_Cm}).
 To identify species-specific errors, I also performed this analysis for each project-species combination with at least 5 observations (Figures~\ref{fig:error_speciesbyproj_Cab}-\ref{fig:error_speciesbyproj_Cm}).

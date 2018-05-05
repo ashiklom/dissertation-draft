@@ -47,7 +47,9 @@
 %  pdfproducer = {dvips + ps2pdf}
 %}
 %==========================================================================%
-\usepackage{longtable,booktabs,multirow}
+% Packages related to tables
+\usepackage{longtable,booktabs,multirow,array}
+
 % customized commands can be placed here
 %\newcommand{\figref}[1]{Figure~\ref{#1}}
 %\newcommand{\chapref}[1]{Chapter~\ref{#1}}
@@ -76,7 +78,11 @@
 % -------------------------------------
 \include{1_mvtraits/chapter1}
 \cleardoublepage
+
 \include{2_rtm_inversion/chapter2}
+\cleardoublepage
+
+\include{3_prospect/chapter3}
 \cleardoublepage
 
 % -------------------------------------

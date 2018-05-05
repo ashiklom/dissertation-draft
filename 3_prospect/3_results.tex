@@ -3,35 +3,35 @@
 \subsection{Estimating traits via PROSPECT inversion}
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{{figures/prospect_pairs.N}.pdf}
+  \includegraphics[width=\textwidth]{{figures/prospect_pairs_N}.png}
   \caption{\
     Inter-version comparison of estimates of number of leaf mesophyll layers.
   }\label{fig:prospect_pairs_N}
 \end{figure}
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{{figures/prospect_pairs.Cab}.pdf}
+  \includegraphics[width=\textwidth]{{figures/prospect_pairs_Cab}.png}
   \caption{\
     Inter-version comparison of estimates of number of total leaf chlorophyll content.
   }\label{fig:prospect_pairs_Cab}
 \end{figure}
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{{figures/prospect_pairs.Car}.pdf}
+  \includegraphics[width=\textwidth]{{figures/prospect_pairs_Car}.png}
   \caption{\
     Inter-version comparison of estimates of number of total leaf carotenoid content.
   }\label{fig:prospect_pairs_Car}
 \end{figure}
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{{figures/prospect_pairs.Cw}.pdf}
+  \includegraphics[width=\textwidth]{{figures/prospect_pairs_Cw}.png}
   \caption{\
     Inter-version comparison of estimates of number of total leaf water content.
   }\label{fig:prospect_pairs_Cw}
 \end{figure}
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{{figures/prospect_pairs.Cm}.pdf}
+  \includegraphics[width=\textwidth]{{figures/prospect_pairs_Cm}.png}
   \caption{\
     Inter-version comparison of estimates of number of total leaf dry matter content.
   }\label{fig:prospect_pairs_Cm}
@@ -43,6 +43,13 @@ The extent of agreement on trait estimates between different versions of PROSPEC
 The most consistent inversion estimates were for leaf water content (Figure~\ref{fig:prospect_pairs_Cw}), which has a deep, wide-ranging, physically-based absorption coefficient that has not changed over the recent history of PROSPECT development~\cite{feret2008_prospect,feret2017_prospectd}.
 Retrievals of the effective number of leaf mesophyll layers (Figure~\ref{fig:prospect_pairs_N}) and leaf dry matter content (Figure~\ref{fig:prospect_pairs_Cm}) were slightly less but still highly consistent across versions, despite changes in the refractive index and absorption features of the remaining PROSPECT parameters.
 The ability of more recent versions of PROSPECT to differentiate between different types of pigments resulted in significant differences in pigment estimates between PROSPECT versions.
+% * <dietze@bu.edu> 2018-04-11T13:08:00.421Z:
+% 
+% > The ability of more recent versions of PROSPECT to differentiate between different types of pigments resulted in significant differences in pigment estimates between PROSPECT versions.
+% 
+% This is important but buried -- for a lot of these you don't EXPECT the estimates to be the same and thus all of these figures paint a misleading picture. Also, there's a lot more of these figures than there really needs to be given that this doesn't seem to be like a central question -- feels like something that's mostly supplemental.
+% 
+% ^.
 For chlorophyll content, the general trend is that the addition of additional pigments into the model (carotenoids in version 4, senescent brown pigments in 5, and anthocyanins in D) tends to reduce chlorophyll estimates, with the largest change happening between versions 4 and 5 (Figure~\ref{fig:prospect_pairs_Cab}).
 The most significant across-version differences were in estimates of carotenoid concentrations, particularly between PROSPECT 5/5B and D, where the addition of anthocyanins led to significant reductions in estimates of carotenoid concentrations at the top of their range (Figure~\ref{fig:prospect_pairs_Car}).
 
@@ -72,6 +79,11 @@ A more detailed validation for PROSPECT-D is shown in Figure~\ref{fig:prospect_D
     The dashed black line is a 1 to 1 fit.
   }\label{fig:prospect_D_validation}
 \end{figure}
+% * <dietze@bu.edu> 2018-04-11T13:12:57.094Z:
+% 
+% Units are missing on the "measured trait"
+% 
+% ^.
 
 \subsection{Drivers of variability in leaf optical traits}
 
@@ -90,6 +102,11 @@ A more detailed validation for PROSPECT-D is shown in Figure~\ref{fig:prospect_D
     based on analysis of variance on least-squares linear regression.
     A star (*) indicates attribute effects significant at the 90\% confidence interval.
   }\label{fig:across_species_anova}
+% * <fer.istem@gmail.com> 2018-04-11T19:46:59.552Z:
+% 
+% don't see ps_type defined anywhere
+% 
+% ^.
 \end{figure}
 
 Across all optical traits, roughly half of variability was explained by species identity (Figure~\ref{fig:within_vs_across}).
@@ -100,19 +117,61 @@ The most important explanatory attribute was leaf phenology (deciduous vs.~everg
   \includegraphics[width=\textwidth]{{figures/treatment_summary}.pdf}
   \caption{\
     Fixed effects of different sources of intraspecific variability on traits estimated from PROSPECT inversion.
-    Each value is the perecnt fixed effect on the corresponding trait as estimated from a linear fixed-effects model.
+    Each value is the percent fixed effect on the corresponding trait as estimated from a linear fixed-effects model.
+% * <dietze@bu.edu> 2018-04-11T13:17:30.095Z:
+% 
+% > Each value is the percent fixed effect
+% How can some traits explain >100% of the variability? How can others explain negative variability?
+% 
+% ^.
     Color brightness indicates degree of statistical significance (90 or 95\% confidence level), and color hues indicate effect direction (positive or negative).
   }\label{fig:treatment_summary}
 \end{figure}
 
 Leaf optical traits responded significantly to a range of natural and experimental stressors (Figure~\ref{fig:treatment_summary}).
 Intraspecific variability in optical traits was weakly but, in some cases, significantly related to climate, with the strongest effects being declines in leaf number of mesophyll layers and dry matter content with increasing temperature.
+% * <dietze@bu.edu> 2018-04-11T13:15:48.085Z:
+% 
+% > declines in leaf number of mesophyll layers
+% Drop "leaf"
+% 
+% ^.
 Based on leaf reflectance measurements of \textit{Populus deltoides} (eastern cottonwood) at the University of Arizona by Barnes et al.~(2017), \nocite{barnes_2017_beyond}
+% * <dietze@bu.edu> 2018-04-11T13:20:03.945Z:
+% 
+% > Based on leaf reflectance
+% Seems like a new paragraph. Switching from discussing overall correlations in the dataset to discussing results from specific experiments.
+% 
+% ^.
 seasonal variations in leaf and air temperature had statistically significant but relatively small impacts on pigment concentrations.
 Warming and drought experiments on \textit{Asclepias syriaca} (common milkweed) had strong and statistically significant effects on almost all optical traits, with both treatments leading to significant decreases in leaf water content and effective number of mesophyll layers and increases in pigments and dry matter content concentrations.
+% * <dietze@bu.edu> 2018-04-11T13:21:29.452Z:
+% 
+% > Warming and drought experiments
+% Are we moving on to different experiments at different site, or still Barnes? If the former, say where an provide citations.
+% 
+% ^.
 In two independent studies, optical traits also responded significantly to chemical (ozone, winter fleck) and biotic (insects, viruses) stressors---all of these stressors significantly reduced concentrations of pigments, and typically also reduced water and dry matter contents, with ozone damage having the most significant effect.
+% * <dietze@bu.edu> 2018-04-11T13:22:57.054Z:
+% 
+% > winter fleck
+% What is winter fleck?
+% 
+% ^.
+% * <dietze@bu.edu> 2018-04-11T13:22:34.227Z:
+% 
+% > two independent studies
+% CITATIONS!  Also, what systems/species where these studies in?
+% 
+% ^.
 On the other hand, treatment of \textit{Glycine max} (soybean) with aphids resulted in a small but significant increase in pigment concentrations, with the strongest effect observed at medium-level treatment.
 Finally, across the projects and species for which data were available for both sunlit and shaded leaves, shaded leaves had higher chlorophyll and anthocyanin concentrations and lower number of mesophyll layers and water and dry matter contents.
+% * <dietze@bu.edu> 2018-04-11T13:24:20.646Z:
+% 
+% > across the projects and species for which data were available
+% This should go up with the previous across study discussion points.
+% 
+% ^.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{{figures/trait_phenology}.pdf}
@@ -126,30 +185,85 @@ Finally, across the projects and species for which data were available for both 
 
 Where such measurements were available, leaf optical traits exhibited a strong phenological signal (Figure~\ref{fig:trait_phenology}).
 All optical traits showed a peak in late July / early August, followed by a decline into the fall.
+% * <dietze@bu.edu> 2018-04-11T13:26:03.488Z:
+% 
+% > All optical traits showed a peak in late July / early August, followed by a decline into the fall.
+% 
+% How could EVERYTHING within the leaf decline? Shouldn't something increase, if only on a relative basis?
+% 
+% ^.
 However, the effective number of leaf mesophyll layers, and to a lesser extent, leaf dry matter content in sunlit leaves increased in the late fall. 
+% * <dietze@bu.edu> 2018-04-11T13:26:48.623Z:
+% 
+% > effective number of leaf mesophyll layers, and to a lesser extent, leaf dry matter content in sunlit leaves increased in the late fall.
+% 
+% Make sure to come back to this in the discussion, as I'm not sure this is physiologically plausible.
+% 
+% ^.
 With the exception of anthocyanin content, traits for sunlit leaves were higher and experienced a greater seasonal variability than shaded leaves.
 
-\subsection{Correlations of optical traits with other traits}
+\subsection{Trait correlations}
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{{figures/trait_correlations_all}.pdf}
+  \includegraphics[width=\textwidth]{figures/prospect_pca.pdf}
   \caption{\
-    Correlations of optical trait estimates with direct trait measurements, by all observations.
-  }\label{fig:trait_correlations_all}
+    Principal components analysis of optical trait correlation matrix. 
+    (Left) Cumulative fraction of variance explained by each principal component.
+    (Center, Right) Principal component scores and vectors for each optical trait for components 1 and 2 (center) and 2 and 3 (right).
+  }\label{fig:prospect_pca}
 \end{figure}
 
-Optical traits estimated by PROSPECT were generally mutually positively correlated with each other.
-The strongest pairwise correlations were of dry matter content with the effective number of leaf mesophyll layers, and of chlorophyll and carotenoid contents.
+Optical traits estimated by PROSPECT are not mutually independent, but rather have some structure to their covariance (Figure~\ref{fig:prospect_pca}).
+In the first two principal components, which collectively explain roughly 70\% of the variability, variation occurs along one of three axes---one defined by chlorophyll, carotenoid, and water contents, another defined by leaf structure and dry matter content, and a third defined by anthocyanin concentration.
+% * <dietze@bu.edu> 2018-04-11T13:32:28.770Z:
+% 
+% > three axes
+% Confusing -- how do the first two PCA have 3 axes?
+% 
+% ^.
+% * <dietze@bu.edu> 2018-04-11T13:31:23.496Z:
+% 
+% > In the first two principal components
+% 
+% Looking back at the Methods, I can't find any mention of a plan to do a PCA. Never introduce new analyses in the Results.
+% 
+% ^.
+Variation along the third principal component, which brings the cumulative variance up to roughly 80\%, is defined by a trade-off between water and anthocyanins.
 
-With the exception of leaf water content, all optical traits were strongly positively correlated with direct area-based measurements of pigments, and less strongly correlated with a number of area-based traits.
-Leaf chlorophyll content exhibited moderate positive correlations with nitrogen, protein, and oxygen concentrations.
-Leaf carotenoid and anthocyanin contents exhibited weak positive correlations with lignin, fiber, protein, hydrogen, and oxygen concentrations.
-Leaf water content was strongly positively correlated with lignin, fiber, protein, and hydrogen concentrations, though surprisingly not oxygen concentration.
-Finally, leaf dry matter content was positively correlated with all area-based traits available, with the weakest correlation for nitrogen and the strongest correlations for oxygen, hydrogen, and protein.
-All optical traits had negligible correlations with Vcmax, but very strong positive correlations with Jmax.
-Chlorophyll, carotenoids, and dry matter were positively correlated with leaf water potential.
-Pigments were weakly positively correlated, and remaining traits weakly negatively correlated, with leaf $\Delta N_{15}$ concentration.
-Patterns of species means were generally similar to patterns observed within species (Figure~\ref{fig:trait_correlations_species}).
+\begin{figure}
+  \includegraphics[width=\textwidth]{figures/trait_correlations_areabars.pdf}
+  \caption{\
+    Intra-specific pairwise correlations of optical traits with direct measurements of
+    leaf N, C, cellulose, lignin, Vcmax, and Jmax.
+    Darker colors indicate larger sample sizes.
+    Species in each facet row are sorted by correlation averaged across all traits.
+    Analysis was performed only for species with at least 10 pairwise observations of each trait.
+% * <dietze@bu.edu> 2018-04-11T14:16:31.779Z:
+% 
+% Y-axis needs to be explained. Try to make this bigger so the font size isn't so small -- maybe put C and N on one page, and everything else on the next?
+% 
+% ^.
+  }\label{fig:trait_correlations}
+\end{figure}
+
+Covariance of optical traits with six area-normalized traits---leaf nitrogen, carbon, cellulose, and lignin contents, Vcmax, and Jmax---was strongly species specific, but, in many cases, substantial (Figure~\ref{fig:trait_correlations}).
+% * <dietze@bu.edu> 2018-04-11T14:13:48.873Z:
+% 
+% > strongly species specific
+% 
+% Did you not also look at the interspecific correlations? Everything below seems to be intraspecific.
+% 
+% ^.
+In general, for any given species, most of the estimated optical traits exhibited similar correlations with the directly measured trait (for instance, for soybean---GLMA4---, all optical traits were positively correlated with leaf N, C, cellulose, and lignin, whereas for milkweed, all of these correlations were negligible).
+% * <dietze@bu.edu> 2018-04-11T14:12:40.757Z:
+% 
+% > ---GLMA4---
+% what is this?
+% 
+% ^.
+Leaf nitrogen correlated best for the largest number of species with leaf chlorophyll and, to a slightly lesser extent, with dry matter content.
+Leaf carbon and lignin were most consistently correlated with leaf dry matter content, while correlations with cellulose were more idiosyncratic.
+Vcmax and Jmax were strongly positively correlated with all traits for \textit{Populus delotoides} (PODE3), but completely uncorrelated for milkweed (ASSY).
 
 % TODO: Mass traits?
 

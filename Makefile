@@ -1,3 +1,2 @@
 all:
-	latexmk -pdf -g dissertation.tex
-	latexmk -c
+	latexmk -pdf dissertation.tex
