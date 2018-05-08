@@ -2,6 +2,12 @@
 
 Establishing general, species- and site-independent relationships between leaf functional traits and optical properties is challenging.
 Across all projects and species, overall $R^2$ for all traits was, at best, around 50\% (for leaf water and chlorophyll content), and, for some trait-project combinations, effectively 0 (Figure~\ref{fig:project_validation_summary}).
+% * <emcowdery@gmail.com> 2018-04-12T06:44:38.704Z:
+% 
+% > overall $R^2$ for all traits was
+% Which tense are you using? *the* overall R2 *value* was,  overall R2 *values were*?
+% 
+% ^.
 % * <dietze@bu.edu> 2018-04-11T14:19:11.765Z:
 % 
 % > Across all projects and species, overall $R^2$ for all traits was, at best, around 50\% (for leaf water and chlorophyll content), and, for some trait-project combinations, effectively 0 (Figure~\ref{fig:project_validation_summary}).
@@ -28,14 +34,34 @@ Given these major issues with inversion accuracy and generality, the ecological 
 % was there an assessment of accuracy? Would that just be how prospect performed at it's calibration sites, which you haven't discussed explicitly yet. On that point, I don't remember you explicitly mentioning the patterns to how different studies performed within the Results.
 % 
 % ^.
-
+% * <fer.istem@gmail.com> 2018-04-12T13:03:31.443Z:
+% 
+% given all the shortcomings, I wonder if this paragraph could still be made more positive
+% given your title and your advocacy of RTMs in the intro, I think a more positive beginning to the discussion might help..or you might consider revising the title and the tone of intro as well, in lines of "we think RTM inversions are the way to go but we're skeptical of their current state and provide a comprehensive evaluation and roadmap for future development in this paper" etc
+% 
+% ^ <tmccabe@bu.edu> 2018-04-12T15:30:57.022Z:
+% 
+% +1.  The end of your results was optimistic " covariation was strongly species specific, but substantial" . More useful than  dismissing your results would be to list the contexts where they could be helpful. Even defining the limitation is more useful than outright dismissal.   
+%
+% ^.
 By comparing trait retrievals using different versions of PROSPECT over a wide range of species and traits, this analysis provides some context for ongoing and future PROSPECT development.
+% * <emcowdery@gmail.com> 2018-04-12T06:49:33.822Z:
+% 
+% I would add this motivation (more explicitly) to the introduction. 
+% 
+% ^.
 Across most datasets and for most traits, additions of different pigments by different PROSPECT versions had relatively little effect on inversion accuracy.
 However, there were a few notable exceptions.
 Significantly increased accuracy of chlorophyll retrievals in the phenological dataset of Yang et al.~(2016) \nocite{yang_2016_seasonal} in PROSPECT versions 5 and D (Figures~\ref{fig:prospect_D_validation},~\ref{fig:project_validation_summary}, and~\ref{fig:validation_cab}) points to the importance of modeling non-photosynthetic pigments in leaves sampled during early or late parts of the growing season.
 Meanwhile, the significant changes in the estimation of leaf dry matter content across PROSPECT versions (Figures~\ref{fig:project_validation_summary} and~\ref{fig:validation_cm}) point to the importance of accurately modeling leaf reflectance in the deep blue visible wavelengths (around 400 nm) (Figure~\ref{fig:prospect_coefficients}).
 
 One conclusion of Chapter 2 was that the use of physically-based absorption coefficients, such as that for leaf water content, is important for accurate trait retrievals using physically-based radiative transfer models.
+% * <emcowdery@gmail.com> 2018-04-12T07:01:18.782Z:
+% 
+% > using
+% to use
+% 
+% ^.
 Results from the wider range of species and projects in this chapter challenge this notion.
 Retrievals of leaf water content and total chlorophyll concentration had comparable overall $R^2$ values (Figure~\ref{fig:project_validation_summary}).
 However, leaf water content retrievals exhibited clear and significant project-specific biases, especially at high values (Figure~\ref{fig:prospect_D_validation})
@@ -72,6 +98,12 @@ Meanwhile, Luo et al.~(2012) \nocite{luo_2012_evaluation} found that wheat aphid
 This result is unlikely to be caused by inaccurate PROSPECT estimates of pigment concentrations because inversion accuracy of both chlorophyll and carotenoids for this dataset was among the highest in this study (Figures~\ref{fig:project_validation_summary} and~\ref{fig:prospect_D_validation}).
 
 That being said, persistent changes to the leaf growing environment, including biotic and abiotic disturbances, had larger effects on optical traits.
+% * <tmccabe@bu.edu> 2018-04-12T15:32:42.198Z:
+% 
+% > had larger effects on optical traits.
+% Than what? Restate. 
+% 
+% ^.
 One such persistent effect is the difference between sunlit and shaded leaves.
 My result that chlorophyll content is significantly higher in shade leaves compared to sun leaves agrees with established theory that allocation of resources to light absorption relative to other photosynthetic functions (e.g.\ carbon fixation and electron transport) increases with decreasing irradiance~\cite{hikosaka_1995_model}.
 Similarly, the result that leaf dry matter content and number of leaf mesophyll layers (effectively, leaf thickness) is lower agrees with established understanding of the relationship between leaf mass per area and irradiance~\cite{poorter_2009_causes}.
@@ -120,6 +152,12 @@ A key objective of trait ecology should therefore be to identify the general res
 % ^.
 Second, even where trait variability is relatively idiosyncratic, traits do not vary independently, neither at the individual (Figure~\ref{fig:trait_correlations} and~\ref{fig:trait_correlations_all}) nor at the species levels (Figure~\ref{fig:trait_correlations_species}) (see also Chapter 1).
 There is significant interspecific variability in intraspecific correlation patterns of traits (Figure~\ref{fig:trait_correlations}), so more work is needed to understand the circumstances under which traits are interrelated.
+% * <tmccabe@bu.edu> 2018-04-12T15:37:10.068Z:
+% 
+% > so more work is needed to understand the circumstances under which traits are interrelated.
+% This would be more powerful if you pulled this into a full paragraph with concrete suggestions. 
+% 
+% ^.
 However, the fact that many correlations between optical traits and other valuable traits not directly observable from spectra, such as leaf N, Vcmax, and Jmax, are a highly promising result for the ability of remote sensing observations to provide information on a wide variety of traits across huge spatial and temporal extents.
 
 Croft et al.~(2017) \nocite{croft_2017_chlorophyll} found significant positive correlations between chlorophyll content and Vcmax, but weaker correlations of both of these traits with leaf nitrogen. %TODO: Discuss further
