@@ -36,31 +36,18 @@ Collectively, these data are comprised of nearly 12,000 observations from 346 sp
 
 \subsection{Trait estimation via PROSPECT inversion}
 
-\begin{figure}
-  \includegraphics[width=\textwidth]{{figures/sigspec2-1}.pdf}
-  \caption{\
-    (Top) Example reflectance spectra of \textit{Acer rubrum} leaves.
-    (Bottom) Normalized absorption coefficients for traits estimated by PROSPECT.
-  }\label{fig:prospect_coefficients}
-\end{figure}
-% * <dietze@bu.edu> 2018-04-11T12:58:55.715Z:
-% 
-% Minor point, but would it be easier to visually see the relationship between the overall specta and the traits if the prospect coefficients were graphed in terms of reflectance instead of absorption?
-% 
-% ^.
-
-The PROSPECT leaf radiative transfer model~\cite{jacquemoud1990_prospect,jacquemoud_2009_prosail,feret2008_prospect,feret2017_prospectd} simulates leaf reflectance and transmittance for 400 to 2500 nm wavelengths at 1 nm increments as a function of leaf morphological and biochemical characteristics.
+The PROSPECT leaf radiative transfer model~\cite{jacquemoud1990_prospect,jacquemoud_2009_prosail,feret_2008_prospect,feret_2017_prospectd} simulates leaf reflectance and transmittance for 400 to 2500 nm wavelengths at 1 nm increments as a function of leaf morphological and biochemical characteristics.
 In this chapter, I compared the performance of four different versions of PROSPECT, each of which uses a different combination of leaf traits:
 PROSPECT 4 uses
 total chlorophyll content per area ($\mu g~cm^{-2}$),
 leaf water content per area ($g~m^{-2}$),
-and leaf dry matter content per area ($g~m^{-2}$)~\cite{feret2008_prospect}.
+and leaf dry matter content per area ($g~m^{-2}$)~\cite{feret_2008_prospect}.
 PROSPECT 5 extends PROSPECT 4 with a parameter for
-total carotenoid content per area ($\mu g~cm^{-2}$)~\cite{feret2008_prospect}.
+total carotenoid content per area ($\mu g~cm^{-2}$)~\cite{feret_2008_prospect}.
 PROSPECT 5B adds an additional parameter for
 total ``senescent brown pigment'' content (arbitrary units)~\cite{jacquemoud_2009_prosail}.
 Finally, PROSPECT D adds an additional parameter for
-total anthocynanin content per area ($\mu g~cm^{-2}$)~\cite{feret2017_prospectd}.
+total anthocynanin content per area ($\mu g~cm^{-2}$)~\cite{feret_2017_prospectd}.
 The absorption coefficients for PROSPECT-D aligned with example leaf reflectance spectra are shown in Figure~\ref{fig:prospect_coefficients}.
 
 To estimate traits from leaf spectra, I generally followed the Bayesian RTM inversion approach of~\cite{shiklomanov2016_rse}, except that I replaced the Metropolis-Hastings algorithm with a more efficient Differential Evolution algorithm with ``snooker'' update as implemented in the \texttt{BayesianTools} R package~\cite{bayesiantools}.
