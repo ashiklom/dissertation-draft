@@ -3,12 +3,10 @@
 \subsection{Data}
 
 Data from this project were assembled from 22 projects on leaf spectra and related foliar traits (Table~\ref{tab:projectinfo}).
-Most of these datasets are obtained directly from the ECOSIS spectral library (https://ecosis.org/).
-% * <dietze@bu.edu> 2018-04-11T12:48:09.434Z:
-% 
-% feels like it needs a short explanation of where the rest of the spectra came from.
-% 
-% ^.
+Most of these datasets are available in the ECOSIS spectral library (https://ecosis.org/), with the following exceptions:
+Data from Barnes et al.~(2017) are hosted in a publicly-available Open Science Framework repository described in the manuscript.\nocite{barnes_2017_beyond}
+Data for Di Vittorio (2009), Wu et al.~(2016), and Yang et al.~(2016)~\nocite{divittorio_2009_pigment,wu_leaf_2016,yang_2016_seasonal} were provided directly by the authors.
+Finally, data from both NGEE projets and the HyspIRI campaign were provided by Shawn Serbin.
 Collectively, these data are comprised of nearly 12,000 observations from 346 species, and span a wide geographic (Figure~\ref{fig:datamap}) and climatic range (Figure~\ref{fig:dataclimate}).
 
 %TODO: Maybe a summary of experimental treatments?
@@ -59,25 +57,18 @@ Where leaf spectra were provided as ``pseudo-absorbance'' ($1 - \log_{10}(R)$), 
 
 \subsection{Analysis}
 
-To compare PROSPECT versions, I plotted traits estimated by more than one version of PROSPECT as pairwise scatter plots, fit a least-squares linear regression to each and compared the result to a 1-to-1 line, and calculated the pairwise correlation coefficient (Figures~\ref{fig:prospect_pairs_N}-\ref{fig:prospect_pairs_Cm}).
-% * <dietze@bu.edu> 2018-04-11T13:01:34.687Z:
-% 
-% > more than one version of PROSPECT as pairwise scatter plots
-% This specific bit is confusing, and the overall sentence is a run-on.
-% 
-% ^.
 To validate PROSPECT inversions, I compared trait estimates from PROSPECT inversion with direct measurements of the corresponding traits, where these traits were available.
 To explore project-specific biases in the inversion, I fit least-squares linear regressions to investigate the ability of trait estimates from spectra to predict the measured traits, and I report the slopes, intercepts, and $R^2$ values of those regressions (Figure~\ref{fig:project_validation_summary}, Supplementary Tables~\ref{tab:r2_byproject_Cab}-\ref{tab:r2_byproject_Cm}).
 To identify species-specific errors, I also performed this analysis for each project-species combination with at least 5 observations (Figures~\ref{fig:error_speciesbyproj_Cab}-\ref{fig:error_speciesbyproj_Cm}).
 
 To investigate the effects of experimental treatments and environmental conditions, I fit a linear fixed effects model for each optical trait and each treatment, with an additional fixed effect for species if multiple species were present in that treatment.
 To investigate the role of intraspecific variability in climate, I subset the data to species that were present at at least 10 different sites and fit a fixed-effects model to each optical trait as a function of species, annual mean temperature, and annual precipitation.
-I then present the direction of each GLM coefficient and whether the coefficient was significant (Figure~\ref{fig:treatment_summary}).
+I then present the direction of each fixed effect coefficient and whether the coefficient was significant (Figure~\ref{fig:treatment_summary}).
 
-One study in this dataset---Yang et al.~(2016) \nocite{yang_2016_seasonal}---explicitly looked at the seasonal trajectories of leaf reflectance, allowing me the chance to look at the phenology of leaf optical traits (Figure~\ref{fig:trait_phenology}).
+One study in this dataset---Yang et al.~(2016)\nocite{yang_2016_seasonal}---explicitly looked at the seasonal trajectories of leaf reflectance, allowing me the chance to look at the phenology of leaf optical traits (Figure~\ref{fig:trait_phenology}).
 
 To investigate the correlations between optical traits and other traits measured directly, I calculated the pairwise non-missing correlations (R function \texttt{cor} with option \texttt{use = pairwise.complete.obs}) and plotted the resulting correlation coefficients using the \texttt{corrplot} package.
 I performed this analysis for both individual observations and species means, where a trait was observed for at least 3 species.
 
-I performed all analyses using R version 3.4.4~\cite{rstats}.
+I performed all analyses using R version 3.5~\cite{rstats}.
 The data and code for performing these analyses are open source and freely available at https://github.com/ashiklom/rspecan.

@@ -3,57 +3,6 @@
 \subsection{Estimating traits via PROSPECT inversion}
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{{figures/prospect_pairs_N}.png}
-  \caption{\
-    Inter-version comparison of estimates of number of leaf mesophyll layers.
-  }\label{fig:prospect_pairs_N}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\textwidth]{{figures/prospect_pairs_Cab}.png}
-  \caption{\
-    Inter-version comparison of estimates of number of total leaf chlorophyll content.
-  }\label{fig:prospect_pairs_Cab}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\textwidth]{{figures/prospect_pairs_Car}.png}
-  \caption{\
-    Inter-version comparison of estimates of number of total leaf carotenoid content.
-  }\label{fig:prospect_pairs_Car}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\textwidth]{{figures/prospect_pairs_Cw}.png}
-  \caption{\
-    Inter-version comparison of estimates of number of total leaf water content.
-  }\label{fig:prospect_pairs_Cw}
-\end{figure}
-
-\begin{figure}
-  \includegraphics[width=\textwidth]{{figures/prospect_pairs_Cm}.png}
-  \caption{\
-    Inter-version comparison of estimates of number of total leaf dry matter content.
-  }\label{fig:prospect_pairs_Cm}
-\end{figure}
-
-%TODO: Find a more concise way to represent these results
-
-The extent of agreement on trait estimates between different versions of PROSPECT was strongly trait-dependent.
-The most consistent inversion estimates were for leaf water content (Figure~\ref{fig:prospect_pairs_Cw}), which has a deep, wide-ranging, physically-based absorption coefficient that has not changed over the recent history of PROSPECT development~\cite{feret2008_prospect,feret2017_prospectd}.
-Retrievals of the effective number of leaf mesophyll layers (Figure~\ref{fig:prospect_pairs_N}) and leaf dry matter content (Figure~\ref{fig:prospect_pairs_Cm}) were slightly less but still highly consistent across versions, despite changes in the refractive index and absorption features of the remaining PROSPECT parameters.
-The ability of more recent versions of PROSPECT to differentiate between different types of pigments resulted in significant differences in pigment estimates between PROSPECT versions.
-% * <dietze@bu.edu> 2018-04-11T13:08:00.421Z:
-% 
-% > The ability of more recent versions of PROSPECT to differentiate between different types of pigments resulted in significant differences in pigment estimates between PROSPECT versions.
-% 
-% This is important but buried -- for a lot of these you don't EXPECT the estimates to be the same and thus all of these figures paint a misleading picture. Also, there's a lot more of these figures than there really needs to be given that this doesn't seem to be like a central question -- feels like something that's mostly supplemental.
-% 
-% ^.
-For chlorophyll content, the general trend is that the addition of additional pigments into the model (carotenoids in version 4, senescent brown pigments in 5, and anthocyanins in D) tends to reduce chlorophyll estimates, with the largest change happening between versions 4 and 5 (Figure~\ref{fig:prospect_pairs_Cab}).
-The most significant across-version differences were in estimates of carotenoid concentrations, particularly between PROSPECT 5/5B and D, where the addition of anthocyanins led to significant reductions in estimates of carotenoid concentrations at the top of their range (Figure~\ref{fig:prospect_pairs_Car}).
-
-\begin{figure}
   \includegraphics[width=\textwidth]{{figures/project_validation_summary}.pdf}
   \caption{\
     Validation of PROSPECT against observed trait values, by project and PROSPECT version
