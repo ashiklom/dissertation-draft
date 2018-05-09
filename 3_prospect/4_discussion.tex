@@ -1,25 +1,20 @@
 \section{Discussion}
 
+\subsection{Estimating traits through PROSPECT inversion}
+
 Establishing general, species- and site-independent relationships between leaf functional traits and optical properties is challenging.
-Across all projects and species, overall $R^2$ for all traits was, at best, around 50\% (for leaf water and chlorophyll content), and, for some trait-project combinations, effectively 0 (Figure~\ref{fig:project_validation_summary}).
-% * <emcowdery@gmail.com> 2018-04-12T06:44:38.704Z:
-% 
-% > overall $R^2$ for all traits was
-% Which tense are you using? *the* overall R2 *value* was,  overall R2 *values were*?
-% 
-% ^.
-% * <dietze@bu.edu> 2018-04-11T14:19:11.765Z:
-% 
-% > Across all projects and species, overall $R^2$ for all traits was, at best, around 50\% (for leaf water and chlorophyll content), and, for some trait-project combinations, effectively 0 (Figure~\ref{fig:project_validation_summary}).
-% 
-% If I drop the asides this sentence  becomes:
-% 
-% Across all projects and species, overall $R^2$ for all traits was around 50\% and effectively 0.
-% 
-% So you might try rewording
-% 
-% ^.
-Inversion accuracy was also strongly project- and species-dependent (Figures~\ref{fig:project_validation_summary} and~\ref{fig:error_speciesbyproj_Cab}-\ref{fig:error_speciesbyproj_Cm}), suggesting that trait estimation via a physically-based radiative transfer model largely suffers from much of the same lack of generality as empirical approaches such as vegetation indices and partial least-squares regression.
+My results suggest that Bayesian PROSPECT inversion is a promising technique for achieving this objective.
+Averaged across the entire dataset, spectral estimates of traits were able to capture 50 to 75\% of the variability in the true values of the traits (Figure~\ref{fig:project_validation_summary}).
+In addition, spectral trait estimates were able to not only identify but also ascribe a physiological mechanism to intra-specific variability associated with long-term acclimation and acute stress responses in both natural and experimental settings (Figure~\ref{fig:treatment_summary}).
+
+That being said, the large scale validation demonstrated here reveals enduring challenges and development opportunities for modeling leaf optical properties and retrieving leaf traits from spectra.
+The particularly poor inversion accuracy for grasses (Figures~\ref{fig:prospect_D_validation} and~\ref{fig:prospect_D_r2}) suggests that the biochemistry and morphology of grasses do not fit the assumptions of PROSPECT\@.
+Perhaps lower-hanging fruit is investigation of places where inversion estimates did well at capturing variability in traits, but were additively or multiplicatively biased.
+For example, estimates of chlorophyll and carotenoid content in herbs from two dramatically different environments and species (greenhouse-grown soybean and tundra vegetation) showed virtually the same multiplicative bias and accuracy (Figure~\ref{fig:prospect_D_validation}).
+One possible culprit in this is the fixed ratio of both chlorophyll (i.e.\ chlorophyll $a$ and $b$) in the current version of PROSPECT, whereas these relative concentrations are known to vary significantly in nature.
+ 
+Inversion accuracy was strongly project- and species-dependent, with good performace
+For one, inversion accuracy was also strongly project- and species-dependent (Figures~\ref{fig:project_validation_summary} and~\ref{fig:error_speciesbyproj_Cab}-\ref{fig:error_speciesbyproj_Cm}), suggesting that trait estimation via a physically-based radiative transfer model largely suffers from much of the same lack of generality as empirical approaches such as vegetation indices and partial least-squares regression.
 % * <dietze@bu.edu> 2018-04-11T14:22:11.316Z:
 % 
 % > the same lack of generality
@@ -67,13 +62,9 @@ Retrievals of leaf water content and total chlorophyll concentration had compara
 However, leaf water content retrievals exhibited clear and significant project-specific biases, especially at high values (Figure~\ref{fig:prospect_D_validation})
 Meanwhile, chlorophyll content retrieval was more consistently accurate across its entire range, even for needleleaved species (in the Di Vittorio dataset) (Figure~\ref{fig:prospect_D_validation}) that poorly fit the parallel-plane assumptions of the PROSPECT model~\cite{allen_1969_interaction,jacquemoud_1990_prospect} and, more importantly, despite the fact that the chlorophyll absorption coefficients for PROSPECT are calibrated only against the ANGERS dataset~\cite{feret_2008_prospect,feret_2017_prospectd}.
 Project-specific calibration has been shown to further improve the results of PROSPECT inversion~\cite{li_2013_retrieval}, which suggests that re-calibration of PROSPECT absorption coefficients against a wider range of species and environmental conditions (such as those used here) could lead to significant improvements in PROSPECT performance.
-Efforts to curate and make publicly available spectral observations, such as the ECOSIS project (ecosis.org), would significantly aid such efforts.
-% * <dietze@bu.edu> 2018-04-11T14:28:42.796Z:
-% 
-% > would 
-% Why "would"? Aren't they already doing this?
-% 
-% ^.
+Ongoing efforts to curate and make publicly available spectral observations, such as the ECOSIS project (ecosis.org), significantly aid such efforts.
+
+\subsection{Variation in optical traits}
 
 Moreover, although there are issues with the absolute values of trait retrievals,
 optical traits retrieved via PROSPECT inversion were useful for distinguishing the intraspecific effects of biotic and abiotic stressors on leaf structure and biochemistry (Figure~\ref{fig:treatment_summary}).
@@ -118,28 +109,19 @@ Similarly, the higher concentrations of carotenoid pigments under drought stress
 However, the significantly higher chlorophyll content under both warming and drought stress is surprising, since drought stress typically acts to reduce chlorophyll concentrations in plants (CITE).
 
 Finally, the effects of several different host-specific pathogens and chemical disturbances had significant negative impacts on all plant functional traits (Figure~\ref{fig:treatment_summary}).
-The negative effects of winter fleck, sucking and scale insects, and especially ozone damage on pine needles reported here match the earlier results of Di Vittorio for this dataset (REF) as well as the broader literature consensus on the damaging effects of ozone on plant physiology~\cite{lindroth_2010_impacts}.
+The negative effects of winter fleck, sucking and scale insects, and especially ozone damage on pine needles reported here match the earlier results of Di Vittorio (2009) for this dataset (REF) as well as the broader literature consensus on the damaging effects of ozone on plant physiology~\cite{lindroth_2010_impacts}.
 The same can be said for the adverse effects of Potato Virus Y~\cite{scholthof_2011_top10}.
-The demonstrated ability of this study to not only detect but to analyze the physiological impact of pathogens reinforces the value of leaf spectroscopy in agronomic settings.
-% * <dietze@bu.edu> 2018-04-11T18:19:45.470Z:
-% 
-% > in agronomic settings
-% Why would this be limited to agronomic settings? Most of what your reporting here is on forests
-% 
-% ^.
+The demonstrated ability of this study to not only detect but to analyze the physiological impact of pathogens reinforces the value of leaf spectroscopy in both natural and agronomic settings.
 
 % TODO: Phenology?
 
 Analyses of variance in optical traits pose trouble for studies that group plants into distinct categories with fixed functional traits.
-For one, the extend of intra-specific variability in optical traits is substantial---from 30\% for leaf structure and dry matter content to nearly 50\% for pigment concentrations (Figure~\ref{fig:within_vs_across}).
-% * <dietze@bu.edu> 2018-04-11T18:26:38.816Z:
-% 
-% >  extend
-% extent
-% 
-% ^.
+For one, the extent of intra-specific variability in optical traits is substantial---from 30\% for leaf structure and dry matter content to nearly 50\% for pigment concentrations (Figure~\ref{fig:within_vs_across}).
 This echoes the results of other studies that have found similar degrees of intraspecific variability in various plant traits (CITE).
 Moreover, the interspecific variability is poorly explained by a wide range of species attributes (notably, a wider range of attributes than is typically used to define plant functional types for dynamic vegetation models, CITE)---even collectively, these traits are able to explain at most around 30\% of interspecific variability.
+
+\subsection{Patterns of trait correlation}
+
 However, there are several sources of potential optimism.
 First of all, as the earlier analysis of intraspecific variability shows (Figures~\ref{fig:treatment_summary} and~\ref{fig:trait_phenology}), this variability is not random; many traits respond predictably and consistently to changing environmental conditions.
 A key objective of trait ecology should therefore be to identify the general responses of traits to environmental conditions, and consequently to incorporate these response functions into vegetation models.
