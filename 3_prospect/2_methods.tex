@@ -58,18 +58,18 @@ Where leaf spectra were provided as ``pseudo-absorbance'' ($1 - \log_{10}(R)$), 
 \subsection{Analysis}
 
 To validate PROSPECT inversions, I compared trait estimates from PROSPECT inversion with direct measurements of the corresponding traits, where these traits were available.
-To explore project-specific biases in the inversion, I fit least-squares linear regressions to investigate the ability of trait estimates from spectra to predict the measured traits, and I report the slopes, intercepts, and $R^2$ values of those regressions (Figure~\ref{fig:project_validation_summary}, Supplementary Tables~\ref{tab:r2_byproject_Cab}-\ref{tab:r2_byproject_Cm}).
+To explore project- and plant functional type-specific biases in the inversion, I fit robust linear regressions (via iterated re-weighted least squares, as implemented in the \texttt{rlm} function in the \texttt{MASS} R package) to investigate the ability of trait estimates from spectra to predict the measured traits (Figure~\ref{fig:project_validation_summary}).
 To identify species-specific errors, I also performed this analysis for each project-species combination with at least 5 observations (Figures~\ref{fig:error_speciesbyproj_Cab}-\ref{fig:error_speciesbyproj_Cm}).
 
 To investigate the effects of experimental treatments and environmental conditions, I fit a linear fixed effects model for each optical trait and each treatment, with an additional fixed effect for species if multiple species were present in that treatment.
 To investigate the role of intraspecific variability in climate, I subset the data to species that were present at least 10 different sites and fit a fixed-effects model to each optical trait as a function of species, annual mean temperature, and annual precipitation.
 I then present the direction of each fixed effect coefficient and whether the coefficient was significant (Figure~\ref{fig:treatment_summary}).
 
-One study in this dataset---Yang et al.~(2016)\nocite{yang_2016_seasonal}---explicitly looked at the seasonal trajectories of leaf reflectance, allowing me the chance to look at the phenology of leaf optical traits (Figure~\ref{fig:trait_phenology}).
+One study in this dataset---Yang et al.~(2016)\nocite{yang_2016_seasonal}---explicitly looked at the seasonal trajectories of leaf reflectance, allowing me the chance to investigate the phenology of leaf optical traits (Figure~\ref{fig:trait_phenology}).
 
+To investigate the correlations among leaf optical traits, I performed a principal components analysis on the pairwise correlation matrix of all inversion estimates (Figure~\ref{fig:prospect_pca}).
 To investigate the correlations between optical traits and other traits measured directly, I calculated the pairwise non-missing correlations (R function \texttt{cor} with option \texttt{use = pairwise.complete.obs}) and plotted the resulting correlation coefficients using the \texttt{corrplot} package.
-I performed this analysis for both individual observations and species means, where a trait was observed for at least 3 species.
+I performed this analysis for both individual observations and species means, where a trait was observed for at least 3 individuals or species, respectively.
 
 I performed all analyses using R version 3.5~\cite{rstats}.
-The data and code for performing these analyses are open source and freely available at https://github.com/ashiklom/rspecan.
-
+The data and code for performing these analyses are open source and freely available at \texttt{https://github.com/ashiklom/rspecan}.

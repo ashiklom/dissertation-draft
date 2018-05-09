@@ -3,36 +3,47 @@
 \subsection{Estimating traits via PROSPECT inversion}
 
 \begin{figure}
+  \centering
   \includegraphics[width=\textwidth]{{figures/project_validation_summary}.pdf}
   \caption{\
-    Validation of PROSPECT against observed trait values, by project and PROSPECT version
+    Validation of PROSPECT against observed trait values, by project and PROSPECT version.
+    Y-axis represents $R^2$ values for robust linear regression.
   }\label{fig:project_validation_summary}
 \end{figure}
 
 Across most projects and traits, the four different PROSPECT versions performed similarly in terms of their ability to retrieve traits (Figure~\ref{fig:project_validation_summary}).
 For all versions of PROSPECT, leaf water content was consistently the most accurate trait retrieved, while retrievals of other traits were highly project-specific.
-For several projects spanning a large range of species (Cali.\ Eco.\ Traits, NASA FFT, and NASA HyspIRI), moving from chlorophyll as the only pigment (PROSPECT 4) to chlorophyll and carotenoids (PROSPECT 5/5B) drastically reduced inversion accuracy of dry matter contents, but this accuracy was restored by the further addition of anthocyanins and modification of the refractive index in PROSPECT D (Figure~\ref{fig:project_validation_summary})
-Inversion accuracy also varied significantly by project, which can largely be explained by differences in the species sampled across different projects (Supplementary Figures~\ref{fig:error_speciesbyproj_Cab}-\ref{fig:error_speciesbyproj_Cm}).
+For several projects spanning a large range of species (Cali.\ Eco.\ Traits, NASA FFT, and NASA HyspIRI), moving from chlorophyll as the only pigment (PROSPECT 4) to chlorophyll and carotenoids (PROSPECT 5/5B) drastically reduced inversion accuracy of dry matter contents, but this accuracy was restored by the further addition of anthocyanins and modification of the refractive index in PROSPECT D (Figure~\ref{fig:project_validation_summary}).
 Because PROSPECT-D also retrieves anthocyanin content and generally performed as well or better than other versions, it was the version selected for subsequent analyses.
-A more detailed validation for PROSPECT-D is shown in Figure~\ref{fig:prospect_D_validation}.
-
-%TODO: More here?
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{{figures/prospect_D_validation}.pdf}
+  \centering
+  \includegraphics[width=\textwidth]{3_prospect/figures/validation_by_gf.pdf}
   \caption{\
     Validation of PROSPECT-D against observed trait values.
     Grey lines indicate 95\% confidence intervals around trait estimates.
-    Solid, colored lines are least-squares regressions fit to the data by project.
-    The solid black line is a regression fit to all of the data all at once.
+    Solid, colored lines are robust regressions fit to the data by project and functional type.
+    The solid black line is a regression fit to all of the data for a given functional type.
     The dashed black line is a 1 to 1 fit.
   }\label{fig:prospect_D_validation}
 \end{figure}
-% * <dietze@bu.edu> 2018-04-11T13:12:57.094Z:
-% 
-% Units are missing on the "measured trait"
-% 
-% ^.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{3_prospect/figures/r2_by_gf.pdf}
+  \caption{%
+    $R^2$ values from robust linear regression of direct trait observations as a function of PROSPECT-D inversion estimates.
+    Colors indicate functional type, as determined by the interaction of growth form and leaf morphology.
+  }\label{fig:prospect_D_r2}
+\end{figure}
+
+Inversion accuracy varied significantly by project and growth form (Figures~\ref{fig:project_validation_summary},~\ref{fig:prospect_D_validation}, and~\ref{fig:prospect_D_r2}).
+In terms of regression $R^2$, inversion accuracy was highest for broadleaved trees, lower for herbs and needleleaved trees, and lowest for grasses.
+However, there was substantial project-specific variability in accuracy between these groups.
+For example, both water and LMA retrievals from the Californa Ecosystem Traits dataset were consistently much worse than for other datasets for both broadleaved and needleleaved trees, while the LOPEX and ANGERS datasets (against which PROSPECT is calibrated) performed very well for all traits for broadleaved trees, herbs, and grasses.
+The full pairs plot (Figure~\ref{fig:prospect_D_validation}) reveals that regression $R^2$ is insufficient for capturing all of the patterns in the validation.
+In several cases (e.g.\ water and LMA retrieval for conifers from the NASA FFT dataset, or carotenoid retrievals from the soybean aphid dataset), there is a saturation effect, whereby accuracy is good at lower trait values but declines as trait values increase.
+In other cases, there is a significant additive and/or multiplicative bias in retrievals --- for instance, in the retrieval of chlorophyll and carotenoid contents from herbs.
 
 \subsection{Drivers of variability in leaf optical traits}
 
@@ -50,24 +61,20 @@ A more detailed validation for PROSPECT-D is shown in Figure~\ref{fig:prospect_D
     Fraction of across-species variance in each optical trait (i.e.~species means) explained by species attributes,
     based on analysis of variance on least-squares linear regression.
     A star (*) indicates attribute effects significant at the 90\% confidence interval.
+    Attributes are as follows:
+    \texttt{myco\_is\_am} --- Mycorrhizal fungi association (Arbuscular or other such as Ectyomycorrhizal or Ericoid);
+    \texttt{nitrogen\_fixer} --- whether the species is a Nitrogen fixer;
+    \texttt{growth\_form} --- tree, shrub, herb, or grass;
+    \texttt{ps\_type} --- photosynthetic pathway (C3 or C4);
+    \texttt{leaf\_type} --- leaf morphology (broadleaved or needleleaved);
+    \texttt{phenology} --- whether the species is deciduous or evergreen.
   }\label{fig:across_species_anova}
-% * <fer.istem@gmail.com> 2018-04-11T19:46:59.552Z:
-% 
-% don't see ps_type defined anywhere
-% 
-% ^.
 \end{figure}
 
 Across all optical traits, roughly half of variability was explained by species identity (Figure~\ref{fig:within_vs_across}).
 The variance across species means was largely ideosyncratic to species, with only up to 25\% of variance explainable by species attributes (Figure~\ref{fig:across_species_anova}).
 The most important explanatory attribute was leaf phenology (deciduous vs.~evergreen), with occassional significant effects for leaf type (broad vs.~needle), growth form (woody vs.~herbaceous), and mycorrhizal association (arbuscular or non-arbuscular). 
-% * <fer.istem@gmail.com> 2018-04-12T12:20:58.818Z:
-% 
-% how did you come up with this set of attributes?
-% 
-% what about tolerances (shade, drought), resistances (fire, herbivore) etc.
-% 
-% ^.
+
 \begin{figure}
   \includegraphics[width=\textwidth]{{figures/treatment_summary}.pdf}
   \caption{\
@@ -78,47 +85,18 @@ The most important explanatory attribute was leaf phenology (deciduous vs.~everg
 \end{figure}
 
 Leaf optical traits responded significantly to a range of natural and experimental stressors (Figure~\ref{fig:treatment_summary}).
-Intraspecific variability in optical traits was weakly but, in some cases, significantly related to climate, with the strongest effects being declines in mesophyll structure and dry matter content with increasing temperature.
+Across the entire dataset, intraspecific variability in optical traits was weakly but, in some cases, significantly related to climate, with the strongest effects being declines in mesophyll structure and dry matter content with increasing temperature.
+Canopy light environment (i.e.\ whether a leaf was sunlit or shaded) also had a significant effect on most traits, at least for species on which a comparison was possible.
+Specifically, shaded leaves showed higher chlorophyll and anthocyanin concentrations and reduced mesophyll structure and water and dry matter contents.
+
 Based on leaf reflectance measurements of \textit{Populus deltoides} (eastern cottonwood) at the University of Arizona by Barnes et al.~(2017), \nocite{barnes_2017_beyond}
-% * <dietze@bu.edu> 2018-04-11T13:20:03.945Z:
-% 
-% > Based on leaf reflectance
-% Seems like a new paragraph. Switching from discussing overall correlations in the dataset to discussing results from specific experiments.
-% 
-% ^.
-seasonal variations in leaf and air temperature had statistically significant but relatively small impacts on pigment concentrations.
-Warming and drought experiments on \textit{Asclepias syriaca} (common milkweed) had strong and statistically significant effects on almost all optical traits, with both treatments leading to significant decreases in leaf water content and effective number of mesophyll layers and increases in pigments and dry matter content concentrations.
-% * <dietze@bu.edu> 2018-04-11T13:21:29.452Z:
-% 
-% > Warming and drought experiments
-% Are we moving on to different experiments at different site, or still Barnes? If the former, say where an provide citations.
-% 
-% ^.
-In two independent studies, optical traits also responded significantly to chemical (ozone, winter fleck) and biotic (insects, viruses) stressors---all of these stressors significantly reduced concentrations of pigments, and typically also reduced water and dry matter contents, with ozone damage having the most significant effect.
-% * <dietze@bu.edu> 2018-04-11T13:22:57.054Z:
-% 
-% > winter fleck
-% What is winter fleck?
-% 
-% ^ <tmccabe@bu.edu> 2018-04-12T15:24:38.886Z:
-% 
-% +1
-%
-% ^.
-% * <dietze@bu.edu> 2018-04-11T13:22:34.227Z:
-% 
-% > two independent studies
-% CITATIONS!  Also, what systems/species where these studies in?
-% 
-% ^.
-On the other hand, treatment of \textit{Glycine max} (soybean) with aphids resulted in a small but significant increase in pigment concentrations, with the strongest effect observed at medium-level treatment.
-Finally, across the projects and species for which data were available for both sunlit and shaded leaves, shaded leaves had higher chlorophyll and anthocyanin concentrations and lower number of mesophyll layers and water and dry matter contents.
-% * <dietze@bu.edu> 2018-04-11T13:24:20.646Z:
-% 
-% > across the projects and species for which data were available
-% This should go up with the previous across study discussion points.
-% 
-% ^.
+seasonal variations in vapor pressure deficit---but not leaf temperature---had significant negative effects on all traits, with the strongest effects on chlorophyll and anthocyanin contents.
+Similarly, warming and drought experiments on \textit{Asclepias syriaca} (common milkweed)  had strong and significant effects on almost all optical traits, with both treatments leading to significant decreases in leaf water content and effective number of mesophyll layers and increases in pigments and dry matter content concentrations~\cite{milkweed_data}.
+Leaf optical traits also responded significantly to chemical and biotic stressors.
+Based on data from Di Vittorio (2009) \nocite{divittorio_2009_enhancing}, needles of \textit{Pinus ponderosa} and \textit{Pinus jeffreyi} from the northern Sierra Nevada mountains experienced reductions in all traits, but most strongly in pigment and dry matter contents,
+when afflicted with winter fleck (patchy mortality of needle epidermal cells, usually triggered by exposure to harsh winter weather), sucking and scale insect, and especially ozone damage.
+As well, spectral inversion revealed small but statistically significant declines across all optical traits except anthocyanins in \textit{Solanum tuberosum} (potato) plants infected with potato virus Y~\cite{solanum_pvy_data}.
+On the other hand, treatment of \textit{Glycine max} (soybean) with aphids resulted in a small but significant increase in pigment concentrations, with the strongest effect observed at medium-level treatment~\cite{soybean_data}.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{{figures/trait_phenology}.pdf}
@@ -139,7 +117,7 @@ All optical traits showed a peak in late July / early August, followed by a decl
 % How could EVERYTHING within the leaf decline? Shouldn't something increase, if only on a relative basis?
 % 
 % ^.
-However, the effective number of leaf mesophyll layers, and to a lesser extent, leaf dry matter content in sunlit leaves increased in the late fall. 
+However, the effective number of leaf mesophyll layers, and to a lesser extent, leaf dry matter content in sunlit leaves, appeared to increase in the late fall.
 % * <dietze@bu.edu> 2018-04-11T13:26:48.623Z:
 % 
 % > effective number of leaf mesophyll layers, and to a lesser extent, leaf dry matter content in sunlit leaves increased in the late fall.
@@ -172,21 +150,7 @@ In the first two principal components, which collectively explain roughly 70\% o
 % Three groupings that appear to fall along distinct axes?
 % 
 % ^.
-% * <dietze@bu.edu> 2018-04-11T13:31:23.496Z:
-% 
-% > In the first two principal components
-% 
-% Looking back at the Methods, I can't find any mention of a plan to do a PCA. Never introduce new analyses in the Results.
-% 
-% ^.
 Variation along the third principal component, which brings the cumulative variance up to roughly 80\%, is defined by a trade-off between water and anthocyanins.
-% * <emcowdery@gmail.com> 2018-04-12T06:39:17.797Z:
-% 
-% > cumulative variance up to roughly 80\%
-% But itself only adds ~10% 
-% (It's just a wording thing, it's important to note that just the first 2 PCs add up to 80% but be clear about how little the second contributes in comparison the to the first) 
-% 
-% ^.
 
 \begin{figure}
   \includegraphics[width=\textwidth]{figures/trait_correlations_areabars.pdf}
@@ -194,7 +158,7 @@ Variation along the third principal component, which brings the cumulative varia
     Intra-specific pairwise correlations of optical traits with direct measurements of
     leaf N, C, cellulose, lignin, Vcmax, and Jmax.
     Darker colors indicate larger sample sizes.
-    Species in each facet row are sorted by correlation averaged across all traits.
+    Species are displayed along the y axis, and are sorted within each facet from highest to lowest average correlation across all traits.
     Analysis was performed only for species with at least 10 pairwise observations of each trait.
 % * <dietze@bu.edu> 2018-04-11T14:16:31.779Z:
 % 
