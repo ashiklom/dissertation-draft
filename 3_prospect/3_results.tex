@@ -40,7 +40,7 @@ Because PROSPECT-D also retrieves anthocyanin content and generally performed as
 Inversion accuracy varied significantly by project and growth form (Figures~\ref{fig:project_validation_summary},~\ref{fig:prospect_D_validation}, and~\ref{fig:prospect_D_r2}).
 In terms of regression $R^2$, inversion accuracy was highest for broadleaved trees, lower for herbs and needleleaved trees, and lowest for grasses.
 However, there was substantial project-specific variability in accuracy between these groups.
-For example, both water and LMA retrievals from the Californa Ecosystem Traits dataset were consistently much worse than for other datasets for both broadleaved and needleleaved trees, while the LOPEX and ANGERS datasets (against which PROSPECT is calibrated) performed very well for all traits for broadleaved trees, herbs, and grasses.
+For example, both water and LMA retrievals from the California Ecosystem Traits dataset were consistently much worse than for other datasets for both broadleaved and needleleaved trees, while the LOPEX and ANGERS datasets (against which PROSPECT is calibrated) performed very well for all traits for broadleaved trees, herbs, and grasses.
 The full pairs plot (Figure~\ref{fig:prospect_D_validation}) reveals that regression $R^2$ is insufficient for capturing all of the patterns in the validation.
 In several cases (e.g.\ water and LMA retrieval for conifers from the NASA FFT dataset, or carotenoid retrievals from the soybean aphid dataset), there is a saturation effect, whereby accuracy is good at lower trait values but declines as trait values increase.
 In other cases, there is a significant additive and/or multiplicative bias in retrievals --- for instance, in the retrieval of chlorophyll and carotenoid contents from herbs.
@@ -62,7 +62,7 @@ In other cases, there is a significant additive and/or multiplicative bias in re
     based on analysis of variance on least-squares linear regression.
     A star (*) indicates attribute effects significant at the 90\% confidence interval.
     Attributes are as follows:
-    \texttt{myco\_is\_am} --- Mycorrhizal fungi association (Arbuscular or other such as Ectyomycorrhizal or Ericoid);
+    \texttt{myco\_is\_am} --- Mycorrhizal fungi association (arbuscular or other such as ectomycorrhizal or ericoid);
     \texttt{nitrogen\_fixer} --- whether the species is a Nitrogen fixer;
     \texttt{growth\_form} --- tree, shrub, herb, or grass;
     \texttt{ps\_type} --- photosynthetic pathway (C3 or C4);
@@ -72,8 +72,8 @@ In other cases, there is a significant additive and/or multiplicative bias in re
 \end{figure}
 
 Across all optical traits, roughly half of variability was explained by species identity (Figure~\ref{fig:within_vs_across}).
-The variance across species means was largely ideosyncratic to species, with only up to 25\% of variance explainable by species attributes (Figure~\ref{fig:across_species_anova}).
-The most important explanatory attribute was leaf phenology (deciduous vs.~evergreen), with occassional significant effects for leaf type (broad vs.~needle), growth form (woody vs.~herbaceous), and mycorrhizal association (arbuscular or non-arbuscular). 
+The variance across species means was largely idiosyncratic to species, with only up to 25\% of variance explainable by species attributes (Figure~\ref{fig:across_species_anova}).
+The most important explanatory attribute was leaf phenology (deciduous vs.~evergreen), with occasional significant effects for leaf type (broad vs.~needle), growth form (woody vs.~herbaceous), and mycorrhizal association (arbuscular or non-arbuscular). 
 
 \begin{figure}
   \includegraphics[width=\textwidth]{{figures/treatment_summary}.pdf}
@@ -101,7 +101,7 @@ On the other hand, treatment of \textit{Glycine max} (soybean) with aphids resul
 \begin{figure}
   \includegraphics[width=\textwidth]{{figures/trait_phenology}.pdf}
   \caption{\
-    Optical trait estimates through a season for Quercus rubra (red oak) at Martha's Vineyard, MA by Yang et al.~(2016).
+    Optical trait estimates through a season for \textit{Quercus rubra} (red oak) at Martha's Vineyard, MA by Yang et al.~(2016).
     Colors indicate sunlit vs.~shaded leaves.
     Line is a LOESS best fit with shaded standard error.
   }\label{fig:trait_phenology}
@@ -180,7 +180,7 @@ In general, for any given species, most of the estimated optical traits exhibite
 For instance, for soybean (GLMA4), all optical traits were positively correlated with leaf N, C, cellulose, and lignin, whereas for milkweed, all of these correlations were negligible.
 Leaf nitrogen correlated best for the largest number of species with leaf chlorophyll and, to a slightly lesser extent, with dry matter content.
 Leaf carbon and lignin were most consistently correlated with leaf dry matter content, while correlations with cellulose were more idiosyncratic.
-Vcmax and Jmax were strongly positively correlated with all traits for \textit{Populus delotoides} (PODE3), but completely uncorrelated for milkweed (ASSY).
+Vcmax and Jmax were strongly positively correlated with all traits for \textit{Populus deltoides} (PODE3), but completely uncorrelated for milkweed (ASSY).
 
 % TODO: Mass traits?
 
