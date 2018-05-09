@@ -125,50 +125,42 @@ With the exception of anthocyanin content, all traits for shaded leaves were hig
 \end{figure}
 
 Optical traits estimated by PROSPECT are not mutually independent, but rather have some structure to their covariance (Figure~\ref{fig:prospect_pca}).
-In the first two principal components, which collectively explain roughly 70\% of the variability, variation occurs along one of three axes---one defined by chlorophyll, carotenoid, and water contents, another defined by leaf structure and dry matter content, and a third defined by anthocyanin concentration.
-% * <dietze@bu.edu> 2018-04-11T13:32:28.770Z:
-% 
-% > three axes
-% Confusing -- how do the first two PCA have 3 axes?
-% 
-% ^ <emcowdery@gmail.com> 2018-04-12T06:37:57.092Z:
-% 
-% Three groupings that appear to fall along distinct axes?
-% 
-% ^.
-Variation along the third principal component, which brings the cumulative variance up to roughly 80\%, is defined by a trade-off between water and anthocyanins.
+The first principal component, which explains roughly 50\% of the variability, is defined by increases in all leaf traits and can be interpreted as overall leaf size and tissue density.
+The second principal component, which explains an additional 20\% of the variability, is characterized by an approximate trade-off between structural (mesophyll structure and dry matter content) and physiological (chlorophyll, carotenoid, and water contents).
+The third principal component, which explains a further 15\% of the variability, is dominated by a trade-off in water and anthocyanin concentrations.
 
 \begin{figure}
-  \includegraphics[width=\textwidth]{figures/trait_correlations_areabars.pdf}
+  \centering
+  \includegraphics[width=\textwidth]{3_prospect/figures/trait_correlations_lollipop.pdf}
   \caption{\
-    Intra-specific pairwise correlations of optical traits with direct measurements of
-    leaf N, C, cellulose, lignin, Vcmax, and Jmax.
-    Darker colors indicate larger sample sizes.
+    Intra-specific pairwise correlations of optical traits with direct measurements of area-based
+    leaf N, C, cellulose, lignin, $V_{c,\max}$, and $J_{\max}$.
+    Colors indicate plant functional type.
     Species are displayed along the y axis, and are sorted within each facet from highest to lowest average correlation across all traits.
     Analysis was performed only for species with at least 10 pairwise observations of each trait.
-% * <dietze@bu.edu> 2018-04-11T14:16:31.779Z:
-% 
-% Y-axis needs to be explained. Try to make this bigger so the font size isn't so small -- maybe put C and N on one page, and everything else on the next?
-% 
-% ^.
   }\label{fig:trait_correlations}
 \end{figure}
 
-Covariance of optical traits with six area-normalized traits---leaf nitrogen, carbon, cellulose, and lignin contents, Vcmax, and Jmax---was strongly species specific, but, in many cases, substantial (Figure~\ref{fig:trait_correlations}).
-% * <dietze@bu.edu> 2018-04-11T14:13:48.873Z:
-% 
-% > strongly species specific
-% 
-% Did you not also look at the interspecific correlations? Everything below seems to be intraspecific.
-% 
-% ^.
+Covariance of optical traits with six area-normalized traits---leaf nitrogen, carbon, cellulose, and lignin contents, $V_{c,\max}$, and $J_{\max}$---was strongly species specific, but, in many cases, substantial (Figure~\ref{fig:trait_correlations}).
 In general, for any given species, most of the estimated optical traits exhibited similar correlations with the directly measured trait.
-For instance, for soybean (GLMA4), all optical traits were positively correlated with leaf N, C, cellulose, and lignin, whereas for milkweed, all of these correlations were negligible.
+For instance, for Glycine (\textit{Glycine max}, GLMA4), all optical traits were positively correlated with leaf N, C, cellulose, and lignin, whereas for milkweed (\textit{Asclepias syriaca}, ASSY), all of these correlations were negligible.
 Leaf nitrogen correlated best for the largest number of species with leaf chlorophyll and, to a slightly lesser extent, with dry matter content.
 Leaf carbon and lignin were most consistently correlated with leaf dry matter content, while correlations with cellulose were more idiosyncratic.
-Vcmax and Jmax were strongly positively correlated with all traits for \textit{Populus deltoides} (PODE3), but completely uncorrelated for milkweed (ASSY).
+$V_{c,\max}$ and $J_{\max}$ were strongly positively correlated with all traits for \textit{Populus deltoides} (PODE3), but completely uncorrelated for milkweed (ASSY).
+Correlations between optical and other traits were generally strongest for broadleaf trees, somewhat weaker for needleleaved trees, and weakest for herbs and grasses.
+Although this was also the general pattern in the validation, exploratory analyses (not shown) do not find any consistent relationship between validation $R^2$ and correlation.
 
-% TODO: Mass traits?
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{3_prospect/figures/trait_correlations_species.pdf}
+  \caption{%
+    Pairwise correlations among species means for PROSPECT inversion estimates and other, directly-measured area-normalized traits.
+    In lower diagonal, circle color and size indicate correlation direction and strength, respectively.
+    Values in upper diagonal are correlation coefficients, colored by direction and strength.
+  }\label{fig:trait_correlations_species}
+\end{figure}
 
-%On a mass basis, leaf number of mesophyll layers and dry matter contents were negatively correlated with direct pigment measurements and protein contents and weakly positively correlated with cellulose, hydrogen, fat, and non-structural carbohydrates.
-%Pigments exhibited strong
+Among species means, almost all area-based traits were at least weakly positively correlated with each other (Figure~\ref{fig:trait_correlations_species}).
+Among optical traits, the strongest correlations were among the three pigments, and of leaf water and dry matter contents.
+Spectrally-estimated leaf mesophyll structure and dry matter content correlated strongly with traits related to structure, namely C, cellulose, lignin, and fiber contents.
+Leaf N was most strongly correlated with dry matter and water contents and leaf mesophyll structure, and only weakly correlated with chlorophyll and carotenoid contents.
