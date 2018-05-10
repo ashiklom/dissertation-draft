@@ -59,7 +59,7 @@ Where leaf spectra were provided as ``pseudo-absorbance'' ($1 - \log_{10}(R)$), 
 
 To validate PROSPECT inversions, I compared trait estimates from PROSPECT inversion with direct measurements of the corresponding traits, where these traits were available.
 To explore project- and plant functional type-specific biases in the inversion, I fit robust linear regressions (via iterated re-weighted least squares, as implemented in the \texttt{rlm} function in the \texttt{MASS} R package) to investigate the ability of trait estimates from spectra to predict the measured traits (Figure~\ref{fig:project_validation_summary}).
-To identify species-specific errors, I also performed this analysis for each project-species combination with at least 5 observations (Figures~\ref{fig:error_speciesbyproj_Cab}-\ref{fig:error_speciesbyproj_Cm}).
+%To identify species-specific errors, I also performed this analysis for each project-species combination with at least 5 observations (Figures~\ref{fig:error_speciesbyproj_Cab}-\ref{fig:error_speciesbyproj_Cm}).
 
 To investigate the effects of experimental treatments and environmental conditions, I fit a linear fixed effects model for each optical trait and each treatment, with an additional fixed effect for species if multiple species were present in that treatment.
 To investigate the role of intraspecific variability in climate, I subset the data to species that were present at least 10 different sites and fit a fixed-effects model to each optical trait as a function of species, annual mean temperature, and annual precipitation.
