@@ -1,20 +1,8 @@
 \section{Introduction}
-% * <fer.istem@gmail.com> 2018-05-02T18:26:57.871Z:
-% 
-% I liked the flow of introduction
-% 
-% ^.
-
 My previous chapters have shown that models have much to gain, both in terms of direct parameter constraint from trait observations and from new process representations that emerge from trait ecology more broadly.
 However, there are limits on the extent to which traits alone can improve models.
 For one, even after examining a broad range of inter- and intraspecific factors, large fractions of variability in plant function remain unexplained.
 Moreover, vegetation models are simplified abstractions of reality, with many processes omitted or represented by simplistic empirical equations with little-to-no physical basis and therefore no directly measurable trait that can serve as a parameter constraint.
-% * <fer.istem@gmail.com> 2018-05-02T18:02:57.407Z:
-% 
-% > Moreover, vegetation models are simplified abstractions of reality, with many processes omitted or represented by simplistic empirical equations with little-to-no physical basis and therefore no directly measurable trait that can serve as a parameter constraint.
-% although I tend to agree, this reads as a very strong statement, almost invalidating you previous chapters? maybe tone it down a little
-% 
-% ^.
 In these cases, models can only be calibrated via their emergent predictions of state variables, that is through data assimilation.
 
 Many previous efforts have used various data streams calibrate or constrain dynamic vegetation model parameters and states.
@@ -46,12 +34,7 @@ In the context of dynamic vegetation modeling, this can be accomplished by coupl
 % ^.
 Such an approach takes advantage of the fact that surface reflectance contains valuable information about vegetation structure and function without relying on the independent retrieval of these characteristics from reflectance data alone, which is often an ill-posed problem~\cite{combal_2003_retrieval,lewis_2007_spectral}.
 Moreover, besides enabling assimilation of remotely sensed data, training models to accurately simulate surface reflectance is essential to properly quantifying and testing hypotheses related to vegetation-climate interactions and feedbacks.
-For instance, the net climate effect of ongoing changes in Arctic vegetation composition depends on the balance of opposing shortwave (lower albedo) and longwave (increased transpiration) radiative feedbacks~\cite{Swann_2010_changes}, so forecasting this effect requires accurate models of canopy energy transfer.
-% * <dietze@bu.edu> 2018-05-02T21:45:34.865Z:
-% 
-% don't follow the (increased transpiration) part -- that's the LE flux and here you're talking about the LW flux, which is a completely different term in the energy budget
-% 
-% ^.
+For instance, the net climate effect of ongoing changes in Arctic vegetation composition depends on the balance of opposing radiative (lower albedo) and latent (increased transpiration) energy feedbacks~\cite{Swann_2010_changes}, so forecasting this effect requires accurate models of canopy energy transfer.
 More fundamentally, light availability is a key control of photosynthesis and therefore has
 immediate, direct consequences for individual plant function~\cite{hikosaka_1995_model,robakowski_2004_needle,Niinemets_2016_within,Keenan_2016_global}
 as well as longer-term, indirect consequences for competition and ecological succession~\cite{Niinemets_2006_tolerance,Kitajima_2013_leaf,Falster_2017_multitrait}.
@@ -67,4 +50,4 @@ Indeed, an analysis by Viskari et al.\ (in review) \nocite{Viskari_inreview_ED} 
 Building on the work of Viskari et al., the objective of this chapter is to develop and demonstrate the calibration and validation of the ED2 model using remotely sensed surface reflectance.
 First, I link the canopy radiative transfer model in ED2 with the PROSPECT leaf radiative transfer model to allow ED to predict full-range, hyperspectral surface reflectance at each time step.
 Second, I calibrate this coupled leaf-canopy radiative transfer model at a number of sites in the US Midwest and Northeast where coincident plot vegetation survey data and observations of the NASA Airborne Visible/InfraRed Imaging Spectrometer (AVIRIS) are available.
-Finally, I evaluate the ability of ED2 to predict the dynamics of stable, mid-successional forest at a 5-10 year time scale, as well as the regrowth a forest following a clear cut across several decades, by running ED ensembles and comparing their predictions of surface reflectance to Landsat time series of surface reflectance.
+Finally, I evaluate the ability of ED2 to predict the dynamics of stable, mid-successional forest at a 5--10 year time scale, as well as the regrowth a forest following a clear cut across several decades, by running ED ensembles and comparing their predictions of surface reflectance to Landsat time series of surface reflectance.

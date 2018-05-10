@@ -68,6 +68,7 @@ Based on ED's PFT definitions, these sites contained a total of five different t
 % not sure if it matters but the deciduousness gradient is not detectible from the color scheme, all points seem either 0 or 1 to me
 % 
 % ^.
+% TODO: Change colors to be top cohort
 
 I calibrated EDR using the same general Bayesian RTM inversion described in Chapter 3.
 The inversion fit all sites simultaneously, such that at every MCMC iteration, the algorithm proposed a set of all parameter values for each PFT and simulated spectra for each site based on its observed composition and structure.
@@ -84,8 +85,8 @@ For priors on the leaf biomass allometry parameters, I fit a multivariate normal
 % ^.
 For the clumping factor, I used a uniform prior across its full range (0 to 1), and for the leaf orientation factor, I used a weakly informative re-scaled beta distribution centered on 0.5.
 
-I present posterior estimates for each parameter summarized as mean and 95\% confidence interval in Figure~\ref{fig:pda_posteriors}.
-To evaluate the performance of the model, I compared the prior and posterior credible interval of the modeled spectra to the observations at each site, of which I show a subset in Figure~\ref{fig:site_comparison}.
+I present posterior estimates for each parameter summarized as mean and 95\% confidence interval (Figure~\ref{fig:pda_posteriors}).
+To evaluate the performance of the model, I compared the prior and posterior credible interval of the modeled spectra to the observations at each site (Figure~\ref{fig:site_comparison}).
 % * <dietze@bu.edu> 2018-05-02T22:08:48.140Z:
 % 
 % You shouldn't include links to analysis figures in the Methods section -- those should come in the Results
