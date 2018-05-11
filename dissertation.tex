@@ -58,6 +58,17 @@
 \newcommand{\area}{\text{area}}
 %==========================================================================%
 
+% Use prefix and suffix in citation command
+\makeatletter
+\let\cite\relax
+\DeclareRobustCommand{\cite}{%
+  \let\new@cite@pre\@gobble
+  \@ifnextchar[\new@cite{\@citex[]}}
+\def\new@cite[#1]{\@ifnextchar[{\new@citea{#1}}{\@citex[#1]}}
+\def\new@citea#1{\def\new@cite@pre{#1}\@citex}
+\def\@cite#1#2{({\new@cite@pre\space#1\if\relax\detokenize{#2}\relax\else, #2\fi})}
+\makeatother
+
 %==========================================================================%
 % BEGIN
 %==========================================================================%

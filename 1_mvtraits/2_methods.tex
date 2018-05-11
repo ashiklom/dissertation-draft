@@ -53,7 +53,7 @@ C4G & C4 Grass & 255\tabularnewline
 \bottomrule
 \end{longtable}
 
-We assigned each species to a unique plant functional type (PFT) following the scheme in the Community Land Model~\cite[CLM4.5, ]{clm45_note}; Table~\ref{tab:pfts}, Fig.~\ref{fig:mvtraits-fig1}. %TODO: Table
+We assigned each species to a unique plant functional type (PFT) following the scheme in the Community Land Model~\cite[CLM4.5,][]{clm45_note}; Table~\ref{tab:pfts}, Fig.~\ref{fig:mvtraits-fig1}. %TODO: Table
 We obtained categorical data on growth form, leaf type, phenology, and photosynthetic pathway from the TRY database.
 Where species attributes disagreed between datasets (e.g., categorized as a shrub in one dataset but a tree in another), we assigned the attribute that was observed most frequently between the datasets (e.g., if five datasets say ``shrub'' but only one says ``tree'', we would classify it as a shrub).
 Where species lacked data on certain attributes, we assigned those attributes based on higher order phylogeny where appropriate (e.g., *Poaceae* family are usually grasses, *Larix spp.* are deciduous needleleaved trees) or otherwise omitted the species from our analyses.
@@ -138,7 +138,7 @@ This gives rise to the following expression for the posterior:
 \[\mathbf{SS} = \mathbf{x^*}^{T} \mathbf{x^*}\]
 \[\mathbf{S^*} = {(\mathbf{S}_0 + \mathbf{SS})}^{-1}\]
 
-where $n$ is the number of rows and $m$ is the number of columns in data matrix $x$~\cite[full derivation in ]{gelman_bayesian}. %TODO Fix this ref.
+where $n$ is the number of rows and $m$ is the number of columns in data matrix $x$~\cite[full derivation in][]{gelman_bayesian}.
 
 The fundamentally multivariate nature of the sampling procedure described above makes it incapable of accommodating partially missing observations.
 Therefore, our algorithm also included imputation of partially missing data, which proceeded as follows:
@@ -155,14 +155,14 @@ the missing values $\mathbf{x'}[m]$ are drawn randomly from a conditional multiv
   ({\mathbf{\Sigma}[p,p]}^{-1} \mathbf{\Sigma}[p,m])\]
 
 For each model fit, we ran five parallel MCMC chains, continuing the sampling until the final result achieved convergence as determined by a Gelman-Rubin potential scale reduction statistic less than 1.1~\cite{gelman_1992_inference}.
-We implemented this sampling algorithm in an open source, publicly available R~\cite[version 3.4.3]{rstats} package (http://github.com/ashiklom/mvtraits).
+We implemented this sampling algorithm in an open source, publicly available R~\cite[version 3.4.3,][]{rstats} package (\texttt{http://github.com/ashiklom/mvtraits}).
 
 
 \subsubsection{Analysis of results}
 
 To assess the impact of multivariate and hierarchical constraint on trait estimates,
 we compared the mean and 95\% confidence intervals of trait estimates for each PFT from each model (Fig.~\ref{fig:mvtraits-fig2}).
-For reference, we also added the default parameter values of CLM 4.5~\cite[Table 8.1 in ]{clm45_note} for SLA, $N_{\mass}$, $N_{\area}$, $V_{c,\max,\mass}$, and $V_{c,\max,\area}$ to Fig.~\ref{fig:mvtraits-fig2}.
+For reference, we also added the default parameter values of CLM 4.5~\cite[Table 8.1 in][]{clm45_note} for SLA, $N_{\mass}$, $N_{\area}$, $V_{c,\max,\mass}$, and $V_{c,\max,\area}$ to Fig.~\ref{fig:mvtraits-fig2}.
 To convert CLM's reported C:N ratio to $N_{\mass}$, we assumed a uniform leaf C fraction of 0.46.
 We then divided this calculated $N_{\mass}$ by the reported SLA to obtain $N_{\area}$.
 We calculated $V_{c,\max,\mass}$ by multiplying the reported $V_{c,\max,\area}$ by the reported SLA\@.

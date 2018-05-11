@@ -95,18 +95,18 @@ To evaluate the performance of the model, I compared the prior and posterior cre
 To assess any systematic errors in calibration, I also calculated the mean bias and root mean square error (RMSE) between the observed and mean predicted spectra binned across the visible (400--750 nm) and near infrared (750--1300 nm) spectral regions and plotted these values as a function of site mean DBH and stand density similarly to Figure~\ref{fig:sites} (Figure~\ref{fig:bias}).
 As LAI in EDR is calculated from the parameters at each step, I also compared EDR estimates of LAI to observed values (Figure~\ref{fig:lai_validation}). %, and investigated the extent to which errors in predictions of spectra and LAI were related (Figure~\ref{fig:spec_lai}).
 
-\subsection{Forward simulation}
+%\subsection{Forward simulation}
 
-I selected six sites for the ED2 forward simulation representative of the overall structure and composition space (Figure~\ref{fig:sites}). %TODO: Check this number. Drop SF03? Why don't I have it?
-Based on timber harvest data from the US Forest Service, I determined that one of these sites---OF05---was the site of a clear cut in 1982, which allowed me to simulate multidecadal dynamics of forest regrowth at this site by starting ED from near-bare ground in 1983.
-For the remaining sites, I performed shorter simulations starting from the earliest available survey data (2008 for XXX, 2009 for YYYY).
-I started all runs on June 2 of their respective start years (because ED runs are unstable when initialized from a leaf-off state), and stopped all runs on December 31, 2017.
-For meteorological drivers, I used the North American Regional Reanalysis~(NCEP 2005)\nocite{narr}, selected due to its high temporal (3 hour) and spatial (32 km) resolution, availability of all variables required by ED (such as temperature, precipitation, and downwelling short- and longwave radiation fluxes), and uninterrupted data availability across the simulation period (including up to one month before present).
-For soil inputs---namely, soil horizon classes and depths at each site---I extracted data from the US Department of Agriculture Soil Survey Geographic Database (SSURGO) using the \texttt{FedData} R package.
+%I selected six sites for the ED2 forward simulation representative of the overall structure and composition space (Figure~\ref{fig:sites}). %TODO: Check this number. Drop SF03? Why don't I have it?
+%Based on timber harvest data from the US Forest Service, I determined that one of these sites---OF05---was the site of a clear cut in 1982, which allowed me to simulate multidecadal dynamics of forest regrowth at this site by starting ED from near-bare ground in 1983.
+%For the remaining sites, I performed shorter simulations starting from the earliest available survey data. % (2008 for XXX, 2009 for YYYY).
+%I started all runs on June 2 of their respective start years (because ED runs are unstable when initialized from a leaf-off state), and stopped all runs on December 31, 2017.
+%For meteorological drivers, I used the North American Regional Reanalysis~(NCEP 2005)\nocite{narr}, selected due to its high temporal (3 hour) and spatial (32 km) resolution, availability of all variables required by ED (such as temperature, precipitation, and downwelling short- and longwave radiation fluxes), and uninterrupted data availability across the simulation period (including up to one month before present).
+%For soil inputs---namely, soil horizon classes and depths at each site---I extracted data from the US Department of Agriculture Soil Survey Geographic Database (SSURGO) using the \texttt{FedData} R package.
 
-For each site, I ran 50 ED2 ensemble members, sampling traits randomly from the joint posterior distributions estimated in the calibration step.
-Because the full vegetation dynamics version of ED2 is not configured to take PROSPECT spectra as an input, I set the parameters for leaf reflectance and transmittance to PROSPECT simulations averaged over the visible and near-infrared regions.
-When the ED2 simulations were finished, I ran EDR over the ED2 outputs, generating a daily time series of hyperspectral reflectance for each ensemble member and site.
-I then convolved these spectra to the six Landsat spectral bands using their known spectral response functions (as in Chapter 2),
-and compared the resulting spectral time series to observed Landsat time series for each site obtained using Google Earth Engine.
-To better capture the variability in the spectral data, I calculated the normalized difference vegetation index (NDVI) and tasseled cap spectral transformations (brightness, greenness, wetness) and used these as the basis for comparison.
+%For each site, I ran 50 ED2 ensemble members, sampling traits randomly from the joint posterior distributions estimated in the calibration step.
+%Because the full vegetation dynamics version of ED2 is not configured to take PROSPECT spectra as an input, I set the parameters for leaf reflectance and transmittance to PROSPECT simulations averaged over the visible and near-infrared regions.
+%When the ED2 simulations were finished, I ran EDR over the ED2 outputs, generating a daily time series of hyperspectral reflectance for each ensemble member and site.
+%I then convolved these spectra to the six Landsat spectral bands using their known spectral response functions (as in Chapter 2),
+%and compared the resulting spectral time series to observed Landsat time series for each site obtained using Google Earth Engine.
+%To better capture the variability in the spectral data, I calculated the normalized difference vegetation index (NDVI) and tasseled cap spectral transformations (brightness, greenness, wetness) and used these as the basis for comparison.

@@ -4,19 +4,19 @@
 
 \subsubsection{Reflectance and transmittance}
 
-For the inversion of synthetic spectra, we found no statistically significant ($p < 0.05$) spectral bias at any wavelength (Figure S6). %TODO: Figure
-As well, the observed differences between input and simulated output were one to two orders of magnitude smaller than corresponding errors in the inversion of measured spectra (Figure 2, Figure S6). %TODO: Figure references
+For the inversion of synthetic spectra, we found no statistically significant ($p < 0.05$) spectral bias at any wavelength (not shown).% (Figure S6). %TODO: Figure
+As well, the observed differences between input and simulated output were one to two orders of magnitude smaller than corresponding errors in the inversion of measured spectra (Figure~\ref{fig:pecanrtm-specvalidation}).%, Figure S6). %TODO: Figure references
 These results collectively illustrate that our algorithm is unbiased and contributes minimally to errors in the inversion of measured spectra.
 
-For the inversion of measured spectra, we observed substantial variability in the spectral bias across all analyzed leaves, resulting in statistically significant ($p < 0.05$) bias in only a few specific wavelength regions (Figure 2). % TODO: Figure ref
+For the inversion of measured spectra, we observed substantial variability in the spectral bias across all analyzed leaves, resulting in statistically significant ($p < 0.05$) bias in only a few specific wavelength regions (Figure~\ref{fig:pecanrtm-specvalidation}). % TODO: Figure ref
 For both broadleaf and needle-leaf conifer species, reflectance was typically overestimated between 1600 and 1900 nm and underestimated between 1000 and 1300 nm and between 2000 and 2500 nm.
 The errors in the 1600 to 1900 nm and 2000 to 2500 nm ranges covered more wavelengths and had larger magnitude for conifer species than broadleaved species.
 Broadleaved species also had a statistically significant reflectance overestimate in the 400 to 500 nm range and an underestimate at 1300 nm, while conifer species had a significant reflectance overestimate at 1300 nm.
 
-For both measured and synthetic spectra, transmittance bias ($BIAS = -0.0133$) was, on average, greater in magnitude than reflectance bias ($BIAS = 0.0018$), with a mean positive bias for broadleaved species ($BIAS = 0.0012$) and a mean negative bias for conifer species ($BIAS = -0.0346$) (Figure 2, Table 3). % TODO: Figure ref
+For both measured and synthetic spectra, transmittance bias ($BIAS = -0.0133$) was, on average, greater in magnitude than reflectance bias ($BIAS = 0.0018$), with a mean positive bias for broadleaved species ($BIAS = 0.0012$) and a mean negative bias for conifer species ($BIAS = -0.0346$) (Figure~\ref{fig:pecanrtm-specvalidation}, Table~\ref{tab:pecanrtm-specerr}).
 However, the between-leaf variability in bias was also large and resulted in statistically significant bias in only a small number of specific spectral regions.
 For both broadleaved and conifer species, we observed a significant underestimate in transmittance in the chlorophyll a absorption 400 and 500 nm.
-Specifically for conifer species, we also observed underestimates in transmittance at the vegetation “red edge” around 700 nm and at a water absorption feature around 1900 nm.
+Specifically for conifer species, we also observed underestimates in transmittance at the vegetation ``red edge'' around 700 nm and at a water absorption feature around 1900 nm.
 
 \begin{figure}
   \centering
@@ -96,10 +96,10 @@ Specifically for conifer species, we also observed underestimates in transmittan
 \subsubsection{Leaf water content and mass per area}
 
 Similar to the results of the spectral validation,
-the inversion estimates of Cw and Cm (compared to measured values of EWT and LMA, respectively) displayed higher accuracy for broadleaf ($CV_{Cw} = 18.8\%$, $CV_{Cm} = 24.5\%$) versus conifer species ($CV_{Cw} = 52.3\%$, $CV_{Cm} = 63.3\%$) (Table 4). %TODO: Table reference
-For the broadleaved species, our parameter estimates were within the range observed previously (Table 4). %TODO: Table reference
+the inversion estimates of Cw and Cm (compared to measured values of EWT and LMA, respectively) displayed higher accuracy for broadleaf ($CV_{Cw} = 18.8\%$, $CV_{Cm} = 24.5\%$) versus conifer species ($CV_{Cw} = 52.3\%$, $CV_{Cm} = 63.3\%$) (Table~\ref{tab:pecanrtm-paramerr}).
+For the broadleaved species, our parameter estimates were within the range observed previously (Table~\ref{tab:pecanrtm-paramerr}).
 While the inversion estimates for conifer species show a lower performance compared to broadleaf trees, the error inversion results were primarily driven by a single plant functional type—early successional conifers, which consisted entirely of pine species (\textit{Pinus} family).
-Notably, a few estimates for mid-successional conifer species displayed significant divergence with observations, but in general fell along the 1:1 relationship (Figures 3 and 4). %TODO: Table reference
+Notably, a few estimates for mid-successional conifer species displayed significant divergence with observations, but in general fell along the 1:1 relationship (Figures~\ref{fig:pecanrtm-ewt} and~\ref{fig:pecanrtm-lma}).
 
 \begin{figure}
   \centering
@@ -161,16 +161,16 @@ Notably, a few estimates for mid-successional conifer species displayed signific
   }\label{fig:pecanrtm-sensorerror}
 \end{figure}
 
-Across all of the selected sensors, the highest PROSPECT 5 parameter inversion uncertainty and bias were observed for Car (Figure 5, Table 5). %TODO: Figure
-This can readily be explained by the Car specific absorption feature, which is both extremely narrow and overlaps substantially with that of Cab (Figure S1). %TODO: Figure
-On the other extreme, the most accurate and least uncertain retrieved parameter was N, which is related to the reflectivity of the leaf across the entire spectrum (Figure 5, Table 5, Figure S1). %TODO: Figure
+Across all of the selected sensors, the highest PROSPECT 5 parameter inversion uncertainty and bias were observed for Car (Figure~\ref{fig:pecanrtm-sensorerror}, Table~\ref{tab:pecanrtm-sensorerror}).
+This can readily be explained by the Car specific absorption feature, which is both extremely narrow and overlaps substantially with that of Cab (not shown).% (Figure S1). %TODO: Figure
+On the other extreme, the most accurate and least uncertain retrieved parameter was N, which is related to the reflectivity of the leaf across the entire spectrum (Figure~\ref{fig:pecanrtm-sensorerror}, Table~\ref{tab:pecanrtm-sensorerror}).%, Figure S1). %TODO: Figure
 Despite relatively narrow absorption features, most simulated sensors were able to retrieve Cab with reasonably good accuracy, which is not surprising given the long history of monitoring vegetation pigmentation using various platforms.
-Similarly, all sensors except CHRIS-Proba and AVHRR retrieved Cw with low uncertainty and bias, reflecting the wide and strong absorption features of water in the NIR and SWIR (Figure 5, Table 5, Figure S1). %TODO: Figure
-The failure of CHRIS-Proba to retrieve Cw can be attributed to its inability to measure in this spectral range (Figure S4). %TODO: Figure
-The retrieval accuracy for Cm was much more sensor dependent, with good performance among the simulated hyperspectral sensors, VIIRS, and Landsat 8, followed by lower performance for simulated Landsat 5 and 7 and MODIS, and a poor result for the simulated Chris-PROBA and AVHRR data (Figure 5, Table 5). %TODO: Figure
+Similarly, all sensors except CHRIS-Proba and AVHRR retrieved Cw with low uncertainty and bias, reflecting the wide and strong absorption features of water in the NIR and SWIR (Figure~\ref{fig:pecanrtm-sensorerror}, Table~\ref{tab:pecanrtm-sensorerror}).%, Figure S1). %TODO: Figure
+The failure of CHRIS-Proba to retrieve Cw can be attributed to its inability to measure in this spectral range.% (Figure S4). %TODO: Figure
+The retrieval accuracy for Cm was much more sensor dependent, with good performance among the simulated hyperspectral sensors, VIIRS, and Landsat 8, followed by lower performance for simulated Landsat 5 and 7 and MODIS, and a poor result for the simulated Chris-PROBA and AVHRR data (Figure~\ref{fig:pecanrtm-sensorerror}, Table~\ref{fig:pecanrtm-sensorerror}).
 Although the specific absorption feature for Cm is very wide, the sensitivity of reflectance to Cm values is much lower than for other parameters and almost the entire feature can be masked or confounded by Cw (Figure S1). %TODO: Figure
-This suggests that Cm is very dependent on precise locations of certain bands and therefore explains the differences in the estimate accuracy of apparently similar sensors like Landsat 5, 7, and 8 (Table 2, Figure S4). %TODO: Figure
-More generally, the importance of precise band widths and locations is evidenced by the noticeably better performance of Landsat 8 compared to Landsat 5 and 7 for certain parameters (Figure 5, Table 5) despite the subtle differences in the sensors’ respective bandwidths (Table 2, Figure S4). %TODO: Figure
+This suggests that Cm is very dependent on precise locations of certain bands and therefore explains the differences in the estimate accuracy of apparently similar sensors like Landsat 5, 7, and 8 (Table~\ref{tab:pecanrtm-sensors})%, Figure S4). %TODO: Figure
+More generally, the importance of precise band widths and locations is evidenced by the noticeably better performance of Landsat 8 compared to Landsat 5 and 7 for certain parameters (Figure~\ref{fig:pecanrtm-sensorerror}, Table~\ref{fig:pecanrtm-sensorerror}) despite the subtle differences in the sensors’ respective bandwidths (Table~\ref{tab:pecanrtm-sensors})%, Figure S4). %TODO: Figure
 
 \subsubsection{Parameter uncertainty and covariance}
 
@@ -183,16 +183,16 @@ More generally, the importance of precise band widths and locations is evidenced
   }\label{fig:pecanrtm-jointpost}
 \end{figure}
 
-Figure 6 shows an example of processed inversion output based on the high spectral resolution field spectrometer data and the spectral response functions of AVIRIS NG, Landsat 8, and MODIS\@.
-All four plots are simulated from a single set of parameters, so differences in results are caused only by variations in spectral measurement characteristics (Figure S4). %TODO: Figure
+Figure~\ref{fig:pecanrtm-jointpost} shows an example of processed inversion output based on the high spectral resolution field spectrometer data and the spectral response functions of AVIRIS NG, Landsat 8, and MODIS\@.
+All four plots are simulated from a single set of parameters, so differences in results are caused only by variations in spectral measurement characteristics.% (Figure S4). %TODO: Figure
 Out of these four sensors, the uncertainties increase with approximately decreasing spectral resolution, with lowest uncertainties in the full spectra, second-lowest for AVIRIS NG, second highest for Landsat 8, and highest for MODIS\@. %TODO: Figure
 The shapes of parameter covariances are distinctly different between these sensors, reflecting differences in the ability of the inversion to distinguish between parameters based on the available information.
-Across all four sensors, we observe strong positive covariance between N and Cm, since these parameters influence wide regions of the reflectance spectrum in opposite ways (Figure S1). %TODO: Figure
+Across all four sensors, we observe strong positive covariance between N and Cm, since these parameters influence wide regions of the reflectance spectrum in opposite ways.% (Figure S1). %TODO: Figure
 Similarly, we also observe a positive covariance between N and Cab, although the strength of this covariance is not equal across sensors.
-The remaining covariances are mostly specific to MODIS, whose band configuration increases the overlap between the associated parameters (Figure S4). %TODO: Figure
+The remaining covariances are mostly specific to MODIS, whose band configuration increases the overlap between the associated parameters.% (Figure S4). %TODO: Figure
 
 We find that inversion estimates for the field spectra are occasionally falsely overconfident.
 For instance, the true value of N and Cw is outside the 95\% confidence limit of their estimated joint probability distribution at full, field spectrometer resolution.
 That being said, this is less of an issue for the other sensors, where the joint probability distribution encompasses the true value.
 This suggests that spectral resolution below 5 nm may not provide additional information content, particularly for the broad absorption features within leaves, because of the strong autocorrelation between adjacent wavelengths.
-More importantly, although the joint posterior probability distributions from Landsat 8 and MODIS appear wide, the resulting parameter values are constrained by an order of magnitude or more compared to the priors. 
+More importantly, although the joint posterior probability distributions from Landsat 8 and MODIS appear wide, the resulting parameter values are constrained by an order of magnitude or more compared to the priors.

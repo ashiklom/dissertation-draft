@@ -8,38 +8,38 @@ Our inversion results are comparable to other studies~\cite{feret_2008_prospect,
 The results outperformed those of Feret et al.~(2011) despite the fact that we performed the inversion on measured spectra and inverted all five PROSPECT parameters,
 whereas Feret et al.~(2011) performed inversions on synthetic spectra and did not attempt to estimate the structure parameter N. \nocite{feret_2011_optimizing}
 As such, we suggest that our approach does not come at the cost of model performance, and, importantly, enables the use of a much wider range of spectral data to explore vegetation dynamics.
-Our method contrasts with some previous methods~\cite[e.g., ]{feret_2008_prospect,feret_2011_optimizing} that utilize both reflectance and transmittance observations to invert leaf models such as PROSPECT\@.
+Our method contrasts with some previous methods~\cite[e.g., ][]{feret_2008_prospect,feret_2011_optimizing} that utilize both reflectance and transmittance observations to invert leaf models such as PROSPECT\@.
 These require the use of additional, expensive instruments, such as an integrating sphere, that typically introduce significant noise and potential errors in the measurements given their inadequate design across a range of leaf habits.
 In addition, our approach suggests the possibility to instead use leaf reflectance observations alone to scale canopy-scale RTMs by coupling measured reflectance with simulated transmittance.
 
 Placed in the context of past inversion studies, our work reveals some continuing challenges in the use of PROSPECT to model leaf optical properties and provides some guidance for future RTM development.
-For instance, we noted issues with using PROSPECT to model reflectance and transmittance in the 400 to 500 nm range (Figure 2) that have also been reported in previous studies. %TODO: Figure reference
+For instance, we noted issues with using PROSPECT to model reflectance and transmittance in the 400 to 500 nm range (Figure~\ref{fig:pecanrtm-specvalidation}) that have also been reported in previous studies. %TODO: Figure reference
 Feret et al.~(2008) observed a consistently negative transmittance bias and occasionally a positive or negative reflectance bias. \nocite{feret_2008_prospect}
 Similarly, Croft et al.~(2013) report systematic underestimates of reflectance in this part of the spectrum. \nocite{croft_2013_modelling}
-One possible source of bias is PROSPECT’s simplified description of leaf structure~\cite{jacquemoud_1990_prospect} and failure to account for specular reflectance off the leaf surface~\cite{grant_1987_diffuse}.
+One possible source of bias is PROSPECT's simplified description of leaf structure~\cite{jacquemoud_1990_prospect} and failure to account for specular reflectance off the leaf surface~\cite{grant_1987_diffuse}.
 Another possible source of error is imprecise calibration of the leaf refractive index, which has a relatively strong wavelength dependence in the region of interest (400--500 nm)~\cite{feret_2008_prospect}.
 Alternatively, this bias could be the result of the failure of the PROSPECT 5 model to properly represent the spectral properties of chlorophyll in leaves, potentially requiring additional calibration across a broader range of species and environments.
-The common specific absorption feature for chlorophyll a and b ($kCab(\lambda)$) in PROSPECT 5 used in this study is empirically calibrated to a single data set~\cite[ANGERS; ]{feret_2008_prospect},
+The common specific absorption feature for chlorophyll a and b ($kCab(\lambda)$) in PROSPECT 5 used in this study is empirically calibrated to a single data set~\cite[ANGERS; ][]{feret_2008_prospect},
 and many studies have shown that this feature may need to be re-calibrated to the data at hand to obtain accurate inversion estimates,
 particularly for species dissimilar to those in the ANGERS data set~\cite{malenovsky_2006_applicability,moorthy_2008_estimating,zhang_2008_retrieving,li_2013_retrieval}.
 As well, PROSPECT 5 fails to distinguish between chlorophyll a and b, which have overlapping but distinctly different absorption signatures and whose ratios have been shown to be affected by environmental conditions~\cite{blackburn_2006_hyperspectral,divittorio_2009_spectral,divittorio_2009_enhancing}.
 Fortunately, it has been shown that not only can chlorophyll a and b be distinguished using imaging spectroscopy~\cite{divittorio_2009_pigment}, but that these differences can be incorporated into a RTM to improve its performance~\cite{divittorio_2009_enhancing}.
 
-Reflectance in the SWIR region ($>1500 nm$)---where we observed significant reflectance bias (Figure 2)---is influenced by three PROSPECT parameters: N, Cw, and Cm (Figure S1). %TODO: Figure
+Reflectance in the SWIR region ($>$1500 nm)---where we observed significant reflectance bias (Figure~\ref{fig:pecanrtm-specvalidation})---is influenced by three PROSPECT parameters: N, Cw, and Cm.% (Figure S1). %TODO: Figure
 All three parameters modulate reflectance in this spectral region monotonically: 
-Reflectance increases with higher values of N and decreases with higher values of Cw and Cm (Figure S1). %TODO: Figure
+Reflectance increases with higher values of N and decreases with higher values of Cw and Cm.% (Figure S1). %TODO: Figure
 This means that it is unlikely that incorrect parameter trade-off within the algorithm (e.g.\ preferentially selecting Cw over Cm) could contribute to this error.
 Feret et al.~(2008) also reported similar reflectance bias patterns for the ANGERS data set despite using a different inversion methodology. \nocite{feret_2008_prospect}
 We hypothesize this bias is the result of PROSPECT’s insufficient characterization of the specific absorption spectrum of leaf dry matter ($kCm(\lambda)$),
 since the absorption characteristics of water ($kCw(\lambda)$) are well known and N is not dependent on an absorption feature.
-This would also help explain the negative bias we observed between spectral inversion estimates of Cm and direct measurements of LMA (Figure 3, Table 3). %TODO: Figure ref
+This would also help explain the negative bias we observed between spectral inversion estimates of Cm and direct measurements of LMA (Figure~\ref{fig:pecanrtm-lma}, Table\ref{tab:pecanrtm-paramerr}). %TODO: Figure ref
 Other studies have also reported a bias but the direction of this bias has not been consistent, with some studies showing negative bias across all their data~\cite{li_2011_retrieval,cheng_2014_deriving} and others reporting a bias whose magnitude and direction is data-dependent~\cite{feret_2008_prospect}.
 This may partially be explained by the simple treatment of non-pigment compounds in the current PROSPECT model, wherein protein, cellulose, hemicellulose, sugar, starch, and lignin are aggregated into a single parameter (Cm)~\cite{fourty_1996_leaf}.
 As with chlorophyll, the absorption feature for Cm is empirically derived~\cite{feret_2008_prospect} and fails to represent variability in the relative abundance of the different components~\cite{poorter_2009_causes}.
 Fortunately, Wang et al.~(2015) demonstrated that, with proper calibration, it is possible to use PROSPECT inversion to determine leaf protein as well as combined cellulose and lignin content. \nocite{wang_2015_applicability}
 Furthermore, measurements of LMA are an aggregate of a number of constituents including chlorophyll, carotenoids, lipids, organic acids, phenolics, and vascular tissue~\cite{poorter_2009_causes}, which would positively bias the measurement compared to the spectral estimate.
-Finally, it is possible that strong positive covariance between N and Cm (Figure 6) caused by their significant spectral overlap (Figure S1) interferes with accurate estimation of Cm. %TODO: Fig refs
-However, based on our finding that inversions of simulated spectra did not display this problem (Field spectra in Figure 5; Figure S6), we conclude the error is in fact driven more by model formulation than by parameter identifiability. %TODO: Fig refs
+Finally, it is possible that strong positive covariance between N and Cm (Figure~\ref{fig:pecanrtm-jointpost}) caused by their significant spectral overlap interferes with accurate estimation of Cm. %TODO: Fig refs -- Figure S1 after "overlap"
+However, based on our finding that inversions of simulated spectra did not display this problem (Field spectra in Figure~\ref{fig:pecanrtm-sensorerror}), we conclude the error is in fact driven more by model formulation than by parameter identifiability. %TODO: Fig refs -- Figure S6 after "Field spectra" paren
 We are aware of only one other study that attempted to estimate all five PROSPECT parameters (including the structure parameter, N) simultaneously: \nocite{li_2011_retrieval}
 Li \& Wang (2011) presented a novel algorithm for PROSPECT inversion that assigns a separate merit function to each parameter (rather than a single common merit function for all parameters) and demonstrated its improved performance over traditional approaches.
 However, although their new algorithm reduced error and bias in the LMA estimates, a negative bias comparable to the one we report still remained across all of their data sets. 
@@ -54,23 +54,23 @@ In subsequent work, we will explore such a calibration using coupled spectral-tr
 The relatively large magnitude in our observed transmittance bias (compared to reflectance) is likely the result of using only reflectance as input in our inversion.
 A combined approach using measured reflectance and transmittance observations, collected on the same leaf samples, may have shown the variability distributed more evenly because the minimization of the residuals would have been more balanced between the two vectors of data.
 Ultimately, higher uncertainties in transmittance estimates compared to reflectance are a consequence of the inherent challenges in using integrating spheres to measure transmittance, especially the substantial noise in the SWIR regions.
-This is supported by the absence of significant systematic bias between measured and modeled transmittance across the overwhelming majority of the spectrum (Figure 2). %TODO: Fig ref
-Moreover, although the confidence intervals on transmittance bias are as high as 25\% at some wavelengths, averaging over all spectra and aggregating across the visible (400 to 800 nm) and infrared (801 to 2500 nm) regions leads to results similar to those reported in other field spectra inversion studies, even though these studies used both reflectance and transmittance as input (Table S1). %TODO: Table ref
+This is supported by the absence of significant systematic bias between measured and modeled transmittance across the overwhelming majority of the spectrum (Figure~\ref{fig:pecanrtm-specvalidation}). %TODO: Fig ref
+Moreover, although the confidence intervals on transmittance bias are as high as 25\% at some wavelengths, averaging over all spectra and aggregating across the visible (400 to 800 nm) and infrared (801 to 2500 nm) regions leads to results similar to those reported in other field spectra inversion studies, even though these studies used both reflectance and transmittance as input.% (Table S1). %TODO: Table ref
 Although our overall transmittance RMSE values were two to three times higher than those reported by Feret et al.~(2008), \nocite{feret_2008_prospect}
 these errors are inflated by the inclusion of conifer species, for which reflectance is harder to measure reliably and the assumptions of the PROSPECT model are not satisfied~\cite{jacquemoud_1990_prospect,divittorio_2009_enhancing,allen_1969_interaction}.
-As well, measurements of needle-leaf transmittance often result in considerable noise in longer wavelengths (SWIR, >2000 nm) given
+As well, measurements of needle-leaf transmittance often result in considerable noise in longer wavelengths (SWIR, $>$2000 nm) given
 the physical challenges of making these measurements on needle-leaf species (and other leaf types),
 generally poor lamp performance as compared to other methods,
 and the much smaller transmission of light in these wavelengths (often resulting in signals below the precision of the instrument).
 As such we would expect higher reported error compared to other leaf morphologies.
-For example, in examining our broadleaf samples we observed that the statistics for transmittance are much closer to those reported by Feret et al.~(2008), despite not including measured transmittance in the inversion (Table S1). \nocite{feret_2008_prospect} %TODO: Table ref
+For example, in examining our broadleaf samples we observed that the statistics for transmittance are much closer to those reported by Feret et al.~(2008), despite not including measured transmittance in the inversion. % (Table S1). \nocite{feret_2008_prospect} %TODO: Table ref
 Our transmittance error statistics are also similar to those reported for conifers by Di Vittorio (2009a) who used transmittance information and a re-calibrated version of the LIBERTY leaf RTM (Table 3). % TODO: Table ref, check Di Vittorio ref
 Moreover, our reflectance statistics show error comparable to or lower than those reported in similar studies~\cite{feret_2008_prospect,divittorio_2009_enhancing}.
 
 Through our sensor experiment, we explicitly demonstrate the tradeoffs between spectral information content and parameter uncertainty and identifiability.
-With increasingly coarse spectral resolution, we observed not only wider parameter confidence intervals indicating higher uncertainty but also tighter covariance structures indicating a reduced ability to distinguish between parameters (Figure 6). %TODO: Figure ref
+With increasingly coarse spectral resolution, we observed not only wider parameter confidence intervals indicating higher uncertainty but also tighter covariance structures indicating a reduced ability to distinguish between parameters (Figure~\ref{fig:pecanrtm-jointpost}). %TODO: Figure ref
 This comparison approach can be used to guide future enhancements of radiative transfer models by quantitatively showing whether a model of a given complexity is warranted given data of a particular quality.
-For example, in our simulation experiment, all the full-range hyperspectral sensors were capable of accurately estimating chlorophyll and carotenoids, but the ability of multispectral sensors to do so was dramatically lower (Figures 5, S6, and S7; Table 5). %TODO: Figure ref
+For example, in our simulation experiment, all the full-range hyperspectral sensors were capable of accurately estimating chlorophyll and carotenoids, but the ability of multispectral sensors to do so was dramatically lower (Figure~\ref{fig:pecanrtm-sensorerror}, Table~\ref{tab:pecanrtm-sensorerror}). %TODO: Figure refs -- S6 and S7
 We therefore can conclude that the use of PROSPECT 5 is warranted when performing inversion of hyperspectral data, but PROSPECT 4 (which does not distinguish between pigments) may be preferable for multispectral data.
 A similar framework can be used to determine the utility of increasingly complex future versions of PROSPECT that further differentiate leaf biochemical and structural components.
 

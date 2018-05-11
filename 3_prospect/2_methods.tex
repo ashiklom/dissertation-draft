@@ -3,7 +3,7 @@
 \subsection{Data}
 
 Data from this project were assembled from 22 projects on leaf spectra and related foliar traits (Table~\ref{tab:projectinfo}).
-Most of these datasets are available in the ECOSIS spectral library (https://ecosis.org/), with the following exceptions:
+Most of these datasets are available in the ECOSIS spectral library (\texttt{https://ecosis.org/}), with the following exceptions:
 Data from Barnes et al.~(2017) are hosted in a publicly-available Open Science Framework repository described in the manuscript.\nocite{barnes_2017_beyond}
 Data for Di Vittorio (2009), Wu et al.~(2016), and Yang et al.~(2016)~\nocite{divittorio_2009_pigment,wu_leaf_2016,yang_2016_seasonal} were provided directly by the authors.
 Finally, data from both NGEE projets and the HyspIRI campaign were provided by Shawn Serbin.
@@ -49,7 +49,7 @@ total anthocynanin content per area ($\mu g~cm^{-2}$)~\cite{feret_2017_prospectd
 The absorption coefficients for PROSPECT-D aligned with example leaf reflectance spectra are shown in Figure~\ref{fig:prospect_coefficients}.
 
 To estimate traits from leaf spectra, I generally followed the Bayesian RTM inversion approach of~\cite{shiklomanov2016_rse}, except that I replaced the Metropolis-Hastings algorithm with a more efficient Differential Evolution algorithm with ``snooker'' update as implemented in the \texttt{BayesianTools} R package~\cite{bayesiantools}.
-Forward simulations and Bayesian inversion of PROSPECT are implemented in the R package \texttt{PEcAnRTM}~\cite{shiklomanov2016_rse}, which is open source and freely available at https://github.com/pecanproject/pecan/modules/rtm.
+Forward simulations and Bayesian inversion of PROSPECT are implemented in the R package \texttt{PEcAnRTM}~\cite{shiklomanov2016_rse}, which is open source and freely available at \texttt{https://github.com/pecanproject/pecan/modules/rtm}.
 Where leaf spectra extended beyond the 400 to 2500 nm wavelength range of the PROSPECT model, I used only the observations from 400 to 2500 nm.
 Where leaf spectra were sampled at a spectral resolution coarser than 1 nm or did not include all wavelengths simulated by PROSPECT, I subset the PROSPECT output in the likelihood function to match the observations.
 Where leaf spectra were sampled at a finer spectral resolution than 1 nm, or where wavelengths did not align at 1 nm intervals, I used cubic spline interpolation (default method in the base R function \texttt{spline}) to align the spectra with PROSPECT output.

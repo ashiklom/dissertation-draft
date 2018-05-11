@@ -4,14 +4,14 @@
 
 The PROSPECT 5 model simulates the full spectral reflectance and transmittance of a leaf over the 400--2500 nm range using five key parameters related to leaf structure and biochemistry~\cite{feret_2008_prospect}.
 In the PROSPECT model, a leaf is treated as a set of N partially transparent flat plates, each with wavelength-dependent transmissivity $k\lambda$.
-Transmissivity $k\lambda$ is based on the linear combination of empirically calibrated specific absorption spectra for total chlorophyll (a and b), total carotenoids, water, and dry matter (e.g.\ cellulose, lignin, protein) multiplied by their respective quantities (given by the parameter values: Cab, Car, Cw, Cm) (Table~\ref{tab:pecanrtm-parameters}; Figure S1). %TODO: Figure reference
+Transmissivity $k\lambda$ is based on the linear combination of empirically calibrated specific absorption spectra for total chlorophyll (a and b), total carotenoids, water, and dry matter (e.g.\ cellulose, lignin, protein) multiplied by their respective quantities (given by the parameter values: Cab, Car, Cw, Cm) (Table~\ref{tab:pecanrtm-parameters}). % TODO: Supplementary figure S1
 
 \begin{table}
   \caption{%
     Summary of PROSPECT 5 parameters.
     Ranges for Car, Cw, and Cm are based on the datasets used for their calibration (ANGERS for Cab and Car, LOPEX for Cw and Cm) as reported in Feret et al.~(2008).
     The ranges for N and Cab are calculated from the LOPEX and ANGERS databases, respectively.
-    Units for Cw and Cm are adjusted for readability (original units are $g cm^{−2}$).
+    Units for Cw and Cm are adjusted for readability (original units are g cm$^{−2}$).
   }\label{tab:pecanrtm-parameters}
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{cccc}
@@ -43,8 +43,8 @@ The general mathematical statement of this posterior distribution is given as fo
 where $PROSPECT5(\theta)$ is the modeled reflectance given $\theta$, and $X$ is a vector of observed reflectance values.
 The residual error is assumed to be normally distributed with a mean of 0 and standard deviation of $\sigma$.
 
-We set the prior distribution for N to a lognormal distribution shifted to have a minimum of 1, and parameterized based on a review of literature using the PROSPECT model~\cite{lemaire_2004_towards,ferreira_2013_analyzing,croft_2014_applicability} (Figure S2). %TODO: Figure reference
-We assigned the remaining parameters log-normal priors based on summary statistics and histograms from the LOPEX, ANGERS, HAWAII, and CALMIT spectral databases as reported by Feret et al.~(2008) \nocite{feret_2008_prospect} (Figure S2). %TODO: Figure reference
+We set the prior distribution for N to a lognormal distribution shifted to have a minimum of 1, and parameterized based on a review of literature using the PROSPECT model~\cite{lemaire_2004_towards,ferreira_2013_analyzing,croft_2014_applicability}.% (Figure S2). %TODO: Supp fig
+We assigned the remaining parameters log-normal priors based on summary statistics and histograms from the LOPEX, ANGERS, HAWAII, and CALMIT spectral databases as reported by Feret et al.~(2008) \nocite{feret_2008_prospect}.% (Figure S2). %TODO: Supp fig
 The residual standard deviation $\sigma$ was assigned an uninformative inverse gamma prior, which is conjugate with the normal distribution and therefore allows for computationally efficient Gibbs sampling.
 
 We sampled the joint posterior distribution of the PROSPECT 5 parameters using the Metropolis-Hastings (MH) algorithm with adaptive block sampling~\cite{haario_2001_adaptive}.
@@ -58,12 +58,12 @@ The covariance matrix for the multivariate normal proposal distribution was re-c
 (3) the resulting standard deviation vector was converted to a diagonal matrix and multiplied to both sides of the correlation matrix to give a re-scaled covariance matrix. 
 For each inversion, we determined MCMC convergence based on a value of the Gelman-Rubin multivariate potential scale reduction factor of less than 1.1 (Gelman \& Rubin 1992, as implemented in the R \texttt{coda} package v.0.18--1 by Plummer et al.). \nocite{gelman_1992_inference,r_coda}
 For runs that did not converge, we repeated this process with a 20\% smaller target acceptance rate for the adaptation step, which increases the size of the sampling space for each chain and therefore reduces the likelihood of getting trapped in local minima. 
-Across the >10,000 inversions performed in this study, only five failed to converge (after five inversion attempts)—all for simulated CHRIS-Proba spectra (see Section 2.3)—and we excluded these data points from our analysis. %TODO: Section reference
+Across the $>$10,000 inversions performed in this study, only five failed to converge (after five inversion attempts)---all for simulated CHRIS-Proba spectra (see Section 2.3)---and we excluded these data points from our analysis. %TODO: Section reference
 We visually examined a random subset of the resulting trace plots and autocorrelograms and determined that a common burn-in period of 80,000 samples and a thinning interval of 20 was sufficient for an accurate and representative sample of the joint posterior distribution.
-After applying the burn-in and thinning filter, we calculated the mean, standard deviation, and 95\% confidence intervals of the sampled parameter values (Figure S3). %TODO: Figure reference
+After applying the burn-in and thinning filter, we calculated the mean, standard deviation, and 95\% confidence intervals of the sampled parameter values. %(Figure S3). %TODO: Figure reference
 
 With chains running in parallel, the inversion of one leaf spectrum with our specifications takes approximately 4 minutes (on one Intel Xeon X5570 CPU @ 2.93GHz), and running the entire set of over 10,000 inversions required for this paper took several days (running up to 16 inversions simultaneously on a high performance computing cluster).
-That being said, we anticipate that recoding of the algorithm from R to a compiled language will dramatically increase (>50x) the computational efficiency of our approach.
+That being said, we anticipate that recoding of the algorithm from R to a compiled language will dramatically increase ($>$50x) the computational efficiency of our approach.
 
 The inversion algorithm described above is available as an open-source, publicly-available R~\cite{rstats} package housed within the PEcAn ecoinformatics toolbox \texttt{github.com/pecanproject/pecan/tree/master/modules/rtm}~\cite{dietze_improving_2013,lebauer_facilitating_2013}.
 This package allows users to simulate spectra using the PROSPECT family of radiative transfer models and apply our inversion algorithm to their own models and data.
@@ -80,7 +80,7 @@ For a subset of 765 of these leaves, the same instrument was used with an ASD in
 Our database included both broadleaf and conifer species.
 For conifer measurements, we constructed edge-to-edge mats of needles larger than the spot size of the light source~\cite{serbin_2012_spectroscopic,singh_imaging_2015}.
 As detailed in Serbin (2012), we found minimal changes in reflectance/transmittance measurement up to a threshold of differing gaps between needles. \nocite{serbin_2012_spectroscopic}
-These observations are henceforth referred to as “FFT measured reflectance and transmittance,” respectively.
+These observations are henceforth referred to as ``FFT measured reflectance and transmittance'', respectively.
 In addition to spectral measurements, laboratory measurements of leaf dry mass per unit area (LMA) and equivalent water thickness (EWT) were available for 950 leaves.
 For further information on the sampling methodology, see Serbin et al.~(2014). \nocite{serbin_spectroscopic_2014}
 
@@ -156,10 +156,10 @@ For each, we compared the mean inversion estimate to the measured value via the 
 Recent work has shown that PLSR estimates of foliar nitrogen content are less sensitive to spectral resolution than to other factors such as spatial resolution and sensor fidelity~\cite{lepine_2016_examining}.
 However, the PLSR approach implemented in that study was unable to quantify the uncertainty around the nitrogen estimates.
 We hypothesize that the spectral characteristics of most common remote sensing platforms are sufficient to accurately estimate the leaf biophysical parameters modeled by PROSPECT, but that the uncertainties in these parameters will increase with declining spectral resolution.
-To test this hypothesis, we transformed the FFT simulated reflectance spectra using the relative spectral response functions of 11 common remote sensing platforms (Table~\ref{tab:pecanrtm-sensors}, Figure S4), %TODO: Figure reference
+To test this hypothesis, we transformed the FFT simulated reflectance spectra using the relative spectral response functions of 11 common remote sensing platforms (Table~\ref{tab:pecanrtm-sensors}), %, Figure S4), %TODO: Figure reference
 and used our Bayesian inversion of PROSPECT 5 to retrieve the starting parameters from the transformed spectra.
 For input parameters, we used the inversion results from measured spectra, thereby capturing a large range of ecologically realistic values and preserving inherent covariances between parameters.
-To account for observation error, we simulated Gaussian random noise (with mean 0 and standard deviation $2.5 \times 10^{-4}$) smoothed with a Gaussian filter (kernel width 11) to account for inherent autocorrelation in hyperspectral measurements (Figure S5). %TODO: Figure reference
+To account for observation error, we simulated Gaussian random noise (with mean 0 and standard deviation $2.5 \times 10^{-4}$) smoothed with a Gaussian filter (kernel width 11) to account for inherent autocorrelation in hyperspectral measurements.% (Figure S5). %TODO: Figure reference
 
 We then examined how two characteristics of the inversions varied between sensors:
 Relative bias ($\alpha$) indicates how closely the mean parameter estimate ($\mu$) matched the true value ($p$) and is a useful measure for describing the accuracy of the estimate’s central tendency.
@@ -178,7 +178,7 @@ We recognize that this experiment does not fully capture all of the variability 
 However, this experiment is capable of illustrating the ability to characterize uncertainty in inversion results and improves the confidence with which we can extract information from lower quality data sources.
 Moreover, this experiment sets a theoretical limit on the accuracy and precision of leaf trait retrieval from spectral RTM inversion, thereby contextualizing past RTM inversion results~\cite{zhang_2005_estimating,zhang_2006_characterization,zhang_2009_satellite,zhang_2012_estimating} and guiding future research in the field.
 
-The entire workflow for this paper is summarized in Figure 1. %TODO: Figure reference
+The entire workflow for this paper is summarized in Figure~\ref{fig:pecanrtm-workflow}. %TODO: Figure reference
 The data and R source code for performing all analyses in this study have been made publicly available at \texttt{github.com/ashiklom/sensor-manuscript}.
 
 \begin{figure}
