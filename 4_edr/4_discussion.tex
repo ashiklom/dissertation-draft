@@ -1,3 +1,15 @@
-\section{Discussion}
+\section{Discussion and conclusions}
 
-(Currently working on this text\ldots).
+The accurate simulation of canopy radiative transfer is key to a number of ecosystem processes, including photosynthesis, soil respiration, and hydrology.
+However, to date, accurate parameterization of canopy radiative transfer in vegetation models has received relatively little attention compared to other canopy processes.
+This study shows that remotely sensed surface reflectance can be used effectively to both parameterize and diagnose errors in radiative transfer models.
+
+For its representation of radiative transfer, EDR uses the two-stream solutions of Sellers (1983) adapted for multiple canopies.
+My results show that this scheme tends to systematically over-predict canopy-level reflectance in the visible spectral region (Figure~\ref{fig:spec_error_vis}), which may have important consequences for photosynthesis since it implies an under-prediction of the overall fraction of absorbed photosynthetically active radiation and therefore photosynthesis.
+The predictions of EDR also appear to be systematically higher than those of a different two-stream radiative transfer model---SAIL~\cite{verhoef_1984_sail}---for roughly the same set of leaf reflectance parameters (Figures~\ref{fig:prospect_posterior}), which suggests that ED's representation of canopy structure and its effects on radiation are likely at fault.
+
+I suggested in the results section that ED's systematic errors are driven by placing too much weight on leaf reflectance relative to transmittance.
+This is supported by the low orientation factor estimates for late hardwoods and northern pines (Figure~\ref{fig:pda_posteriors}), since lowering the orientation factor is one way to place more weight on transmittance relative to reflectance (see model description in Methods).
+Another way to reduce visible reflectance is to reduce leaf area index, which may be why predicted leaf area index for northern pine tends to be over-predicted.
+The underlying reason for these issues may be that the naive multi-layer structure of ED, combined with the Sellers (1983) two-stream equations, means that the effect of leaf transmittance declines much faster than the effect of reflectance, and places very high weight on reflectance from the top canopy layer (because the contribution of lower layers declines exponentially).
+Future work will attempt to diagnose these issues in more detail, and to investigate the extent to which these same issues are pervasive in other common representations of radiative transfer found in other models. 
