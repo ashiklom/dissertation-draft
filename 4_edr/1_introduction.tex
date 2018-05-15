@@ -13,15 +13,11 @@ absorbed photosynthetically-active radiation~\cite{Peylin_2016_stepwise,Schurman
 and primary productivity~\cite{MacBean_2018_strong}.
 
 However, there are issues with using derived remote sensing products to calibrate ecosystem models.
-Relationships of surface reflectance variables, such as vegetation indices, with characteristics of vegetation structure and function estimated by models are complex.
+Relationships of surface reflectance variables (such as vegetation indices) with characteristics of vegetation structure and function estimated by models are complex.
 For example, the assumption of a simple linear relationship between the normalized difference vegetation index and absorbed photosynthetically-active radiation (e.g.\ Peylin et al.~2016) \nocite{Peylin_2016_stepwise} has long been shown to be sensitive to variability in soil and leaf optical properties~\cite{Myneni_1994_relationship}, and is known to vary across spatial scales and sensor configurations~\cite{Fensholt_2004_evaluation}.
 A related issue is that subtle but significant differences in the ways vegetation variables are defined, by both models and data products, can significantly affect the interpretation of remotely sensed data~\cite{Carlson_1997_relation}.
-Furthermore, uncertainties derived remote sensing data products are the sum of both direct measurement uncertainties (which include both uncertainties in measured surface reflectance and other key measurement characteristics such as location and footprint) and uncertainties in the models used to convert surface reflectance into vegetation characteristics, to the extent that reasonable confidence in the absolute values of individual pixels requires averaging across groups of adjacent pixels~\cite{Wenze_Yang_2006_modis,Wang_2004_evaluation}.
-% * <dietze@bu.edu> 2018-05-02T21:41:58.156Z:
-% 
-% This sentence is confusing
-% 
-% ^.
+Furthermore, uncertainties in derived remote sensing data products are often poorly quantified but known to be significant,
+to the extent that some studies advise against working with individual pixel values in favor of averaging across adjacent pixels (thereby dramatically reducing the spatial resolution) to achieve reasonable accuracy~\cite{Wenze_Yang_2006_modis,Wang_2004_evaluation}.
 Although these issues could be partially alleviated by robust, pixel-level uncertainty estimates for remote sensing data products, such estimates are generally not widely available for most data products.
 Collectively, these issues, combined with differences in sensor configuration and design, result in large differences in estimates of surface characteristics across different remote sensing instruments that lead directly to different estimates of carbon storage and flux~\cite{Liu_2018_satellite}.
 
@@ -38,6 +34,14 @@ For instance, the net climate effect of ongoing changes in Arctic vegetation com
 More fundamentally, light availability is a key control of photosynthesis and therefore has
 immediate, direct consequences for individual plant function~\cite{hikosaka_1995_model,robakowski_2004_needle,Niinemets_2016_within,Keenan_2016_global}
 as well as longer-term, indirect consequences for competition and ecological succession~\cite{Niinemets_2006_tolerance,Kitajima_2013_leaf,Falster_2017_multitrait}.
+
+Recognition of the importance of these processes has led to the development of vegetation models with explicit representations of canopy radiative transfer.
+The most accurate canopy radiative transfer models capture both vertical and horizontal heterogeneity with very high spatial resolution~\cite{widlowski_2007_third}.
+However, such models are usually too computationally intensive for dynamic vegetation models, which employ various approximations based on simplifying assumptions to make the problem more tractable~\cite{fisher_2017_vegetation}.
+One common approach is the ``two-stream approximation'', which simplifies the problem of directional scattering within a medium by modeling the hemispherical integral of fluxes rather than individual, directional components~\cite{meador_1980_twostream}.
+In the context of vegetation canopies, this approach assumes
+For example, the Ecosystem Demography model~\cite[ED2][]{Moorcroft_2001_ED,Medvigy_2009_ED2} uses the two-stream approximation\ldots
+
 Indeed, an analysis by Viskari et al.\ (in review) \nocite{Viskari_inreview_ED} demonstrated that the Ecosystem Demography (ED2) model's predictions of ecosystem energy budget, productivity, and composition are highly sensitive to the parameterization of the model's representation of canopy radiative transfer.
 % * <dietze@bu.edu> 2018-05-02T21:47:32.944Z:
 % 
