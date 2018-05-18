@@ -6,19 +6,19 @@ The Ecosystem Demography version 2 (ED2) model simulates plot-level vegetation d
 By grouping individuals of similar size, structure, and composition together into cohorts, ED2 is capable of modeling patch-level competition in a computationally efficient manner.
 
 Relevant to this work, ED2 includes a multi-layer canopy radiative transfer model that is a generalization of the two-stream solution of Sellers (1985). \nocite{SELLERS_1985_canopy}
-In its default configuration, the ED2 radiative transfer model solves for the overall canopy albedo in two spectral ``bands''---visible and near-infrared---as a function of each cohort's leaf area index and PFT-specific parameters for leaf and wood reflectance and transmittance, canopy clumping factor, and leaf orientation factor.
+In its default configuration, the ED2 radiative transfer model solves for the overall hemispherical (i.e.\ diffuse) canopy albedo in two spectral ``bands''---visible and near-infrared---as a function of each cohort's leaf area index and PFT-specific parameters for leaf and wood reflectance and transmittance, canopy clumping factor, and leaf orientation factor.
 The equations used are mostly adapted from the Community Land Model\cite{clm45_note}, but a summary of key features is as follows:
 
 The direct radiation flux is modeled as an exponential attenuation curve through the canopy based on each layer's transmissivity ($\tau_r$),
 which in turn is a function of the total area index ($TAI$) of the canopy layer and the inverse optical depth ($\mu_r$):
 
-\begin{equation}\label{eq:tai}
+\begin{equation}\label{eq:tau_r}
   \tau_r = e ^ {- \frac{TAI}{\mu_r}}
 \end{equation}
 
-The total area index ($TAI$) is the sum of the wood area index ($WAI$) and the effective leaf area index, with the latter calculated as the product of the true leaf area index ($LAI$) and the clumping factor ($c$, defined on the interval $(0, 1)$ where 0 is a ``black hole'' (all leaf mass concentrated in a single point) and 1 is a homogenous closed canopy):
+The total area index ($TAI$) is the sum of the wood area index ($WAI$) and the effective leaf area index, with the latter calculated as the product of the true leaf area index ($LAI$) and the clumping factor ($c$, defined on the interval $(0, 1)$ where 0 is a ``black hole''---all leaf mass concentrated in a single point---and 1 is a homogenous closed canopy):
 
-\begin{equation}
+\begin{equation}\label{eq:tai}
   TAI = c LAI + WAI
 \end{equation}
 
@@ -46,7 +46,7 @@ The projected area ($p$) is a function of the leaf orientation factor ($f$):
   p = \phi_1 + \phi_2 \cos{\theta} 
 \end{equation}
 
-The diffuse radiation flux is more complicated because light is scattered internally within and between canopy layers.
+The diffuse radiation flux is more complicated because light is scattered internally within canopy layers.
 Unlike the Community Land Model, which solves only for sunlit and shaded leaves,
 EDR calculates the full canopy radiation profile by parameterizing the two-stream equations for each layer (as well as soil and atmosphere boundary conditions)
 and then using a linear system solver to solve for the radiation profile.
@@ -58,7 +58,7 @@ For each layer, leaf and wood forward scattering ($\omega_+$) are just the sums 
 
 Leaf and wood backscatter ($\omega_-$) are a function of their respective reflectance and transmittance values as well as the leaf orientation factor ($f$):
 
-\begin{equation}
+\begin{equation}\label{eq:backscatter_leaf}
    \omega_- = \frac{r + t + 0.25 (r - t) {(1 + f)} ^ 2}{2 (r + t)} 
 \end{equation}
 
@@ -116,10 +116,22 @@ and clumping and orientation factors.
 
 \subsection{Sensitivity analysis}
 
-To provide a basis for understanding the behavior of EDR and how it compares to SAIL,
-I performed a one-at-a-time sensitivity analysis to explore how EDR reflectance predictions vary with each parameter. 
+To provide a basis for understanding the behavior of EDR, I performed a one-at-a-time sensitivity analysis to explore how its reflectance predictions vary with each leaf optical and canopy structural parameter.
+To assess the mathematical foundation of the EDR canopy model (i.e.\ the Sellers two-stream scheme) without the confounding influence of multiple cohorts, I first performed this sensitivity analysis on a simulated plot containing only a single mature tree cohort.
+For comparison, I also included simulations using the 4SAIL canopy radiative transfer model.
+The 4SAIL model simulates four reflectance ``streams''---diffuse (hemispherical) and direct (directional) reflectance for both diffuse and direct incident radiation---\
+but because EDR only simulates diffuse reflectance and its input is dominated by direct radiation (at least on sunny days, which are necessary for satellite and high-altitude airborne data), I used the ``directional-hemispherical'' output for all comparisons.
+For its representation of leaf angle distribution, 4SAIL uses an ellipsoidal model that takes as input the mean leaf inclination angle ($\theta$), which is related to EDR's leaf orientation factor ($f$) by:
 
-Sensitivity of EDR to the PROSPECT parameters is effectively the same as sensitivity at the leaf level, kj
+\begin{equation}\label{eq:orient_lidf}
+  \cos \theta = \frac{1 + f}{2}
+\end{equation}
+
+Unlike EDR, 4SAIL does not account for canopy clumping.
+(4SAIL does have a ``hot spot'' parameter to account for strong bi-directional reflectance effects from structurally heterogeneous canopies, but this parameter only affects the bi-directional reflectance, which was not used in this analysis).
+
+To investigate the way EDR models interactions between canopy layers, I also performed a similar sensitivity analysis on a simulated plot with two cohorts---a dominant early successional cohort and a sub-dominant mid-successional cohort.
+I examined the sensitivity of total canopy reflectance to the optical properties of both the dominant and sub-dominant cohort, and looked at how this sensitivity was affected by clumping in the upper cohort.
 
 \subsection{Model calibration}
 
@@ -143,38 +155,19 @@ Based on ED's PFT definitions, these sites contained a total of five different t
 % ^.
 % TODO: Change colors to be top cohort
 
-I calibrated EDR using the same general Bayesian RTM inversion described in Chapter 3.
+I calibrated EDR using the same general Bayesian inversion as in Chapter 3.
 The inversion fit all sites simultaneously, such that at every MCMC iteration, the algorithm proposed a set of all parameter values for each PFT and simulated spectra for each site based on its observed composition and structure.
 Because of unrealistic values in the shortwave infrared spectral region in the AVIRIS observations, likely caused by faulty atmospheric correction, I only calibrated the model with observations from 400 to 1300 nm.
-% TODO: If I use it: Heteroskedastic variance model, fixed allometry parameter.
+In addition, I changed the fixed variance model used in Chapters 2 and 3 to a two-parameter heteroskedastic variance model ($\sigma = a + bX$) to account for the fact that both model and observation errors are typically proportional to reflectance values.
 To generate the initial history state files required by EDR, I ran ED2 itself for one day in midsummer (July 1), starting from vegetation initial conditions based on observed composition and structure.
 
 For priors on the five PROSPECT parameters and specific leaf area, I performed a hierarchical multivariate analysis (see Chapter 1) on PROSPECT parameters estimated from chapter 3 and, where available, direct measurements of specific leaf area. 
 For priors on the leaf biomass allometry parameters, I fit a multivariate normal distribution to allometry coefficients from Jenkins et al.~(2003, 2004) using the \texttt{PEcAn.allometry} package. \nocite{jenkins_2003_allom,jenkins_2004_allom} 
 For the clumping factor, I used a uniform prior across its full range (0 to 1), and for the leaf orientation factor, I used a weakly informative re-scaled beta distribution centered on 0.5.
 
-I present posterior estimates for each parameter summarized as mean and 95\% confidence interval (Figure~\ref{fig:pda_posteriors}).
-To evaluate the performance of the model, I compared the prior and posterior credible interval of the modeled spectra to the observations at each site (Figure~\ref{fig:sites}).
-% * <dietze@bu.edu> 2018-05-02T22:08:48.140Z:
-% 
-% You shouldn't include links to analysis figures in the Methods section -- those should come in the Results
-% 
-% ^.
-To assess any systematic errors in calibration, I also calculated the mean bias and root mean square error (RMSE) between the observed and mean predicted spectra binned across the visible (400--750 nm) and near infrared (750--1300 nm) spectral regions and plotted these values as a function of site mean DBH and stand density similarly to Figure~\ref{fig:sites} (Figure~\ref{fig:bias}).
-As LAI in EDR is calculated from the parameters at each step, I also compared EDR estimates of LAI to observed values (Figure~\ref{fig:lai_validation}). %, and investigated the extent to which errors in predictions of spectra and LAI were related (Figure~\ref{fig:spec_lai}).
+To alleviate issues with strong collinearity between the two allometry coefficients and the specific leaf area, I decided to remove the allometry exponent coefficient (but not the intercept) from the calibration by fixing it at its prior mean for each plant functional type.
+Doing so dramatically improved the stability of the inversion algorithm and the accuracy of the results.
 
-%\subsection{Forward simulation}
-
-%I selected six sites for the ED2 forward simulation representative of the overall structure and composition space (Figure~\ref{fig:sites}). %TODO: Check this number. Drop SF03? Why don't I have it?
-%Based on timber harvest data from the US Forest Service, I determined that one of these sites---OF05---was the site of a clear cut in 1982, which allowed me to simulate multidecadal dynamics of forest regrowth at this site by starting ED from near-bare ground in 1983.
-%For the remaining sites, I performed shorter simulations starting from the earliest available survey data. % (2008 for XXX, 2009 for YYYY).
-%I started all runs on June 2 of their respective start years (because ED runs are unstable when initialized from a leaf-off state), and stopped all runs on December 31, 2017.
-%For meteorological drivers, I used the North American Regional Reanalysis~(NCEP 2005)\nocite{narr}, selected due to its high temporal (3 hour) and spatial (32 km) resolution, availability of all variables required by ED (such as temperature, precipitation, and downwelling short- and longwave radiation fluxes), and uninterrupted data availability across the simulation period (including up to one month before present).
-%For soil inputs---namely, soil horizon classes and depths at each site---I extracted data from the US Department of Agriculture Soil Survey Geographic Database (SSURGO) using the \texttt{FedData} R package.
-
-%For each site, I ran 50 ED2 ensemble members, sampling traits randomly from the joint posterior distributions estimated in the calibration step.
-%Because the full vegetation dynamics version of ED2 is not configured to take PROSPECT spectra as an input, I set the parameters for leaf reflectance and transmittance to PROSPECT simulations averaged over the visible and near-infrared regions.
-%When the ED2 simulations were finished, I ran EDR over the ED2 outputs, generating a daily time series of hyperspectral reflectance for each ensemble member and site.
-%I then convolved these spectra to the six Landsat spectral bands using their known spectral response functions (as in Chapter 2),
-%and compared the resulting spectral time series to observed Landsat time series for each site obtained using Google Earth Engine.
-%To better capture the variability in the spectral data, I calculated the normalized difference vegetation index (NDVI) and tasseled cap spectral transformations (brightness, greenness, wetness) and used these as the basis for comparison.
+I evaluated the performance of the calibrated model by comparing the posterior credible intervals of modeled spectra against the AVIRIS observations at each site.
+To assess the role of model structure in predictive error, I also included predictions using the 4SAIL model parameterized with the posterior means from the EDR calibration (except for clumping factor, which is absent from 4SAIL).
+In addition, I compared model predictions of leaf area index (which depend on parameters calibrated in the model) against field observations.
