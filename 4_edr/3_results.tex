@@ -1,6 +1,34 @@
 \section{Results}
 
-%\subsection{Model calibration}
+\subsection{EDR sensitivity}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{4_edr/figures/explore_spectra/sensitivity_single_pft.pdf}
+  \caption{\
+    (\textit{Top}) Sensitivity of EDR and SAIL predicted canopy reflectance to leaf area index.
+    (\textit{Bottom}) Sensitivity of EDR predicted canopy reflectance to orientation factor (\textit{left}) and clumping factor (\textit{right}),
+    with dashed line indicating SAIL predictions for the same leaf area index, PROSPECT parameters, and approximately equivalent soil background.
+  }\label{fig:sensitivity}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{4_edr/figures/explore_spectra/sensitivity_single_pft_nowood.pdf}
+  \caption{\
+    Same as Figure~\ref{fig:sensitivity}, but with EDR wood reflectance set to 0. 
+  }\label{fig:sensitivity_nowood}
+\end{figure}
+
+EDR and SAIL both saturate their visible reflectance at fairly low LAI values (around 2.5),
+and have more sensitivity in the shortwave infrared.
+Patterns of NIR sensitivity are different.
+
+Systematic bias in visible reflectance between EDR and SAIL, which can be mostly explained by wood reflectance.
+For a homogenous canopy with no wood reflectance, EDR and SAIL predictions in the VIS match very well, but there is a slight negative bias in the NIR.
+% TODO: Check this bias in the other reflectances.
+
+\subsection{Model calibration}
 
 \begin{figure}
   \centering
@@ -30,7 +58,7 @@ Late hardwoods also had orientation factor estimates much lower than the prior, 
   \centering
   \includegraphics[width=\textwidth]{4_edr/figures/explore_spectra/errors_byvis_vis.pdf}
   \caption{%
-    Same as Figure \ref{fig:spec_error_all}, but zoomed into the visible ($<$750 nm) spectral region.
+    Same as Figure~\ref{fig:spec_error_all}, but zoomed into the visible ($<$750 nm) spectral region.
   }\label{fig:spec_error_vis}
   % TODO: Same as above
 \end{figure}
@@ -86,6 +114,16 @@ Given that leaf transmittance is consistently lower than leaf reflectance in the
 The ability of EDR to reproduce observed leaf area index was also strongly site-dependent, with some of the accuracy explained by the functional type of the tallest cohort (Figures~\ref{fig:lai_validation} and~\ref{fig:lai_profile}).
 In general, EDR tended to over-predict leaf area index for conifer-dominated stands and under-predict for hardwood-dominated stands.
 For mid- and late-hardwood-dominated stands in particular, EDR predicted substantial variability in leaf area index that was not present in the observations.
+
+\subsection{Notes}
+
+Positive bias in visible reflectance can largely be explained by wood reflectance.
+Removing the wood reflectance eliminates most of the difference between SAIL and EDR.
+
+Many of the sites where we get reflectance wrong are sites where late hardwood has a big presence.
+In many other places, we get the LAI wrong.
+
+Wood reflectance bias explains why we almost always miss the visible.
 
 %\begin{figure}
   %\centering
