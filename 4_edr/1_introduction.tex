@@ -1,4 +1,5 @@
 \section{Introduction}
+
 My previous chapters have shown that models have much to gain, both in terms of direct parameter constraint from trait observations and from new process representations that emerge from trait ecology more broadly.
 However, there are limits on the extent to which traits alone can improve models.
 For one, even after examining a broad range of inter- and intraspecific factors, large fractions of variability in plant function remain unexplained.
@@ -23,11 +24,6 @@ Collectively, these issues, combined with differences in sensor configuration an
 
 One way to overcome the limitations of derived remote sensing data products while still leveraging the capabilities of remote sensing is to work directly with the observed surface reflectance.
 In the context of dynamic vegetation modeling, this can be accomplished by coupling these models with leaf and canopy radiative transfer models that simulate surface reflectance as a function of known surface characteristics~\cite{quaife_2008_assimilating}.
-% * <dietze@bu.edu> 2018-05-02T21:44:01.177Z:
-% 
-% I think the comparison between using derived products vs direct assimilation of reflectance would really benifit from a conceptual figure
-% 
-% ^.
 Such an approach takes advantage of the fact that surface reflectance contains valuable information about vegetation structure and function without relying on the independent retrieval of these characteristics from reflectance data alone, which is often an ill-posed problem~\cite{combal_2003_retrieval,lewis_2007_spectral}.
 Moreover, besides enabling assimilation of remotely sensed data, training models to accurately simulate surface reflectance is essential to properly quantifying and testing hypotheses related to vegetation-climate interactions and feedbacks.
 For instance, the net climate effect of ongoing changes in Arctic vegetation composition depends on the balance of opposing radiative (lower albedo) and latent (increased transpiration) energy feedbacks~\cite{Swann_2010_changes}, so forecasting this effect requires accurate models of canopy energy transfer.
@@ -39,28 +35,19 @@ Recognition of the importance of these processes has led to the development of v
 The most accurate canopy radiative transfer models capture both vertical and horizontal heterogeneity with very high spatial resolution~\cite{widlowski_2007_third}.
 However, such models are usually too computationally intensive for dynamic vegetation models, which employ various approximations based on simplifying assumptions to make the problem more tractable~\cite{fisher_2017_vegetation}.
 One common approach is the ``two-stream approximation'', which simplifies the problem of directional scattering within a medium by modeling the hemispherical integral of fluxes rather than individual, directional components.
-In the context of radiative transfer in plant canopies, several different two-stream formulations have been developed, of which I highlight two of the most popular.
-The first was developed by Meador and Weaver (1980)\nocite{meador_1980_twostream} for atmospheric radiative transfer, and was subsequently adapted to canopy radiative transfer by Dickinson (1983)\nocite{dickinson_1983_land} and refined by Sellers (1985)\nocite{SELLERS_1985_canopy}.
+In the context of radiative transfer in plant canopies, many different two-stream formulations have been developed, of which I highlight two:
+One formulation was developed by Kubelka and Munk (1931)\nocite{kubelka_munk_1931} and later adapted to vegetation canopies by Allen, Gayle, and Richardson (1970)\nocite{allen_1970_plant} and further refined by Suits (1971)\nocite{suits_1971_calculation}, Verhoef (1985)\nocite{verhoef_1984_sail}, and others.
+This theory forms the foundation of the SAIL canopy radiative transfer model~\cite{verhoef_1984_sail} and its derivatives~\cite[e.g. 4SAIL][]{verhoef_2007_4sail}, which have been used extensively in the remote sensing community for modeling and retrieving vegetation characteristics from spectral data~\cite{jacquemoud_2009_prosail}.
+Another was developed by Meador and Weaver (1980)\nocite{meador_1980_twostream} for atmospheric radiative transfer, and was subsequently adapted to canopy radiative transfer by Dickinson (1983)\nocite{dickinson_1983_land} and refined by Sellers (1985)\nocite{SELLERS_1985_canopy}.
 %Key assumptions of this approach are that all diffuse radiative fluxes are isotropic (i.e.\ scattering is equal in all directions) and that all canopy elements are sufficiently far from each other that there is no inter-particle shading~\cite{meador_1980_twostream,dickinson_1983_land,SELLERS_1985_canopy}.
 Due to its theoretical simplicity and low computational demand, this is the approach commonly used to represent radiative transfer in ecosystem models, including the Community Land Model~\cite[CLM,][]{clm45_note} and the Ecosystem Demography model~\cite[ED,][]{Moorcroft_2001_ED,Medvigy_2009_ED2}.
-An alternative formulation was developed by Kubelka and Munk (1931)\nocite{kubelka_munk_1931} and later adapted to vegetation canopies by Allen, Gayle, and Richardson (1970)\nocite{allen_1970_plant} and further refined by Suits (1971)\nocite{suits_1971_calculation}, Verhoef (1985)\nocite{verhoef_1984_sail}, and others.
-This theory forms the foundation of the SAIL canopy radiative transfer model~\cite{verhoef_1984_sail}, which has been used extensively in the remote sensing community for modeling and retrieving vegetation characteristics from spectral data~\cite{jacquemoud_2009_prosail}.
-
-Both approaches make simplifying assumptions about leaf angle distributions.
-
-
-For example, the Ecosystem Demography model~\cite[ED2][]{Moorcroft_2001_ED,Medvigy_2009_ED2} uses the two-stream approximation\ldots
-
-Indeed, an analysis by Viskari et al.\ (in review) \nocite{Viskari_inreview_ED} demonstrated that the Ecosystem Demography (ED2) model's predictions of ecosystem energy budget, productivity, and composition are highly sensitive to the parameterization of the model's representation of canopy radiative transfer.
-% * <dietze@bu.edu> 2018-05-02T21:47:32.944Z:
-% 
-% before moving onto Toni's paper, you might also say a few words about the Fisher 2017 paper, which had a section on RTMs in dynamics vegetation models.
-% 
-% Also (and potentially related), I'd note that you're near the end of the Intro and I don't see any hypotheses yet.  You talk about calibrating models using remote sensing, but not what processes you're trying to calibrate / learn about and the open questions about those processes.
-% 
-% ^.
+The version of this scheme used in ED2 (and derivative models) is fairly unique in its explicit representation of multiple canopy layers, which allows ED2 to simulate competition for light, a key component of modeling vegetation demographics~\cite{fisher_2017_vegetation}.
+However, compared to physiological processes, the structure and parameterization of canopy radiative transfer schemes in demographic models has received relatively little attention.
+When canopy radiative transfer has been considered, it was shown to be important to a wide range of physiological and demographic processes.
+For example, using a modified version of the ED model, Fisher et al. (2010)\nocite{fisher_2010_assessing} showed that excessive light absorption by the top cohort resulted in unrealistically excessive growth of canopy trees at the expense of understory trees.
+Similarly, an analysis by Viskari et al.\ (in revision) \nocite{Viskari_inreview_ED} demonstrated that the Ecosystem Demography (ED2) model's predictions of ecosystem energy budget, productivity, and composition are highly sensitive to the parameterization of the model's representation of canopy radiative transfer.
+Understanding and improving representations of canopy radiative transfer in dynamic vegetation models is therefore critical to accurate projections of the fate of the terrestrial biosphere.
 
 Building on the work of Viskari et al., the objective of this chapter is to develop and demonstrate the calibration and validation of the ED2 model using remotely sensed surface reflectance.
 First, I link the canopy radiative transfer model in ED2 with the PROSPECT leaf radiative transfer model to allow ED to predict full-range, hyperspectral surface reflectance at each time step.
 Second, I calibrate this coupled leaf-canopy radiative transfer model at a number of sites in the US Midwest and Northeast where coincident plot vegetation survey data and observations of the NASA Airborne Visible/InfraRed Imaging Spectrometer (AVIRIS) are available.
-Finally, I evaluate the ability of ED2 to predict the dynamics of stable, mid-successional forest at a 5--10 year time scale, as well as the regrowth a forest following a clear cut across several decades, by running ED ensembles and comparing their predictions of surface reflectance to Landsat time series of surface reflectance.

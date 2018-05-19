@@ -36,6 +36,10 @@ Although both models predict declines in reflectance with increasing leaf area i
 4SAIL also predicts a decline in the near infrared while EDR predicts an increase.
 The sensitivities of both models to leaf area index are also different.
 4SAIL predicts more reflectance sensitivity at low leaf area indices and saturation of reflectance around 4, while EDR shows a more gradual decline in sensitivity, particularly in the near-infrared range. 
+An important caveat to these results is that, particularly at low leaf area index, they are strongly dependent on the value of the background soil reflectance.
+To match the EDR default (see Methods), 4SAIL was configured with a relatively bright soil reflectance (i.e.\ a fairly dry soil), which explains the decline in near-infrared reflectance as leaf area increases.
+When the soil background is dark, SAIL shows increasing near-infrared reflectance with increasing leaf area (but saturating to the same value as the contribution of the soil background becomes negligible at high leaf area).
+
 Similarly to leaf area, EDR and 4SAIL agree on the directionality leaf orientation effects on reflectance (declining reflectance with increasingly vertical leaves), but differ in their sensitivities, with EDR having a much lower sensitivity to changing leaf angles.
 Finally, sensitivity of EDR to canopy clumping is nearly identical to that of leaf area index, which makes sense given the interaction between these terms in defining canopy transmissivity (Equations~\ref{eq:tau_r} and~\ref{eq:tai}).
 
