@@ -11,7 +11,7 @@ Transmissivity $k\lambda$ is based on the linear combination of empirically cali
     Summary of PROSPECT 5 parameters.
     Ranges for Car, Cw, and Cm are based on the datasets used for their calibration (ANGERS for Cab and Car, LOPEX for Cw and Cm) as reported in Feret et al.~(2008).
     The ranges for N and Cab are calculated from the LOPEX and ANGERS databases, respectively.
-    Units for Cw and Cm are adjusted for readability (original units are g cm$^{−2}$).
+    Units for Cw and Cm are adjusted for readability (original units are g cm$^{-2}$).
   }\label{tab:pecanrtm-parameters}
   \resizebox{\textwidth}{!}{%
     \begin{tabular}{cccc}
@@ -19,10 +19,10 @@ Transmissivity $k\lambda$ is based on the linear combination of empirically cali
       Parameter & Description & Unit & Range \\
       \midrule
       N & Structural parameter; effective number of mesophyll layers & Unitless & 1.09 to 3.00 \\
-      Cab & Total chlorophyll (a and b) density & μg cm−2 & 0.78 to 106.72 \\
-      Car & Total carotenoid density & μg cm−2 & 0 to 25.3 \\
-      Cw & Equivalent water thickness & g m−2 & 43 to 439 \\
-      Cm & Leaf dry matter content per unit area & g m−2 & 17 to 152 \\
+      Cab & Total chlorophyll (a and b) density & \si{\micro g.cm^{-2}} & 0.78 to 106.72 \\
+      Car & Total carotenoid density & \si{\micro g.cm^{-2}} & 0 to 25.3 \\
+      Cw & Equivalent water thickness & \si{g.cm^{-2}} & 43 to 439 \\
+      Cm & Leaf dry matter content per unit area & \si{g.cm^{-2}} & 17 to 152 \\
       \bottomrule
     \end{tabular}
   }
@@ -50,7 +50,7 @@ The residual standard deviation $\sigma$ was assigned an uninformative inverse g
 We sampled the joint posterior distribution of the PROSPECT 5 parameters using the Metropolis-Hastings (MH) algorithm with adaptive block sampling~\cite{haario_2001_adaptive}.
 For this, we initialized each inversion using parameter values drawn at random from the prior distributions.
 For each inversion, we ran the algorithm five times (i.e.\ five independent chains) for 100,000 iterations each.
-At each iteration, the algorithm proposes a parameter vector, calculates the vector’s likelihood based on the observations and the prior, and accepts or rejects the vector based on this likelihood.
+At each iteration, the algorithm proposes a parameter vector, calculates the vector's likelihood based on the observations and the prior, and accepts or rejects the vector based on this likelihood.
 The proposal step performs a random draw from a multivariate normal distribution centered on the last accepted parameter vector.
 The covariance matrix for the multivariate normal proposal distribution was re-computed every 100 iterations as follows:
 (1) the univariate standard deviation of each parameter and the Pearson product-moment correlation matrix were computed;
@@ -93,7 +93,7 @@ except that we grouped the ``Northern'' and ``Southern Pine'' functional types a
 Classification based on succession is useful for this study because it is indicative of plant shade tolerance~\cite{dietze_2011_tree}, which is closely linked to leaf structure and biochemistry~\cite{poorter_2009_causes}.
 
 We applied our inversion algorithm individually to each of the FFT measured reflectance spectra ($n = 1348$), resulting in an estimate of the joint probability distribution of the PROSPECT 5 parameters for each leaf.
-We then generated a dataset of synthetic reflectance spectra (“FFT simulated reflectance”) by using the middle 90\% of these parameter estimates ($n = 1040$) as inputs to the PROSPECT 5 model.
+We then generated a dataset of synthetic reflectance spectra (``FFT simulated reflectance'') by using the middle 90\% of these parameter estimates ($n = 1040$) as inputs to the PROSPECT 5 model.
 These synthetic reflectance spectra were used as data in the sensor simulation experiment (Section 2.3). %TODO: Section reference
 We used real parameter estimates rather than random draws from a distribution to preserve their ecological ranges and covariances resulting from within- and between-species tradeoffs in traits such as those described for the leaf economics spectrum~\cite{wright_worldwide_2004}. 
 
@@ -162,7 +162,7 @@ For input parameters, we used the inversion results from measured spectra, there
 To account for observation error, we simulated Gaussian random noise (with mean 0 and standard deviation $2.5 \times 10^{-4}$) smoothed with a Gaussian filter (kernel width 11) to account for inherent autocorrelation in hyperspectral measurements.% (Figure S5). %TODO: Figure reference
 
 We then examined how two characteristics of the inversions varied between sensors:
-Relative bias ($\alpha$) indicates how closely the mean parameter estimate ($\mu$) matched the true value ($p$) and is a useful measure for describing the accuracy of the estimate’s central tendency.
+Relative bias ($\alpha$) indicates how closely the mean parameter estimate ($\mu$) matched the true value ($p$) and is a useful measure for describing the accuracy of the estimate's central tendency.
 
 \[ \alpha = \frac{\mu - p}{p} \]
 
@@ -188,3 +188,8 @@ The data and R source code for performing all analyses in this study have been m
     Workflow illustrating the steps in this study as well as the figures to which they correspond.
   }\label{fig:pecanrtm-workflow}
 \end{figure}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../dissertation"
+%%% End:

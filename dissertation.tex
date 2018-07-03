@@ -50,6 +50,12 @@
 % Packages related to tables
 \usepackage{longtable,booktabs,multirow,array}
 
+% For SI units
+\usepackage{siunitx}
+
+% Check the current layout
+% \usepackage{layout}
+
 % customized commands can be placed here
 %\newcommand{\figref}[1]{Figure~\ref{#1}}
 %\newcommand{\chapref}[1]{Chapter~\ref{#1}}
@@ -73,6 +79,7 @@
 % BEGIN
 %==========================================================================%
 \begin{document}
+% \layout{}                       % Print the current layout
 
 % The preliminary pages
 \include{00_Prelim/prelim}        
@@ -125,3 +132,8 @@
 
 %==========================================================================%
 \end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

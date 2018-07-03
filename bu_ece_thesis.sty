@@ -67,8 +67,8 @@
 % The top and left margins should be 1.5in, and the bottom and right
 % margins should be 1in. The measures below are always added to 1in
 
+% Horizontal margins:
 \hoffset = 0pt                 % Additional offset to the hidden 1in
-\voffset = 0pt                 % at left and on top
 
 \oddsidemargin 0.5in           % Additional left margin on odd-numbered pages (was 0.375in)
                                % Total left margin: 1in + 0.5in = 1.5in
@@ -78,14 +78,14 @@
 
 \textwidth 6.0in               % Leaves 1.0in right margin (was 6.1875in)
 
-\topmargin 0.6875in            % Additional top margin (to the top of the header).
-                               % Header height and header separator add 0.5in 
-                               % Total top margin: 1in + 0.5in = 1.5in
+% Vertical margins:
+\voffset = 0pt                 % Additional offset to default 1in
+\topmargin -0.25in             % Margin for page numbers (0.75in from top)
 
-\headheight 12pt               % Header for numbering and running titles.
-\headsep 24pt                  % Separator between header and text.
+\headheight 12pt               % Header for numbering and running titles. (~1/7 in)
+\headsep 24pt                  % Separator between header and text (~2/7in).
 
-\textheight 8.5in              % Leaves 1.0in bottom margin (was 8.4in)
+% \textheight 8.75in             % Default: 8.5in. Uncomment to add extra 0.25in for topmargin
 
 \footskip 0.4in                % Distance from bottom of text to bottom of foot,
                                % which is where page number goes for preliminary
@@ -513,5 +513,5 @@ minus
 %               USEFUL MACROS
 \def\BU{BOSTON UNIVERSITY}
 \def\Bu{Boston University}
-\def\COE{COLLEGE OF ARTS AND SCIENCES}
-\def\Coe{College of Arts and Sciences}
+\def\COE{GRADUATE SCHOOL OF ARTS AND SCIENCES}
+\def\Coe{Graduate School of Arts and Sciences}
