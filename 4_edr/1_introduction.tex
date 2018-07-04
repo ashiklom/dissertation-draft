@@ -4,7 +4,7 @@ My previous chapters have shown that models have much to gain, both in terms of 
 However, there are limits on the extent to which traits alone can improve models.
 For one, even after examining a broad range of inter- and intraspecific factors, large fractions of variability in plant function remain unexplained.
 Moreover, vegetation models are simplified abstractions of reality, with many processes omitted or represented by simplistic empirical equations with little-to-no physical basis and therefore no directly measurable trait that can serve as a parameter constraint.
-In these cases, models can only be calibrated via their emergent predictions of state variables, that is through data assimilation.
+In these cases, models can only be calibrated via their emergent predictions of state variables.
 
 Many previous efforts have used various data streams calibrate or constrain dynamic vegetation model parameters and states.
 Among these data streams, remote sensing is particularly promising due to its consistent measurement methodology and largely uninterrupted global coverage.
@@ -16,7 +16,7 @@ and primary productivity~\cite{MacBean_2018_strong}.
 However, there are issues with using derived remote sensing products to calibrate ecosystem models.
 Relationships of surface reflectance variables (such as vegetation indices) with characteristics of vegetation structure and function estimated by models are complex.
 For example, the assumption of a simple linear relationship between the normalized difference vegetation index and absorbed photosynthetically-active radiation (e.g.\ Peylin et al.~2016) \nocite{Peylin_2016_stepwise} has long been shown to be sensitive to variability in soil and leaf optical properties~\cite{Myneni_1994_relationship}, and is known to vary across spatial scales and sensor configurations~\cite{Fensholt_2004_evaluation}.
-A related issue is that subtle but significant differences in the ways vegetation variables are defined, by both models and data products, can significantly affect the interpretation of remotely sensed data~\cite{Carlson_1997_relation}.
+A related issue is that subtle but significant differences in the ways vegetation variables are defined, by both models and data products, can significantly affect the interpretation of remotely sensed data~\cite{Carlson_1997_relation}. % TODO: Needs an example
 Furthermore, uncertainties in derived remote sensing data products are often poorly quantified but known to be significant,
 to the extent that some studies advise against working with individual pixel values in favor of averaging across adjacent pixels (thereby dramatically reducing the spatial resolution) to achieve reasonable accuracy~\cite{Wenze_Yang_2006_modis,Wang_2004_evaluation}.
 Although these issues could be partially alleviated by robust, pixel-level uncertainty estimates for remote sensing data products, such estimates are generally not widely available for most data products.
@@ -24,8 +24,10 @@ Collectively, these issues, combined with differences in sensor configuration an
 
 One way to overcome the limitations of derived remote sensing data products while still leveraging the capabilities of remote sensing is to work directly with the observed surface reflectance.
 In the context of dynamic vegetation modeling, this can be accomplished by coupling these models with leaf and canopy radiative transfer models that simulate surface reflectance as a function of known surface characteristics~\cite{quaife_2008_assimilating}.
-Such an approach takes advantage of the fact that surface reflectance contains valuable information about vegetation structure and function without relying on the independent retrieval of these characteristics from reflectance data alone, which is often an ill-posed problem~\cite{combal_2003_retrieval,lewis_2007_spectral}.
+Such an approach takes advantage of the fact that surface reflectance contains valuable information about vegetation structure and function
+without relying on the independent retrieval of these characteristics from reflectance data alone, which is often an ill-posed problem~\cite{combal_2003_retrieval,lewis_2007_spectral}. % TODO: Dietze -- needs more explanation
 Moreover, besides enabling assimilation of remotely sensed data, training models to accurately simulate surface reflectance is essential to properly quantifying and testing hypotheses related to vegetation-climate interactions and feedbacks.
+% TODO: Dietze -- (1) This should start a new paragraph. (2) Mention that the other studies (e.g. Quaife 2008) used an external RTM, not the model's own. This is novel in this work. (3) Mention Toni's RTM uncertainty analysis in this paragraph?
 For instance, the net climate effect of ongoing changes in Arctic vegetation composition depends on the balance of opposing radiative (lower albedo) and latent (increased transpiration) energy feedbacks~\cite{Swann_2010_changes}, so forecasting this effect requires accurate models of canopy energy transfer.
 More fundamentally, light availability is a key control of photosynthesis and therefore has
 immediate, direct consequences for individual plant function~\cite{hikosaka_1995_model,robakowski_2004_needle,Niinemets_2016_within,Keenan_2016_global}

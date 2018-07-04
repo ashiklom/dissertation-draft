@@ -22,6 +22,8 @@ The total area index ($TAI$) is the sum of the wood area index ($WAI$) and the e
   TAI = c LAI + WAI
 \end{equation}
 
+% TODO: Explain where WAI comes from, especially since it's relevant to the analysis.
+
 The true leaf area index for each PFT is calcluated in two stages:
 First, the total leaf biomass is calculated from the diameter at breast height via an exponential allometric equation parameterized for each PFT\@.
 Second, the leaf biomass is converted to leaf area index through the PFT-specific specific leaf area (SLA).
@@ -46,6 +48,8 @@ The projected area ($p$) is a function of the leaf orientation factor ($f$):
   p = \phi_1 + \phi_2 \cos{\theta} 
 \end{equation}
 
+% TODO: Explain where all of these constants come from.
+
 The diffuse radiation flux is more complicated because light is scattered internally within canopy layers.
 Unlike the Community Land Model, which solves only for sunlit and shaded leaves,
 ED2 calculates the full canopy radiation profile by parameterizing the two-stream equations for each layer (as well as soil and atmosphere boundary conditions)
@@ -61,6 +65,8 @@ Leaf and wood backscatter ($\omega_-$) are a function of their respective reflec
 \begin{equation}\label{eq:backscatter_leaf}
    \omega_- = \frac{r + t + 0.25 (r - t) {(1 + f)} ^ 2}{2 (r + t)} 
 \end{equation}
+
+% TODO: More explanation about these equations. 
 
 Overall scatter ($\iota$) and backscatter ($\beta$) of all elements in a canopy layer is modeled as the average of leaf and wood scatter, weighted by their respective area indices:
 
@@ -103,6 +109,7 @@ Collectively, these coefficients are used to calculate the optical depth for dif
 
 The remaining coefficients are described in the Community Land Model manual~\cite{clm45_note}.
 % Should probably finish this as an appendix or something at some point.
+% TODO: Mike wants this fleshed out more -- comment "What coefficients?"
 
 By default, ED takes as parameters PFT-specific leaf and wood reflectance and transmittance values with one value each for the visible and near-infrared spectral regions. 
 For this analysis, I first modified ED to take an arbitrary number of leaf and wood reflectance transmittance values.
@@ -146,15 +153,10 @@ Based on ED's PFT definitions, these sites contained a total of five different t
     Sites selected for analysis, in ``stand structure'' (\textit{main figure}) and geographic (\textit{inset}) space.
     Colors indicate the fraction of the stand that is made up of evergreen PFTs.
     %Large points with labels indicate sites that were selected for forward simulations.
+    % TODO: Dietze -- (1) Axes are reversed relative to Andrews ESM paper. (2) Stand density values are way too low. Basically, check against Andrews ESM paper and try to match units.
   }\label{fig:sites}
 \end{figure}
-% * <fer.istem@gmail.com> 2018-05-02T19:51:35.047Z:
-% 
-% not sure if it matters but the deciduousness gradient is not detectible from the color scheme, all points seem either 0 or 1 to me
-% 
-% ^.
 % TODO: Change colors to be top cohort
-% TODO: Remove the site labels
 
 I calibrated EDR using the same general Bayesian inversion as in Chapter 3.
 The inversion fit all sites simultaneously, such that at every MCMC iteration, the algorithm proposed a set of all parameter values for each PFT and simulated spectra for each site based on its observed composition and structure.
