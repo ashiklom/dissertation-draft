@@ -14,3 +14,5 @@ dissertation.ps
 
 # Backup files
 *.bak
+*/auto/*
+/auto
