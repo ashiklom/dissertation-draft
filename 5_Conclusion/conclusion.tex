@@ -2,15 +2,51 @@
 \label{chapter:Conclusions}
 \thispagestyle{myheadings}
 
-% set this to the location of the figures for this chapter. it may
-% also want to be ../Figures/2_Body/ or something. make sure that
-% it has a trailing directory separator (i.e., '/')!
-\graphicspath{{3_Conclusion/Figures/}}
+The value of terrestrial ecosystems to human well-being, both direct and indirect, is difficult to overestimate.
+The same can be said about the complexity of terrestrial ecosystems, which has been a major obstacle to forecasting ecosystem responses to human and natural pressures.
+Fortunately, our ability to observe terrestrial ecosystems, as well as our ability to perform sophisticated analyses and simulations using these observations, have never been greater, and only continue to improve thanks to both technological and changing attitudes about data sharing.
+The overarching objective of my dissertation was to explore novel ways that observations could be used in the context of simulation modeling of the terrestrial biosphere.
+In particular, my work focused on improving data constraint on model parameters, especially through near-surface, airborne, and satellite remote sensing.
+The results of this work provide many opportunities for data-driven model improvement, both direct (through better parameterizations of leaf and canopy processes) and indirect (through insights about scales and drivers of ecological variability). 
 
-\section{Summary of the thesis}
+My first chapter focused on covariance patterns among leaf traits through a multivariate meta-analysis of a global traits database.
+In particular, it investigated whether or not previously-observed global patterns of trait covariance (related to strategic trade-offs between productivity and recalcitrance, a.k.a.\ the ``leaf economic spectrum'') were also present within plant functional types, as well as the extent to which these covariances could be used to constrain trait estimates for use in ecosystem models.
+The key result was that, in general, leaf economic relationships did hold within plant functional types as well as across, though the strength of these relationships varied.
+In addition, the multivariate constraint on these traits was very effective at reducing trait uncertainty for data-limited plant functional types.
 
-Time to get philosophical and wordy.
+%% Ch1, P2
+% Ecological implications of LES stability within PFTs -- operates within biomes and growth forms, but seems to break down within species and communities. More work to be done on exactly what scale the LES starts to breaks down. Also, the extent to which LES is evolutionary vs. plastic -- i.e. will responses to climate change obey the "rules" of leaf economics.
 
-IMPORTANT: In the references at the end of thesis, all journal names must be
-spelled out in full, except for standard abbreviations like IEEE, ACM, SPIE,
-INFOCOM, ...
+% Ch1, P3
+% Applications of multivariate method -- more traits, more PFTs
+% Potential for easy-to-measure traits to inform difficult to measure traits. Building on this idea, transition into chapters 2/3...
+
+%% Ch2, P1
+% Remote sensing as a source of trait data
+% Collectively, chapters are about how much can we learn about traits from spectra.
+% Chapter 2 -- The relationship between spectral resolution and information content w.r.t. traits
+% Did not address radiometric resolution, nor issues with scaling from leaf to canopy (assumptions about canopy structure, BRDF effects, atmospheric correction).
+% Future work could apply the same general approach to investigate the relative value of these aspects as well.
+% However, in some ways, the focus on spectral resolution alone was useful for re-affirming the sensitivity of sensors to band location and width.
+
+% Ch3, P1
+% Where Chapter 2 was focused on the remote sensing science, Chapter 3 focused more deeply on the links between plant ecophysiology and leaf optical properties.
+% Lots of intra-specific variability in the traits that drive leaf optical properties---roughly half.
+% Some of this variability is caused by responses to various kinds of stress (pathogens, warming, etc.).
+% However, the large extent of intra-specific trait variability shows why stress detection using these methods is so challenging.
+% Future directions:
+% - Random leaf effects -- non-destructive nature of spectra provides the opportunity to identify how the same leaves change through time, and how much variability is across different leaves of the same individual.
+
+% Ch4
+% 
+
+% Concluding remarks
+Perhaps the main lesson from my dissertation research is that the many observable features of plants and ecosystems are seldom independent.
+In some cases, this is a disadvantage;
+for instance, the fact that canopy reflectance spectra are influenced simultaneously by leaf morphology, leaf biochemistry, and canopy structure makes it challenging to study any of these features in isolation from spectral data alone.
+However, that non-independence can also serve as a source of useful information.
+As my second and fourth chapters show, Bayesian methods accommodate non-identifiability as covariance in posterior distributions, and taking advantage of that covariance can still lead to significant predictive constraint.
+More generally...
+% Interconnectedness of different observations -- all data are valuable! Promotes synthesis and enhanced communication (including data sharing) between research groups and ecological subdisciplines.
+% Beyond empirical correlations, ecosystem models further provide a framework for unifying observations through emergent covariances.
+% True progress in ecological forecasting requires a holistic view of ecosystems. (Maybe quote some smart classics in here -- ecosystem as organism [Clements]? Tansley?)
