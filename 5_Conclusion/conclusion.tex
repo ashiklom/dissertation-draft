@@ -4,49 +4,102 @@
 
 The value of terrestrial ecosystems to human well-being, both direct and indirect, is difficult to overestimate.
 The same can be said about the complexity of terrestrial ecosystems, which has been a major obstacle to forecasting ecosystem responses to human and natural pressures.
-Fortunately, our ability to observe terrestrial ecosystems, as well as our ability to perform sophisticated analyses and simulations using these observations, have never been greater, and only continue to improve thanks to both technological and changing attitudes about data sharing.
+Fortunately, our ability to observe terrestrial ecosystems, and to perform sophisticated analyses and simulations using these observations, has never been greater, and only continue to improve thanks to both technological improvements and changing attitudes about data sharing.
 The overarching objective of my dissertation was to explore novel ways that observations could be used in the context of simulation modeling of the terrestrial biosphere.
 In particular, my work focused on improving data constraint on model parameters, especially through near-surface, airborne, and satellite remote sensing.
 The results of this work provide many opportunities for data-driven model improvement, both direct (through better parameterizations of leaf and canopy processes) and indirect (through insights about scales and drivers of ecological variability). 
 
-My first chapter focused on covariance patterns among leaf traits through a multivariate meta-analysis of a global traits database.
-In particular, it investigated whether or not previously-observed global patterns of trait covariance (related to strategic trade-offs between productivity and recalcitrance, a.k.a.\ the ``leaf economic spectrum'') were also present within plant functional types, as well as the extent to which these covariances could be used to constrain trait estimates for use in ecosystem models.
-The key result was that, in general, leaf economic relationships did hold within plant functional types as well as across, though the strength of these relationships varied.
-In addition, the multivariate constraint on these traits was very effective at reducing trait uncertainty for data-limited plant functional types.
+My first chapter focused on covariance patterns among leaf traits related to leaf morphology and photosynthetic metabolism through a multivariate meta-analysis of a global traits database.
+Previous work has shown that, at the global scale, variability in these traits was constrained by a trade-off between faster growth rates and higher recalcitrance (a.k.a.\ the ``leaf economic spectrum'')~\cite{wright_worldwide_2004,diaz_global_2016},
+but that these trade-offs were often absent within species and communities~\cite{albert_intraspecific_2010,messier_how_2010,wright_does_2012}.
+My work investigated whether the leaf economic spectrum scale was present between these two extremes, at the scale of plant functional types used by the current generation of dynamic global vegetation models.
+My key result was that, in general, leaf economic relationships were present within plant functional types, though the strength of these relationships varied.
+Moreover, as a result of the strong correlation patterns among traits, I was able to generate much more precise estimates of plant functional type means (which can be used as vegetation model parameters) than using standard multivariate methods, particularly for data-limited trait-functional type combinations.
+Future work should extend this meta-analysis to additional traits---particularly root traits, which are highly consequential to plant function but are generally much more data limited---and to alternative (and optionally larger) plant functional type definitions.
 
-%% Ch1, P2
-% Ecological implications of LES stability within PFTs -- operates within biomes and growth forms, but seems to break down within species and communities. More work to be done on exactly what scale the LES starts to breaks down. Also, the extent to which LES is evolutionary vs. plastic -- i.e. will responses to climate change obey the "rules" of leaf economics.
+The idea that that additional measurements of readily observable traits can be used to inform traits that are much harder to observe is an exciting prospect for remote sensing, which has the capability to provide huge volumes of trait data at relatively low cost and effort.
+This was the motivation behind my second, which aimed to develop a consistent, physically-based methodology for estimating leaf traits from proximal or remote measurements of optical properties.
+In this study, I introduced an approach for estimating leaf traits and their uncertainties via Bayesian inversion of a leaf radiative transfer model.
+I then applied this approach to simulated spectra to explore the relationship between the spectral bands of remote sensing instruments and the accuracy and precision with which those instruments could retrieve known leaf traits.
+I found that while trait estimates from hyperspectral instruments were consistently and significantly more precise instruments than estimates from multispectral instruments, all sensor configurations were able to estimate at least some of the traits with greater precision than an uninformative prior distribution.
+Notably, coarser resolution instruments struggled to distinguish traits with overlapping spectral features (such as chlorophylls and carotenoids), but the Bayesian methodology was able to accommodate this through the joint posterior distributions, which were significantly constrained even when the marginal distributions were not.
+This work comes with several important caveats, all of which could be readily addressed in future analyses.
+First of all, I only considered spectral resolution, and did not consider other critical aspects of sensor and mission design, such as radiometric resolution, signal-to-noise ratio, spatial resolution, revisit frequency, and directional sampling.
+Second, I only evaluated the ability of these instruments to retrieve leaf traits from leaf spectra, whereas real retrievals are significantly complicated by canopy structure (see Chapter 4), atmospheric contamination, and sun-sensor geometry, among others.
+That being said, the value of this computational ``sensor experiment'' is to emphasize the importance of careful band selection, as I show that even small changes to band width and location can have significant consequences for retrieval of vegetation properties.
+More generally, this study demonstrates how modeling the observed remote sensing signal as a function of vegetation features allows information from multiple different platforms to be used synergistically.
 
-% Ch1, P3
-% Applications of multivariate method -- more traits, more PFTs
-% Potential for easy-to-measure traits to inform difficult to measure traits. Building on this idea, transition into chapters 2/3...
+Whereas chapter 2 was focused on sensor design and remote sensing methodology, chapter 3 delved into the ecophysiology of leaf spectra.
+First, this study investigated how well a state-of-the-art leaf radiative transfer model (PROSPECT) was able to related leaf traits and spectra across a wide range of species and measurement conditions.
+In general, leaf radiative transfer model inversion successfully captured 50 to 75\% of the variability in leaf traits, though retrieval accuracy varied significantly by plant functional type and project due to a combination of highly variable measurement techniques and physiological or morphological differences between plant functional types.
+Second, this study quantified the drivers of variability in leaf traits estimated from leaf spectra.
+I found that traits varied approximately equally within and across species, with morphological and structural traits showing less plasticity compared to traits related to photosynthesis and hydraulics.
+Species also defied characterization into plant functional types---attempting to do so captured at most roughly one-third of interspecific variability.
+Finally, this study assessed the extent of correlation between leaf traits directly estimable from leaf spectra and other traits that, so far, can only be measured directly.
+I found evidence of the leaf economic spectrum (see Chapter 1) in leaf optical traits as well, both within and across species, but many intraspecific trait correlations were strongly species-dependent.
+Future work could expand on this study in several ways.
+For one, the causes of the substantial variability in leaf trait retrieval accuracy need to be investigated in more detail, paying special attention paid to details about the measurement methodology (such as the use of leaf clips vs.\ integrating spheres, contact vs.\ proximal measurements).
+In addition, important questions remain about the sources of intraspecific variability in leaf traits.
+Namely, how much of this variability is between individuals of the same species as opposed to between leaves on the same tree?
+How do traits on the same leaf vary over the course of a season, or even of a single day?
+Similarly, how quickly and how much do leaf traits change in response to acute or prolonged stress?
+Fortunately, because leaf spectra are rapid and non-destructive, they are particularly well equipped to explore these and related questions, and future studies of plant ecophysiology would benefit significantly from adding leaf spectra to their measurement protocols.
 
-%% Ch2, P1
-% Remote sensing as a source of trait data
-% Collectively, chapters are about how much can we learn about traits from spectra.
-% Chapter 2 -- The relationship between spectral resolution and information content w.r.t. traits
-% Did not address radiometric resolution, nor issues with scaling from leaf to canopy (assumptions about canopy structure, BRDF effects, atmospheric correction).
-% Future work could apply the same general approach to investigate the relative value of these aspects as well.
-% However, in some ways, the focus on spectral resolution alone was useful for re-affirming the sensitivity of sensors to band location and width.
+My fourth and final research chapter advances beyond the leaf scale to the canopy scale.
+Canopy radiative transfer modeling has long been an essential tool for interpreting remote sensing signals~\cite{verhoef_1984_sail,jacquemoud_2009_prosail}.
+At the same time, canopy radiative transfer models (albeit of a different lineage) have been an essential component of dynamic vegetation models, where they are needed to determine light absorption for photosynthesis and to model surface energy balance~\cite{dickinson_1983_land,SELLERS_1985_canopy,clm45_note}.
+This chapter sought to unify these two schools of thought by first training a vegetation model's (Ecosystem Demography model, or ED2) own canopy radiative transfer scheme to predict full-range hyperspectral surface reflectance, and consequently calibrating and validating the model against airborne imaging spectroscopy measurements.
+Applying the same general Bayesian inversion approach used in chapters 2 and 3 to the canopy radiative transfer model, I was able to significantly constrain model parameters related to canopy structure compared to their uninformative priors.
+However, the resulting predicted spectra often departed significantly from both observations and predictions using a radiative transfer model commonly used in the remote sensing community.
+These analyses suggest that, at the very least, the calibration omitted important parameters related to wood and soil properties, and more likely that the canopy radiative transfer model has underlying structural errors that inhibit its ability to accurately simulate remotely sensed canopy reflectance.
+Additional work, primarily in the form of sensitivity analyses, is needed to more precisely diagnose the sources of model error and provide a road map for model improvement.
 
-% Ch3, P1
-% Where Chapter 2 was focused on the remote sensing science, Chapter 3 focused more deeply on the links between plant ecophysiology and leaf optical properties.
-% Lots of intra-specific variability in the traits that drive leaf optical properties---roughly half.
-% Some of this variability is caused by responses to various kinds of stress (pathogens, warming, etc.).
-% However, the large extent of intra-specific trait variability shows why stress detection using these methods is so challenging.
-% Future directions:
-% - Random leaf effects -- non-destructive nature of spectra provides the opportunity to identify how the same leaves change through time, and how much variability is across different leaves of the same individual.
+Overall, there are several major lessons to be learned from my dissertation research.
+The first lesson is that, at least in terms of traits, plants are frustratingly idiosyncratic, which poses problems for both vegetation modeling and remote sensing.
+As chapter 3 showed, individuals from the same species are often just as, if not more different from each other than from individuals of other species.
+Moreover, both chapters 1 and 3 show that variability among species from the same functional type can be greater than the variability between functional types.
+Models with fixed parameters for plant functional types therefore average over a tremendous amount of variability, and cannot represent the types of functional responses to stress or changing conditions observed in the various studies in chapter 3.
+The same can be said of satellite remote sensing, which is forced to condense complex stands of highly heterogeneous individuals into a single pixel with an average reflectance spectrum.
+Given comparable inter- and intra-specific variability in optical traits (and therefore spectra), it is hard not to be pessimistic about the ability of multispectral satellites to detect any but the most severe of stresses in heterospecific stands.
 
-% Ch4
-% 
+Another challenge, long known to the remote sensing community and reaffirmed in this dissertation, is the complexity of physically modeling vegetation optical properties, even when the traits are known.
+My second and third chapters show that we have an incomplete understanding (or at least, incomplete models) of vegetation-light interactions even at the leaf level, as evidenced by species-specific biases and large fractions of unexplained variability in trait retrieval.
+Some of these issues are due to differences in measurement approaches, and more work needs to be done to provide concrete recommendations regarding techniques for accurately and consistently measuring leaf spectra.
+However, systematic differences in trait estimation even within the same dataset point to issues with model calibration and structure.
+The large variability in both traits and trait correlations across species points to a need to continue to push leaf radiative transfer models to explicitly distinguish between multiple classes of molecules (e.g.\ separate chlorophyll a and b; model lignin, cellulose, and starch separately rather than collectively as ``dry matter content''), and, in the process, to depend less on empirically calibrated absorption coefficients.
+Although increasing the level of detail in this way can lead to problems with equifinality, my dissertation has consistently demonstrated that Bayesian methods are well-suited for both acknowledging equifinality when it exists (through strong correlations in the joint posterior distribution) and for resolving it when independent prior information is available.
+As my fourth chapter shows, radiative transfer modeling becomes even more challenging at the canopy level, where the complexities of modeling individual leaves are compounded by leaf arrangement and orientation, contributions from wood and soil, and strong directional effects of both incident and outgoing radiation.
+Canopy radiative transfer models that do a reasonably good job of capturing these effects while remaining computationally tractable exist in the remote sensing literature~\cite{verhoef_1984_sail,pinty_2006_simplifying}, and have been successfully coupled with ecosystem models in the past~\cite{quaife_2008_assimilating}.
+However, my work suggests that the canopy radiative transfer models popular in the ecosystem modeling community~\cite{dickinson_1983_land,SELLERS_1985_canopy} may be less well suited for modeling remote sensing signals, likely due to their failure to account for the directionality of canopy reflectance. 
+Future work should dive more deeply into the structure underlying these respective canopy radiative transfer models to find ways in which the latter can learn from the former.
+
+More generally, the final lesson of my dissertation is the importance of synergies and synthesis to improving ecological forecasting.
+No single observation method is capable of providing a picture of an ecosystem sufficiently complete to improve every aspect of an ecological forecast.
+However, synergies between multiple observations---each providing incremental constraint on a different component of the ecosystem---can lead to much more important improvements.
+For example, my fourth dissertation chapter applied the multivariate meta-analysis from chapter 1 to the results from chapter 3 to generate strongly informative multivariate priors on leaf optical properties, without which the retrieval of canopy structural parameters would have been hopelessly ill-posed.
+This example demonstrates not only the power of combining similar observations at multiple scales (leaf traits estimated from leaf spectra and airborne imaging spectroscopy, not to mention the survey data that provided the composition of each site), but also the utility of process-based models as scaffolds for doing so. 
+Significant progress in ecological forecasting will almost certainly require the development of many more synergies like these, and has the necessary positive externality of promoting collaboration across different disciplines.
+
+% There are many ways to get to the same result -- serious equifinality and ill-posedness problems...
+
+% ...but, everything is mutually dependent.
+% Equifinality can be advantageous when multiple independent constraints are available.
+% Models as scaffolds. Emergent covariance based on process.
+% Synergies between different data sources, and synergies between models and data.
 
 % Concluding remarks
-Perhaps the main lesson from my dissertation research is that the many observable features of plants and ecosystems are seldom independent.
-In some cases, this is a disadvantage;
-for instance, the fact that canopy reflectance spectra are influenced simultaneously by leaf morphology, leaf biochemistry, and canopy structure makes it challenging to study any of these features in isolation from spectral data alone.
-However, that non-independence can also serve as a source of useful information.
-As my second and fourth chapters show, Bayesian methods accommodate non-identifiability as covariance in posterior distributions, and taking advantage of that covariance can still lead to significant predictive constraint.
-More generally...
+% Perhaps the main lesson from my dissertation research is that the many observable features of plants and ecosystems are seldom independent.
+% In some cases, this is a disadvantage;
+% for instance, the fact that canopy reflectance spectra are influenced simultaneously by leaf morphology, leaf biochemistry, and canopy structure makes it challenging to study any of these features in isolation from spectral data alone.
+% However, that non-independence can also serve as a source of useful information.
+% As my second and fourth chapters show, Bayesian methods accommodate non-identifiability as covariance in posterior distributions, and taking advantage of that covariance can still lead to significant predictive constraint.
+% More generally...
 % Interconnectedness of different observations -- all data are valuable! Promotes synthesis and enhanced communication (including data sharing) between research groups and ecological subdisciplines.
 % Beyond empirical correlations, ecosystem models further provide a framework for unifying observations through emergent covariances.
 % True progress in ecological forecasting requires a holistic view of ecosystems. (Maybe quote some smart classics in here -- ecosystem as organism [Clements]? Tansley?)
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../dissertation"
+%%% reftex-default-bibliography: ("/home/ashiklom/Projects/dissertation/draft/library.bib")
+%%% End:
