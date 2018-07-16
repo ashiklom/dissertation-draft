@@ -162,15 +162,15 @@ Notably, a few estimates for mid-successional conifer species displayed signific
 \end{figure}
 
 Across all of the selected sensors, the highest PROSPECT 5 parameter inversion uncertainty and bias were observed for Car (Figure~\ref{fig:pecanrtm-sensorerror}, Table~\ref{tab:pecanrtm-sensorerror}).
-This can readily be explained by the Car specific absorption feature, which is both extremely narrow and overlaps substantially with that of Cab (not shown).% (Figure S1). %TODO: Figure
-On the other extreme, the most accurate and least uncertain retrieved parameter was N, which is related to the reflectivity of the leaf across the entire spectrum (Figure~\ref{fig:pecanrtm-sensorerror}, Table~\ref{tab:pecanrtm-sensorerror}).%, Figure S1). %TODO: Figure
+This can readily be explained by the Car specific absorption feature, which is both extremely narrow and overlaps substantially with that of Cab (not shown).
+On the other extreme, the most accurate and least uncertain retrieved parameter was N, which is related to the reflectivity of the leaf across the entire spectrum (Figure~\ref{fig:pecanrtm-sensorerror}, Table~\ref{tab:pecanrtm-sensorerror}).
 Despite relatively narrow absorption features, most simulated sensors were able to retrieve Cab with reasonably good accuracy, which is not surprising given the long history of monitoring vegetation pigmentation using various platforms.
-Similarly, all sensors except CHRIS-Proba and AVHRR retrieved Cw with low uncertainty and bias, reflecting the wide and strong absorption features of water in the NIR and SWIR (Figure~\ref{fig:pecanrtm-sensorerror}, Table~\ref{tab:pecanrtm-sensorerror}).%, Figure S1). %TODO: Figure
-The failure of CHRIS-Proba to retrieve Cw can be attributed to its inability to measure in this spectral range.% (Figure S4). %TODO: Figure
+Similarly, all sensors except CHRIS-Proba and AVHRR retrieved Cw with low uncertainty and bias, reflecting the wide and strong absorption features of water in the NIR and SWIR (Figure~\ref{fig:pecanrtm-sensorerror}, Table~\ref{tab:pecanrtm-sensorerror}).
+The failure of CHRIS-Proba to retrieve Cw can be attributed to its inability to measure in this spectral range.
 The retrieval accuracy for Cm was much more sensor dependent, with good performance among the simulated hyperspectral sensors, VIIRS, and Landsat 8, followed by lower performance for simulated Landsat 5 and 7 and MODIS, and a poor result for the simulated Chris-PROBA and AVHRR data (Figure~\ref{fig:pecanrtm-sensorerror}, Table~\ref{fig:pecanrtm-sensorerror}).
-Although the specific absorption feature for Cm is very wide, the sensitivity of reflectance to Cm values is much lower than for other parameters and almost the entire feature can be masked or confounded by Cw (Figure S1). %TODO: Figure
-This suggests that Cm is very dependent on precise locations of certain bands and therefore explains the differences in the estimate accuracy of apparently similar sensors like Landsat 5, 7, and 8 (Table~\ref{tab:pecanrtm-sensors})%, Figure S4). %TODO: Figure
-More generally, the importance of precise band widths and locations is evidenced by the noticeably better performance of Landsat 8 compared to Landsat 5 and 7 for certain parameters (Figure~\ref{fig:pecanrtm-sensorerror}, Table~\ref{fig:pecanrtm-sensorerror}) despite the subtle differences in the sensors’ respective bandwidths (Table~\ref{tab:pecanrtm-sensors})%, Figure S4). %TODO: Figure
+Although the specific absorption feature for Cm is very wide, the sensitivity of reflectance to Cm values is much lower than for other parameters and almost the entire feature can be masked or confounded by Cw (Figure S1).
+This suggests that Cm is very dependent on precise locations of certain bands and therefore explains the differences in the estimate accuracy of apparently similar sensors like Landsat 5, 7, and 8 (Table~\ref{tab:pecanrtm-sensors}).
+More generally, the importance of precise band widths and locations is evidenced by the noticeably better performance of Landsat 8 compared to Landsat 5 and 7 for certain parameters (Figure~\ref{fig:pecanrtm-sensorerror}, Table~\ref{fig:pecanrtm-sensorerror}) despite the subtle differences in the sensors’ respective bandwidths (Table~\ref{tab:pecanrtm-sensors}).
 
 \subsubsection{Parameter uncertainty and covariance}
 
@@ -185,11 +185,11 @@ More generally, the importance of precise band widths and locations is evidenced
 
 Figure~\ref{fig:pecanrtm-jointpost} shows an example of processed inversion output based on the high spectral resolution field spectrometer data and the spectral response functions of AVIRIS NG, Landsat 8, and MODIS\@.
 All four plots are simulated from a single set of parameters, so differences in results are caused only by variations in spectral measurement characteristics.% (Figure S4). %TODO: Figure
-Out of these four sensors, the uncertainties increase with approximately decreasing spectral resolution, with lowest uncertainties in the full spectra, second-lowest for AVIRIS NG, second highest for Landsat 8, and highest for MODIS\@. %TODO: Figure
+Out of these four sensors, the uncertainties increase with approximately decreasing spectral resolution, with lowest uncertainties in the full spectra, second-lowest for AVIRIS NG, second highest for Landsat 8, and highest for MODIS\@.
 The shapes of parameter covariances are distinctly different between these sensors, reflecting differences in the ability of the inversion to distinguish between parameters based on the available information.
-Across all four sensors, we observe strong positive covariance between N and Cm, since these parameters influence wide regions of the reflectance spectrum in opposite ways.% (Figure S1). %TODO: Figure
+Across all four sensors, we observe strong positive covariance between N and Cm, since these parameters influence wide regions of the reflectance spectrum in opposite ways.
 Similarly, we also observe a positive covariance between N and Cab, although the strength of this covariance is not equal across sensors.
-The remaining covariances are mostly specific to MODIS, whose band configuration increases the overlap between the associated parameters.% (Figure S4). %TODO: Figure
+The remaining covariances are mostly specific to MODIS, whose band configuration increases the overlap between the associated parameters.
 
 We find that inversion estimates for the field spectra are occasionally falsely overconfident.
 For instance, the true value of N and Cw is outside the 95\% confidence limit of their estimated joint probability distribution at full, field spectrometer resolution.
