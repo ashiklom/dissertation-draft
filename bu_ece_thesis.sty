@@ -79,17 +79,22 @@
 \textwidth 6.0in               % Leaves 1.0in right margin (was 6.1875in)
 
 % Vertical margins:
-\voffset = 0pt                 % Additional offset to default 1in
-\topmargin -0.25in             % Margin for page numbers (0.75in from top)
+% These are calculated from the top down, in the following order:
+%   1 inch top margin (default value)
+%   \voffset (default = 0)
+%   \topmargin -- distance from margin to top of header/page number
+%   \headheight -- height of header
+%   \headsep -- distance from bottom of header to top of text
+%   \textheight -- height of main text
+%   \footskip -- distance from bottom of text to top of footer/page number
 
-\headheight 12pt               % Header for numbering and running titles. (~1/7 in)
-\headsep 24pt                  % Separator between header and text (~2/7in).
-
-% \textheight 8.75in             % Default: 8.5in. Uncomment to add extra 0.25in for topmargin
-
-\footskip 0.4in                % Distance from bottom of text to bottom of foot,
-                               % which is where page number goes for preliminary
-                               % pages. Hence number will be 0.6" from bottom.
+\topmargin     0in                % Page numbers 1in from top
+\headheight 12pt                  % 1 line
+\headsep 24.135pt                 % 72.27pt/1in -- set so \headheight + \headsep = 0.5in
+\textheight 8.5in
+\footskip 0.25in                  % ... = 11 - 1 - \headheight - headsep -
+                                  % \textheight - 0.75in (target
+                                  % margin for bottom page number)
 
 % "Double-space all textual material and all preliminary pages.
 % Footnotes and long quotations may be single-spaced"
